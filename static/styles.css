@@ -1,0 +1,17 @@
+/*.navbar {
+    margin-bottom: 10px;
+}*/
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+
+.nav-item {
+    font-size: 20px;
+}
+
+.table {
+    font-size: 30px;
+   /* background-color: #000;*/
+}

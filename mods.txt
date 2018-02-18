@@ -1,0 +1,11 @@
+flask admin sqla fields
+
+???
+/home/ebolak/flask/tabule_1_5_1/venv/lib/python3.5/site-packages/flask_security/templates/security/_messages.html
+
+aytomatic login after password reset:
+def reset_password(token):  add login_user(user)
+
+??nevim:
+pip install --upgrade git+https://github.com/mattupstate/flask-security.git@develop
+

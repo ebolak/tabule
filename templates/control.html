@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Control
+{% endblock %}
+
+{% block main %}
+{% include "security/_messages.html" %}
+<div class="container mt-3">
+		<div class="row mt-1">
+			<div class="col-md-6">	
+				<div class="table-responsive">          
+			    	<table id="actualValues" class="table table-striped" cellspacing="0" width="100%">
+			            <thead>
+			            	<tr>
+			            		<th class="text-center" colspan="2">Aktuální hodnoty</th>	
+			            	</tr>
+			            </thead>
+			            <tbody>
+				            <tr>
+				                <td>Plán</td>
+				                <td id="target">####</td>
+				                <td>ks</td>
+				            </tr>
+				            <tr>
+				                <td>Vyrobeno</td>
+				                <td id="actual">####</td>
+				                <td>ks</td>
+				            </tr>
+				            <tr>
+				                <td>Ok</td>
+				                <td id="ok">####</td>
+				                <td>ks</td>
+				            </tr>
+				            <tr>
+				                <td>Rozdíl</td>
+				                <td id="diff">####</td>
+				                <td>ks</td>
+				            </tr>
+				            <tr>
+				                <td>taktTime</td>
+				                <td id="taktTime">####</td>
+				                <td>s</td>
+				            </tr>
+			            </tbody>
+			        </table>
+				</div>
+
+				<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block ">Reset aktualní výroby</button>
+			
+			</div>
+			<div class="col-md-6">
+				<button id="control-start" type="button" class="btn btn-lg btn-primary btn-block btn-success mt-5">Spustit počítání</button>
+				<button id="control-stop" type="button" class="btn btn-lg btn-primary btn-block btn-danger mt-5">Zastavit počítání</button>
+			</div>
+		</div>
+</div>				      
+{% endblock %}

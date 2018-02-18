@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings Main
+{% endblock %}
+
+{% block main %}
+{% include "security/_messages.html" %}
+<div class="container mt-3">
+	<div class="row align-items-center">
+		<div class="col text-right font-weight-bold">
+			Zapnuto
+		</div>
+		<div class="col">
+			<button id="settings-enabledOff" type="button" class="btn btn-primary btn-lg mt-1">VYP</button>
+			<button id="settings-enabledOn" type="button" class="btn btn-primary btn-lg mt-1">ZAP</button>
+		</div>
+		<div class="col text-right font-weight-bold mt-1">
+			Plán[ks]
+		</div>
+		<div class="col">
+			<button id="settings-target" type="button" class="btn btn-outline-secondary btn-lg btn-block mt-1" data-toggle="modal" data-target="#targetModal">####</button>	
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col text-right font-weight-bold mt-1">
+			Autostart
+		</div>
+		<div class="col">
+			<button id="settings-autostartOff" type="button" class="btn btn-primary btn-lg mt-1">VYP</button>
+			<button id="settings-autostartOn" type="button" class="btn btn-primary btn-lg mt-1">ZAP</button>
+		</div>
+		<div class="col text-right font-weight-bold mt-1">
+			Takt Time[s]
+		</div>
+		<div class="col">
+			<button id="settings-taktTime" type="button" class="btn btn-outline-secondary btn-lg btn-block mt-1" data-toggle="modal" data-target="#taktTimeModal">####</button>	
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col text-right font-weight-bold mt-1">
+			Funkce NG tlačítka
+		</div>
+		<div class="col">	
+			<div class="dropdown">
+				<button class="btn btn-primary btn-lg dropdown-toggle mt-1" type="button" id="settings-countOption" data-toggle="dropdown">
+					####
+				</button>
+				<div class="dropdown-menu">
+					<a id="settings-countOption0" class="dropdown-item">0: OK -1</a>
+					<a id="settings-countOption1" class="dropdown-item">1: VYROBENO +1</a>
+				</div>
+			</div>
+		</div>
+		<div class="col"></div>
+		<div class="col"></div>		
+	</div>
+</div>
+
+<!-- Target Modal -->
+<div class="modal fade" id="targetModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="targetModalLabel">Plán nastavení</h5>
+				<button type="button" class="close" data-dismiss="modal">
+				<!-- <span aria-hidden="true">&times;</span> -->
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="target">Plán[ks]:</label>
+					<input type="text" class="form-control" id="inputTarget" onkeypress="return isNumber(event)">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button id="settings-save-target" type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TaktTime Modal -->
+<div class="modal fade" id="taktTimeModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="taktTimeModalLabel">Takt Time nastavení</h5>
+				<button type="button" class="close" data-dismiss="modal">
+				<!-- <span aria-hidden="true">&times;</span> -->
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="taktTime">Takt time[s]:</label>
+					<input type="text" class="form-control" id="inputTaktTime" onkeypress="return isNumberOrDot(event)">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+				<button id="settings-save-taktTime" type="button" class="btn btn-primary">Uložit změny</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

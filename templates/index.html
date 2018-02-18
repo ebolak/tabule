@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+{% include "security/_messages.html" %}
+<div class="container mt-3">
+	<div class="table-responsive">          
+    	<table id="actualValues" class="table table-striped table-dark" cellspacing="1" width="100%">
+            <thead>
+            </thead>
+            <tbody>
+	            <tr>
+	                <td>Plán / Target</td>
+	                <td id="target">####</td>
+	                <td>ks/pcs</td>
+	            </tr>
+	            <tr>
+	                <td>Vyrobeno / Actual</td>
+	                <td id="actual">####</td>
+	                <td>ks/pcs</td>
+	            </tr>
+	            <tr>
+	                <td>Ok</td>
+	                <td id="ok">####</td>
+	                <td>ks/pcs</td>
+	            </tr>
+	            <tr>
+	                <td>Rozdíl / Difference</td>
+	                <td id="diff">####</td>
+	                <td>ks/pcs</td>
+	            </tr>
+	            <tr>
+	                <td>Bekido</td>
+	                <td id="bekido">####</td>
+	                <td>%</td>
+	            </tr>
+            </tbody>
+        </table>
+	</div>
+</div>
+{% endblock %}
