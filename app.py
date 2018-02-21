@@ -66,11 +66,12 @@ def security_context_processor():
 @app.before_first_request
 def create_user():
     init_db()
-    user_datastore.create_role(name="Admin", description="Admin")
-    db_session.commit()
-    #user_datastore.create_role(name="User", description="User")
-    user_datastore.create_user(email="admin@example.com", password="password", roles=["Admin"])
-    db_session.commit()
+    if not user_datastore.find_role("Admin"):
+        user_datastore.create_role(name="Admin", description="Admin")
+        db_session.commit()
+    if not user_datastore.find_user(email="admin@example.com"):
+        user_datastore.create_user(email="admin@example.com", password="password", roles=["Admin"])
+        db_session.commit()
 
 # Mqtt
 mqtt = Mqtt(app)
