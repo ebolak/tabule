@@ -62,6 +62,16 @@ def security_context_processor():
     with app.app_context():
         return dict(line_name=current_app.config.get("LINE_NAME"))
 
+# Create a user to test with
+@app.before_first_request
+def create_user():
+    init_db()
+    user_datastore.create_role(name="Admin", description="Admin")
+    db_session.commit()
+    #user_datastore.create_role(name="User", description="User")
+    user_datastore.create_user(email="admin@example.com", password="password", roles=["Admin"])
+    db_session.commit()
+
 # Mqtt
 mqtt = Mqtt(app)
 
