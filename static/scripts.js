@@ -191,24 +191,24 @@ $(document).ready(function(){
 
                 // if state changed update 
                 if (msg.payload['state'] !== memState) {
-                    $('#control-start').removeClass('btn-success');
-                    $('#control-start').removeClass('btn-danger');
-                    $('#control-start').removeClass('btn-warning');
-                    $('#control-stop').removeClass('btn-success');
-                    $('#control-stop').removeClass('btn-danger');
-                    $('#control-stop').removeClass('btn-warning');
+                    $('#control-starttTaktTimeCnt').removeClass('btn-success');
+                    $('#control-starttTaktTimeCnt').removeClass('btn-danger');
+                    $('#control-starttTaktTimeCnt').removeClass('btn-warning');
+                    $('#control-stoptTaktTimeCnt').removeClass('btn-success');
+                    $('#control-stoptTaktTimeCnt').removeClass('btn-danger');
+                    $('#control-stoptTaktTimeCnt').removeClass('btn-warning');
 
                     // state 0:undefined, 1:disabled, 2:stopped, 3:running
                     if (msg.payload['state'] === 0) {
                     
                     } else if (msg.payload['state'] === 1) {
-                        $('#control-stop').addClass('btn-danger');
-                        $('#control-start').addClass('btn-danger');
+                        $('#control-stoptTaktTimeCnt').addClass('btn-danger');
+                        $('#control-starttTaktTimeCnt').addClass('btn-danger');
                     } else if (msg.payload['state'] === 2) {
-                        $('#control-stop').addClass('btn-warning');    
+                        $('#control-stopTaktTimeCnt').addClass('btn-warning');    
                     }
                     else if (msg.payload['state'] === 3) {
-                        $('#control-start').addClass('btn-success'); 
+                        $('#control-starttTaktTimeCnt').addClass('btn-success'); 
                     }
                     memState = msg.payload['state']; 
                 }
@@ -293,23 +293,40 @@ $(document).ready(function(){
             });
 
             // control-start
-            $('#control-start').on('click', function(e) {
+            $('#control-startTaktTimeCnt').on('click', function(e) {
                 var msg = {}
-                msg.topic = line_name + '/control/start';
+                msg.topic = line_name + '/control/startTaktTimeCnt';
                 msg.payload = {'value':[1]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
 
             // control-stop
-            $('#control-stop').on('click', function(e) {
+            $('#control-stopTaktTimeCnt').on('click', function(e) {
                 var msg = {}
-                msg.topic = line_name + '/control/stop';
+                msg.topic = line_name + '/control/stopTaktTimeCnt';
                 msg.payload = {'value':[1]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
 
+            // control-releaseProduction
+            $('#control-releaseProduction').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/releaseProduction';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // control-stopProduction
+            $('#control-stopProduction').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/stopProduction';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
 
             // settings-enabledOn
             $('#settings-enabledOn').on('click', function(e) {
