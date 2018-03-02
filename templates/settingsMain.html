@@ -7,53 +7,89 @@
 {% block main %}
 {% include "security/_messages.html" %}
 <div class="container mt-3">
-	<div class="row align-items-center">
-		<div class="col text-right font-weight-bold">
-			Zapnuto
-		</div>
+
+	<div class="row mt-1">
 		<div class="col">
-			<button id="settings-enabledOff" type="button" class="btn btn-primary btn-lg mt-1">VYP</button>
-			<button id="settings-enabledOn" type="button" class="btn btn-primary btn-lg mt-1">ZAP</button>
-		</div>
-		<div class="col text-right font-weight-bold mt-1">
-			Plán[ks]
-		</div>
-		<div class="col">
-			<button id="settings-target" type="button" class="btn btn-outline-secondary btn-lg btn-block mt-1" data-toggle="modal" data-target="#targetModal">####</button>	
+			<div class="row">
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Zapnuto</div>
+							<button id="settings-enabledOff" type="button" class="btn btn-primary btn-lg">VYP</button>
+							<button id="settings-enabledOn" type="button" class="btn btn-primary btn-lg">ZAP</button>
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Plán[ks]</div>
+							<button id="settings-target" type="button" class="btn btn-outline-secondary btn-lg btn-block" data-toggle="modal" data-target="#targetModal">####</button>
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
-	<div class="row align-items-center">
-		<div class="col text-right font-weight-bold mt-1">
-			Autostart
-		</div>
+
+	<div class="row mt-1">
 		<div class="col">
-			<button id="settings-autostartOff" type="button" class="btn btn-primary btn-lg mt-1">VYP</button>
-			<button id="settings-autostartOn" type="button" class="btn btn-primary btn-lg mt-1">ZAP</button>
-		</div>
-		<div class="col text-right font-weight-bold mt-1">
-			Takt Time[s]
-		</div>
-		<div class="col">
-			<button id="settings-taktTime" type="button" class="btn btn-outline-secondary btn-lg btn-block mt-1" data-toggle="modal" data-target="#taktTimeModal">####</button>	
+			<div class="row">
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Autostart</div>
+							<button id="settings-autostartOff" type="button" class="btn btn-primary btn-lg">VYP</button>
+							<button id="settings-autostartOn" type="button" class="btn btn-primary btn-lg">ZAP</button>
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Takt Time[s]</div>
+							<button id="settings-taktTime" type="button" class="btn btn-outline-secondary btn-lg btn-block" data-toggle="modal" data-target="#taktTimeModal">####</button>	
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
-	<div class="row align-items-center">
-		<div class="col text-right font-weight-bold mt-1">
-			Funkce NG tlačítka
-		</div>
-		<div class="col">	
-			<div class="dropdown">
-				<button class="btn btn-primary btn-lg dropdown-toggle mt-1" type="button" id="settings-countOption" data-toggle="dropdown">
-					####
-				</button>
-				<div class="dropdown-menu">
-					<a id="settings-countOption0" class="dropdown-item">0: OK -1</a>
-					<a id="settings-countOption1" class="dropdown-item">1: VYROBENO +1</a>
+
+	<div class="row mt-1">
+		<div class="col">
+			<div class="row">
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Funkce NG tlačítka</div>
+							<div class="dropdown">
+								<button class="btn btn-primary btn-lg dropdown-toggle mt-1" type="button" id="settings-countOption" data-toggle="dropdown">####</button>
+								<div class="dropdown-menu">
+									<a id="settings-countOption0" class="dropdown-item">0: OK -1</a>
+									<a id="settings-countOption1" class="dropdown-item">1: VYROBENO +1</a>
+								</div>
+							</div>	
+						</div>
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col"></div>
+						<div class="col"></div>	
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col"></div>
-		<div class="col"></div>		
 	</div>
 </div>
 
