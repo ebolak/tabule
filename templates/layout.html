@@ -95,13 +95,17 @@
             </footer>
         {% endif %}
 
-
     {% block tail_js %}
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/socket.io.slim.js', v='2.0.4') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/popper.min.js', v='1.12.9') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/jquery-3.2.1.slim.min.js', v='3.2.1') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/bootstrap.min.js', v='4.0.0') }}"></script>
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-    {% endblock %}
+    {% endblock %}        
     </body>
+
+    
+
+
+    
 </html>
