@@ -976,7 +976,7 @@
             },
             {
                 "t": "eq",
-                "v": "LXX/control/starttTaktTimeCnt",
+                "v": "LXX/control/startTaktTimeCnt",
                 "vt": "str"
             },
             {
