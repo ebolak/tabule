@@ -8,8 +8,11 @@
 {% include "security/_messages.html" %}
 <div class="container mt-3">
 
-	<div class="row align-items-center">
+	<!-- <div class="row align-items-center"> -->
 		<div class="input-group mb-3 mt-1">
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect01">Volba směny</label>
+			</div>
 			<select class="custom-select" id="settingsShift-selectShift">
 				<!-- <option selected>Volba směny...</option> -->
 				<option value="1">Směna1-ranní</option>
@@ -17,8 +20,7 @@
 				<option value="3">Směna3-noční</option>
 			</select>
 		</div>
-	</div>
-
+	<!-- </div> -->
 
 	<div class="table-responsive mt-1">          
 		<table id="settingsShift" class="table" cellspacing="0" width="100%">
