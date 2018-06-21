@@ -22,6 +22,28 @@ var computeBekido = function(ok, counterTactTime) {
   }
 };
 
+
+var toneSelect = function(idSelector, msg) {
+    if (msg.payload['toneSelect'] !== 0) {
+        $(idSelector).html('Tón ' + msg.payload['toneSelect']);
+    }
+    else {
+        $(idSelector).html('Žádný tón');    
+    }
+};
+
+
+var toneTest = function(idSelector, msg) {
+    if (msg.payload['test'] === 1) {
+        $(idSelector).addClass('btn-success');   
+    }
+    else {
+        $(idSelector).removeClass('btn-success'); 
+    }
+};
+
+
+
 var isNumber = function(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -536,40 +558,25 @@ $(document).ready(function(){
             // settingsSireneGreen actual values
             socket.on(line_name + '/settingsSirene/green', function(msg){
                 console.log(msg);
-                $('#settingsSirene-green-toneSelect').html('Tón ' + msg.payload['toneSelect']);
+                toneSelect('#settingsSirene-green-toneSelect', msg);
                 $('#settingsSirene-green-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                if (msg.payload['test'] === 1) {
-                    $('#settingsSirene-green-test').addClass('btn-success');   
-                }
-                else {
-                    $('#settingsSirene-green-test').removeClass('btn-success'); 
-                }
+                toneTest('#settingsSirene-green-test', msg);    
             });
 
             // settingsSireneYellow actual values
             socket.on(line_name + '/settingsSirene/yellow', function(msg){
                 console.log(msg);
-                $('#settingsSirene-yellow-toneSelect').html('Tón ' + msg.payload['toneSelect']);
+                toneSelect('#settingsSirene-yellow-toneSelect', msg);
                 $('#settingsSirene-yellow-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                if (msg.payload['test'] === 1) {
-                    $('#settingsSirene-yellow-test').addClass('btn-success');   
-                }
-                else {
-                    $('#settingsSirene-yellow-test').removeClass('btn-success'); 
-                }
+                toneTest('#settingsSirene-yellow-test', msg);
             });
 
             // settingsSireneRed actual values
             socket.on(line_name + '/settingsSirene/red', function(msg){
                 console.log(msg);
-                $('#settingsSirene-red-toneSelect').html('Tón ' + msg.payload['toneSelect']);
+                toneSelect('#settingsSirene-red-toneSelect', msg);
                 $('#settingsSirene-red-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                if (msg.payload['test'] === 1) {
-                    $('#settingsSirene-red-test').addClass('btn-success');   
-                }
-                else {
-                    $('#settingsSirene-red-test').removeClass('btn-success'); 
-                }
+                toneTest('#settingsSirene-red-test', msg);
             });
 
             // tone select shared modal
