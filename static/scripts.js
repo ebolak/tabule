@@ -264,10 +264,16 @@ $(document).ready(function(){
                     if (msg.payload['autostartEnabled'] === 0) {
                         $('#settings-autostartOn').removeClass('btn-success');
                         $('#settings-autostartOff').addClass('btn-danger');
+                        $('#control-startTaktTimeCnt').show();
+                        $('#control-stopTaktTimeCnt').show();
+                        $('#control-autostartTaktTimeCntEn').hide();
                     
                     } else if (msg.payload['autostartEnabled'] === 1) {
                         $('#settings-autostartOn').addClass('btn-success');
                         $('#settings-autostartOff').removeClass('btn-danger');
+                        $('#control-startTaktTimeCnt').hide();
+                        $('#control-stopTaktTimeCnt').hide();
+                        $('#control-autostartTaktTimeCntEn').show();
                     }
                     memAutostartEnabled = msg.payload['autostartEnabled'];
                 }

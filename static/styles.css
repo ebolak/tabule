@@ -25,3 +25,7 @@ body {
   left: 0;
   bottom: 0;
 }
+
+#control-autostartTaktTimeCntEn { 
+    display: none;
+}
