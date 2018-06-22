@@ -29,3 +29,7 @@ body {
 #control-autostartTaktTimeCntEn { 
     display: none;
 }
+
+#control-taktTimeCntOff { 
+    display: none;
+}
