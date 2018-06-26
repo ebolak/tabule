@@ -88,6 +88,7 @@ ROOM = "settings"
 
 MQTT_TOPICS = {
 	 LINE_NAME + "/actualValues" : {"namespace": NAME_SPACE, "room" : None },
+	 LINE_NAME + "/andons" : {"namespace": NAME_SPACE, "room" : None },
 	 LINE_NAME + "/settings" : {"namespace": NAME_SPACE, "room" : ROOM },
 	 LINE_NAME + "/settingsShift/1" : {"namespace": NAME_SPACE, "room" : ROOM },
 	 LINE_NAME + "/settingsShift/2" : {"namespace": NAME_SPACE, "room" : ROOM },

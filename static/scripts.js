@@ -236,6 +236,12 @@ $(document).ready(function(){
                 }
             });
 
+            // andon update
+            socket.on(line_name + '/andons', function(msg){
+                console.log(msg);
+            });
+
+
             // settings values update
             // socket.on('settings', function(msg){
             socket.on(line_name + '/settings', function(msg){
