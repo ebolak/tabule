@@ -1,5 +1,5 @@
 import eventlet
-eventlet.monkey_patch()
+#eventlet.monkey_patch()
 import json
 from flask import Flask, render_template, url_for, redirect, current_app
 from flask_mail import Mail
@@ -15,6 +15,9 @@ from flask_security import UserMixin, RoleMixin
 from flask_security.forms import LoginForm, ChangePasswordForm, ForgotPasswordForm, ResetPasswordForm, StringField, SubmitField, Required, Length
 from flask_socketio import SocketIO, emit, disconnect, join_room, leave_room
 import functools
+eventlet.monkey_patch()
+
+
 
 # Create Flask application
 app = Flask(__name__)
@@ -22,9 +25,18 @@ app.config.from_pyfile("config.py")
 
 JSGlue(app)
 
+
 # SocketIO
 async_mode = "eventlet"
 socketio = SocketIO(app, async_mode=async_mode, manage_session=False)
+
+
+# Mqtt
+mqtt = Mqtt(app)
+with app.app_context():
+    topics = current_app.config.get("MQTT_TOPICS")
+    namespace = current_app.config["NAME_SPACE"]
+
 
 # overriding default security forms?
 from wtforms import BooleanField, Field, HiddenField, PasswordField, \
@@ -73,14 +85,7 @@ def create_user():
         user_datastore.create_user(email="admin@example.com", password="password", roles=["Admin"])
         db_session.commit()
 
-# Mqtt
-mqtt = Mqtt(app)
 
-# Mqtt subscirbe topics
-with app.app_context():
-    topics = current_app.config.get("MQTT_TOPICS")
-    for key, val in topics.items():
-        mqtt.subscribe(key)
 
 # Customized Role model for SQL-Admin
 # Prevent administration of Roles unless the currently logged-in user has the "Admin" role
@@ -150,8 +155,11 @@ def test_connect():
 
 @socketio.on("disconnect", namespace=namespace)
 def test_disconnect():
-    print("Client disconnected")
-
+    if current_user.is_authenticated and current_user.email:
+        print("Client " + current_user.email + " disconnected")
+        join_room(room)
+    else :
+        print("Client Anonymous disconnected")
 
 @socketio.on("publish", namespace=namespace)
 #@authenticated_only
@@ -160,7 +168,19 @@ def handle_publish(data):
         msg = json.loads(data)     
         mqtt.publish(msg["topic"], json.dumps(msg["payload"]), qos=2)
 
-# Mqtt
+# mqtt
+@mqtt.on_connect()
+def handle_connect(client, userdata, flags, rc):
+    # Mqtt subscirbe topics
+    for key, val in topics.items():
+        mqtt.subscribe(key)
+    #pass
+
+@mqtt.on_disconnect()
+def handle_disconnect():
+#   mqtt.unsubscribe_all()
+    socketio.emit('actualValuesError', None, namespace=namespace, room=None)
+
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):
     msg = dict(
@@ -174,8 +194,12 @@ def handle_mqtt_message(client, userdata, message):
             values = payload["value"]
             msg["payload"] = dict(zip(keys, values))
             socketio.emit(msg["topic"], msg, namespace=topics[msg["topic"]]["namespace"], room=topics[msg["topic"]]["room"])
-            #print (data) 
+
+@mqtt.on_log()
+def handle_logging(client, userdata, level, buf):
+    #print(level, buf)
+    pass
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
-    socketio.run(app, host="0.0.0.0", port=5000, use_reloader=True, debug=True)
+    socketio.run(app, host="0.0.0.0", port=5000, use_reloader=False, debug=True)

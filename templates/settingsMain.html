@@ -15,9 +15,15 @@
 					<div class="row align-items-center">
 						<div class="col"></div>
 						<div class="col">
-							<div class="text-center font-weight-bold">Zapnuto</div>
-							<button id="settings-enabledOff" type="button" class="btn btn-primary btn-lg">VYP</button>
-							<button id="settings-enabledOn" type="button" class="btn btn-primary btn-lg">ZAP</button>
+							<div class="text-center font-weight-bold">Spouštění počítání</div>
+							<div class="dropdown">
+								<button class="btn btn-primary btn-lg dropdown-toggle mt-1" type="button" id="settings-taktTimeCntOption" data-toggle="dropdown">####</button>
+								<div class="dropdown-menu">
+									<a id="settings-taktTimeCntOption0" class="dropdown-item">0: Vypnuto</a>
+									<a id="settings-taktTimeCntOption1" class="dropdown-item">1: Ručně v ovládání</a>
+									<a id="settings-taktTimeCntOption2" class="dropdown-item">2: Automaticky nastavením směn</a>
+								</div>
+							</div>	
 						</div>
 						<div class="col"></div>
 					</div>
@@ -26,37 +32,8 @@
 					<div class="row align-items-center">
 						<div class="col"></div>
 						<div class="col">
-							<div class="text-center font-weight-bold">Plán[ks]</div>
+							<div class="text-center font-weight-bold">Plán</div>
 							<button id="settings-target" type="button" class="btn btn-outline-secondary btn-lg btn-block" data-toggle="modal" data-target="#targetModal">####</button>
-						</div>
-						<div class="col"></div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="row mt-1">
-		<div class="col">
-			<div class="row">
-				<div class="col">
-					<div class="row align-items-center">
-						<div class="col"></div>
-						<div class="col">
-							<div class="text-center font-weight-bold">Autostart</div>
-							<button id="settings-autostartOff" type="button" class="btn btn-primary btn-lg">VYP</button>
-							<button id="settings-autostartOn" type="button" class="btn btn-primary btn-lg">ZAP</button>
-						</div>
-						<div class="col"></div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="row align-items-center">
-						<div class="col"></div>
-						<div class="col">
-							<div class="text-center font-weight-bold">Takt Time[s]</div>
-							<button id="settings-taktTime" type="button" class="btn btn-outline-secondary btn-lg btn-block" data-toggle="modal" data-target="#taktTimeModal">####</button>	
 						</div>
 						<div class="col"></div>
 					</div>
@@ -80,17 +57,27 @@
 									<a id="settings-countOption0" class="dropdown-item">0: OK -1</a>
 									<a id="settings-countOption1" class="dropdown-item">1: VYROBENO +1</a>
 								</div>
-							</div>	
+							</div>
 						</div>
 						<div class="col"></div>
-						<div class="col"></div>
-						<div class="col"></div>
-						<div class="col"></div>	
 					</div>
 				</div>
+				<div class="col">
+					<div class="row align-items-center">
+						<div class="col"></div>
+						<div class="col">
+							<div class="text-center font-weight-bold">Takt time</div>
+							<button id="settings-taktTime" type="button" class="btn btn-outline-secondary btn-lg btn-block" data-toggle="modal" data-target="#taktTimeModal">####</button>	
+						</div>
+						<div class="col"></div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
+
+	
 </div>
 
 <!-- Target Modal -->

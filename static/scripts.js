@@ -1,10 +1,13 @@
-// memory state
-var memState;
-var memEnabled;
-var memAutostartEnabled;
-var memTarget;
-var memTaktTime;
-var memCountOption;
+var memSettingsMain;
+var memActualValues;
+var memAndons;
+var memSettingsShift1;
+var memSettingsShift2;
+var memSettingsShift3;
+var memSettingsShift = {};
+var memSettingsSireneGreen;
+var memSettingsSireneYellow;
+var memSettingsSireneRed;
 
 var timeInputSource;
 var toneDurationSource;
@@ -42,7 +45,9 @@ var toneTest = function(idSelector, msg) {
     }
 };
 
-
+function jsonEqual(a,b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+};
 
 var isNumber = function(evt) {
     evt = (evt) ? evt : window.event;
@@ -156,10 +161,8 @@ var updateSettingsShift = function(msg) {
     // break3End
     $('#settingsShift-break3End').html(msToTime(msg.payload['shiftBreak3End']));
 };
-
-
-
-$(document).ready(function(){
+// kick off
+$(document).ready(function() {
             namespace = name_space; // change to an empty string to use the global namespace
             // the socket.io documentation recommends sending an explicit package upon connection
             // this is specially important when using the global namespace
@@ -171,7 +174,7 @@ $(document).ready(function(){
             });
 
             // on disconect
-            socket.on('disconnect', function(){
+            socket.on('disconnect', function() {
                 console.log('disconnect');
                 $('#target').text('####');
                 $('#actual').text('####');
@@ -182,7 +185,7 @@ $(document).ready(function(){
             });
 
             // on disconect
-            socket.on('actualValuesError', function(){
+            socket.on('actualValuesError', function() {
                 console.log('actualValuesError');
                 $('#target').text('####');
                 $('#actual').text('####');
@@ -201,199 +204,122 @@ $(document).ready(function(){
                 $('#bekido').text('####');
             });          
 
-            // actual values update
-            socket.on(line_name + '/actualValues', function(msg){
-                console.log(msg);
-                $('#target').text(msg.payload['target']);
-                $('#actual').text(msg.payload['actual']);
-                $('#ok').text(msg.payload['ok']);
-                $('#diff').text(msg.payload['diff']);
-                $('#bekido').text(computeBekido(msg.payload['ok'], msg.payload['taktTimeCnt']));
+            // *****************************
+            // actual Values
+            // *****************************
+            socket.on(line_name + '/actualValues', function(msg) {
+                if (!(jsonEqual(msg, memActualValues))) {
+                    console.log(msg);
+                    $('#target').text(msg.payload['target']);
+                    $('#actual').text(msg.payload['actual']);
+                    $('#ok').text(msg.payload['ok']);
+                    $('#diff').text(msg.payload['diff']);
+                    $('#bekido').text(computeBekido(msg.payload['ok'], msg.payload['taktTimeCnt']));
 
-
-                // if state changed update 
-                if (msg.payload['state'] !== memState) {
                     $('#control-startTaktTimeCnt').removeClass('btn-success');
                     $('#control-startTaktTimeCnt').removeClass('btn-danger');
                     $('#control-startTaktTimeCnt').removeClass('btn-warning');
                     $('#control-stopTaktTimeCnt').removeClass('btn-success');
                     $('#control-stopTaktTimeCnt').removeClass('btn-danger');
-                    $('#control-stopTaktTimeCnt').removeClass('btn-warning');
-
-                    // state 0:undefined, 1:disabled, 2:stopped, 3:running
-                    if (msg.payload['state'] === 0) {
-                    
-                    } else if (msg.payload['state'] === 1) {
-                        $('#control-stopTaktTimeCnt').addClass('btn-danger');
-                        $('#control-startTaktTimeCnt').addClass('btn-danger');
-                    } else if (msg.payload['state'] === 2) {
-                        $('#control-stopTaktTimeCnt').addClass('btn-warning');    
+                    $('#control-stopTaktTimeCnt').removeClass('btn-warning') 
+                    switch (msg.payload['state']) {
+                        case 0:
+                            break;
+                        case 1:
+                            $('#control-stopTaktTimeCnt').addClass('btn-danger');
+                            $('#control-startTaktTimeCnt').addClass('btn-danger');
+                            break;
+                        case 2:
+                            $('#control-stopTaktTimeCnt').addClass('btn-warning');
+                            break;
+                        case 3:
+                            $('#control-startTaktTimeCnt').addClass('btn-success');
+                            break;
                     }
-                    else if (msg.payload['state'] === 3) {
-                        $('#control-startTaktTimeCnt').addClass('btn-success'); 
-                    }
-                    memState = msg.payload['state']; 
                 }
+                memActualValues = msg;
             });
 
             // andon update
-            socket.on(line_name + '/andons', function(msg){
-                console.log(msg);
+            socket.on(line_name + '/andons', function(msg) {
+                if (!(jsonEqual(msg, memAndons))) {
+                    console.log(msg);
+                }
+                memAndons = msg;
             });
 
-
-            // settings values update
-            // socket.on('settings', function(msg){
-            socket.on(line_name + '/settings', function(msg){
-                console.log(msg);
-                $('#taktTime').text(msg.payload['taktTime']/1000);
-
-
-                // if enabled changed update 
-                if (msg.payload['enabled'] !== memEnabled) {
-                    console.log('enabled changed');
-                    // state 0:undefined, 1:disabled, 2:stopped, 3:running
-                    if (msg.payload['enabled'] === 0) {
-                        $('#settings-enabledOn').removeClass('btn-success');
-                        $('#settings-enabledOff').addClass('btn-danger');
-                    
-                    } else if (msg.payload['enabled'] === 1) {
-                        $('#settings-enabledOn').addClass('btn-success');
-                        $('#settings-enabledOff').removeClass('btn-danger');
+            // *****************************
+            // settings
+            // *****************************
+            socket.on(line_name + '/settings', function(msg) {
+                if (!(jsonEqual(msg, memSettingsMain))) {
+                    console.log(msg);
+                    // taktTimeCntOption update
+                    switch (msg.payload['taktTimeCntOption']) {
+                        case 0:
+                            $('#settings-taktTimeCntOption').text('0: Vypnuto');
+                            break;
+                        case 1:
+                            $('#settings-taktTimeCntOption').text('1: Ručně v ovládání');
+                            // update control btns
+                            $('#control-startTaktTimeCnt').show();
+                            $('#control-stopTaktTimeCnt').show();
+                            $('#control-autostartTaktTimeCntEn').hide();
+                            break;
+                        case 2:;
+                            $('#settings-taktTimeCntOption').text('2: Automaticky nastavením směn');
+                            // update control btns
+                            $('#control-startTaktTimeCnt').hide();
+                            $('#control-stopTaktTimeCnt').hide();
+                            $('#control-autostartTaktTimeCntEn').show(); 
+                            break;
+                        default:
+                            $('#settings-taktTimeCntOption').text('####'); 
                     }
-                    memEnabled = msg.payload['enabled'];
-                }
-                // if autostartEnabled changed update 
-                if (msg.payload['autostartEnabled'] !== memAutostartEnabled) {
-                    console.log('autostartEnabled changed');
-                    // state 0: disabled, 1: enabled
-                    if (msg.payload['autostartEnabled'] === 0) {
-                        $('#settings-autostartOn').removeClass('btn-success');
-                        $('#settings-autostartOff').addClass('btn-danger');
-                        $('#control-startTaktTimeCnt').show();
-                        $('#control-stopTaktTimeCnt').show();
-                        $('#control-autostartTaktTimeCntEn').hide();
-                    
-                    } else if (msg.payload['autostartEnabled'] === 1) {
-                        $('#settings-autostartOn').addClass('btn-success');
-                        $('#settings-autostartOff').removeClass('btn-danger');
-                        $('#control-startTaktTimeCnt').hide();
-                        $('#control-stopTaktTimeCnt').hide();
-                        $('#control-autostartTaktTimeCntEn').show();
+                    // target update
+                    $('#settings-target').html(msg.payload['target'] + ' ks')
+                    // ngCount option update
+                    switch (msg.payload['countOption']) {
+                        case 0:
+                            $('#settings-countOption').text('0: OK -1');
+                            break;
+                        case 1:
+                            $('#settings-countOption').text('1: Vyrobeno +1');
+                            break;
+                        default:
+                            $('#settings-countOption').text('####'); 
                     }
-                    memAutostartEnabled = msg.payload['autostartEnabled'];
+                    // taktTime update
+                    $('#settings-taktTime').text(msg.payload['taktTime']/1000 + ' s'); 
+
+                    $('#taktTime').text(msg.payload['taktTime']/1000);                
                 }
-
-                // if target changed update 
-                if (msg.payload['target'] !== memTarget) {
-                    console.log('target changed');
-                    // update button text
-                    $('#settings-target').html(msg.payload['target'])
-                    memTarget = msg.payload['target'];
-                }
-
-                // if taktTime changed update 
-                if (msg.payload['taktTime'] !== memTaktTime) {
-                    console.log('taktTime changed');
-                    // update button text
-                    $('#settings-taktTime').html(msg.payload['taktTime']/1000)
-                    memTaktTime = msg.payload['taktTime'];
-                }
-
-                // if countOption changed update 
-                if (msg.payload['countOption'] !== memCountOption) {
-                    console.log('countOption changed');
-                    // update button text
-                    if (msg.payload['countOption'] === 0) {
-                        $('#settings-countOption').html('0: OK -1');
-                    } else if (msg.payload['countOption'] === 1) {
-                        $('#settings-countOption').html('1: VYROBENO +1');
-                    } else {
-                        $('#settings-countOption').html('####');    
-                    }
-                    memCountOption = msg.payload['countOption'];
-                }
-
-
-            });
-         
-            // control-resetCounters
-            $('#control-resetCounters').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/control/resetCounters';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
+                memSettingsMain = msg;   
             });
 
-            // control-startTaktTimeCnt
-            $('#control-startTaktTimeCnt').on('click', function(e) {
+            // settings-taktTimeCntOption0
+            $('#settings-taktTimeCntOption0').on('click', function(e) {
                 var msg = {}
-                msg.topic = line_name + '/control/startTaktTimeCnt';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
-            });
-
-            // control-stopTaktTimeCnt
-            $('#control-stopTaktTimeCnt').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/control/stopTaktTimeCnt';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
-            });
-
-            // control-releaseProduction
-            $('#control-releaseProduction').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/control/releaseProduction';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
-            });
-
-            // control-stopProduction
-            $('#control-stopProduction').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/control/stopProduction';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
-            });
-
-            // settings-enabledOn
-            $('#settings-enabledOn').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/settings/enabled';
-                msg.payload = {'value':[1]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
-            });
-
-            // settings-enabledOff
-            $('#settings-enabledOff').on('click', function(e) {
-                var msg = {}
-                msg.topic = line_name + '/settings/enabled';
+                msg.topic = line_name + '/settings/taktTimeCntOption';
                 msg.payload = {'value':[0]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
 
-            // settings-autostartOn
-            $('#settings-autostartOn').on('click', function(e) {
+            // settings-taktTimeCntOption1
+            $('#settings-taktTimeCntOption1').on('click', function(e) {
                 var msg = {}
-                msg.topic = line_name + '/settings/autostartEnabled';
+                msg.topic = line_name + '/settings/taktTimeCntOption';
                 msg.payload = {'value':[1]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
 
-            // settings-autostartOff
-            $('#settings-autostartOff').on('click', function(e) {
+            // settings-taktTimeCntOption2
+            $('#settings-taktTimeCntOption2').on('click', function(e) {
                 var msg = {}
-                msg.topic = line_name + '/settings/autostartEnabled';
-                msg.payload = {'value':[0]};
+                msg.topic = line_name + '/settings/taktTimeCntOption';
+                msg.payload = {'value':[2]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
@@ -441,33 +367,91 @@ $(document).ready(function(){
             });
 
             // ***********************
+            // control
+            // ***********************
+
+            // control-resetCounters
+            $('#control-resetCounters').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/resetCounters';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // control-startTaktTimeCnt
+            $('#control-startTaktTimeCnt').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/startTaktTimeCnt';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // control-stopTaktTimeCnt
+            $('#control-stopTaktTimeCnt').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/stopTaktTimeCnt';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // control-releaseProduction
+            $('#control-releaseProduction').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/releaseProduction';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // control-stopProduction
+            $('#control-stopProduction').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/control/stopProduction';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+
+            // ***********************
             // settingsShift
             // ***********************
             // settingsShift-select shift get value
             $('#settingsShift-selectShift').change(function() {
                 settingsShift_shiftSelect = parseInt($(this).val());
-                console.log('settingsShift/' + settingsShift_shiftSelect);
+                delete memSettingsShift[settingsShift_shiftSelect.toString()];
             });
 
             socket.on(line_name + '/settingsShift/1', function(msg){
-                console.log(msg);
-                if (settingsShift_shiftSelect === 1) {
-                    updateSettingsShift(msg);    
-                }                        
+                if (!(jsonEqual(msg, memSettingsShift['1']))) {
+                    console.log(msg);
+                    if (settingsShift_shiftSelect === 1) {
+                        updateSettingsShift(msg);    
+                    }  
+                }
+                memSettingsShift['1'] = msg;                         
             });
 
             socket.on(line_name + '/settingsShift/2', function(msg){
-                console.log(msg);
-                if (settingsShift_shiftSelect === 2) {
-                    updateSettingsShift(msg);    
-                }                        
+                if (!(jsonEqual(msg, memSettingsShift['2']))) {
+                    console.log(msg);
+                    if (settingsShift_shiftSelect === 2) {
+                        updateSettingsShift(msg);    
+                    }  
+                }
+                memSettingsShift['2'] = msg;                         
             });
 
             socket.on(line_name + '/settingsShift/3', function(msg){
-                console.log(msg);
-                if (settingsShift_shiftSelect === 3) {
-                    updateSettingsShift(msg);    
-                }                        
+                if (!(jsonEqual(msg, memSettingsShift['3']))) {
+                    console.log(msg);
+                    if (settingsShift_shiftSelect === 3) {
+                        updateSettingsShift(msg);    
+                    }  
+                }
+                memSettingsShift['3'] = msg;                         
             });
             
             // settingsShift-shiftENOff
@@ -569,26 +553,35 @@ $(document).ready(function(){
             // ***********************
             // settingsSireneGreen actual values
             socket.on(line_name + '/settingsSirene/green', function(msg){
-                console.log(msg);
-                toneSelect('#settingsSirene-green-toneSelect', msg);
-                $('#settingsSirene-green-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                toneTest('#settingsSirene-green-test', msg);    
+                if (!(jsonEqual(msg, memSettingsSireneGreen))) {
+                    console.log(msg);
+                    toneSelect('#settingsSirene-green-toneSelect', msg);
+                    $('#settingsSirene-green-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
+                    toneTest('#settingsSirene-green-test', msg);    
+                }
+                memSettingsSireneGreen = msg;
+                  
             });
-
             // settingsSireneYellow actual values
             socket.on(line_name + '/settingsSirene/yellow', function(msg){
-                console.log(msg);
-                toneSelect('#settingsSirene-yellow-toneSelect', msg);
-                $('#settingsSirene-yellow-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                toneTest('#settingsSirene-yellow-test', msg);
+                if (!(jsonEqual(msg, memSettingsSireneYellow))) {
+                    console.log(msg);
+                    toneSelect('#settingsSirene-yellow-toneSelect', msg);
+                    $('#settingsSirene-yellow-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
+                    toneTest('#settingsSirene-yellow-test', msg);   
+                }
+                memSettingsSireneYellow = msg;
             });
 
             // settingsSireneRed actual values
             socket.on(line_name + '/settingsSirene/red', function(msg){
-                console.log(msg);
-                toneSelect('#settingsSirene-red-toneSelect', msg);
-                $('#settingsSirene-red-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
-                toneTest('#settingsSirene-red-test', msg);
+                if (!(jsonEqual(msg, memSettingsSireneRed))) {
+                    console.log(msg);
+                    toneSelect('#settingsSirene-red-toneSelect', msg);
+                    $('#settingsSirene-red-toneDuration').html(msg.payload['toneDuration'] / 1000 + ' s');
+                    toneTest('#settingsSirene-red-test', msg);
+                }
+                memSettingsSireneRed = msg;
             });
 
             // tone select shared modal
