@@ -28,11 +28,12 @@ var computeBekido = function(ok, counterTactTime) {
 
 var toneSelect = function(idSelector, msg) {
     if (msg.payload['toneSelect'] !== 0) {
-        $(idSelector).html('Tón ' + msg.payload['toneSelect']);
+        $(idSelector).text('Tón ' + msg.payload['toneSelect']);
     }
     else {
-        $(idSelector).html('Žádný tón');    
+        $(idSelector).text('Žádný tón');    
     }
+    $(idSelector).val(msg.payload['toneSelect']);   
 };
 
 
@@ -125,6 +126,19 @@ function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         b=a[1]*1||0, // optimized
         a=a[0].split(':'),
         b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+}
+
+function ms2String(ms) {
+    var d, h, m, s;
+    s = Math.floor(ms / 1000);
+    m = Math.floor(s / 60);
+    s = s % 60;
+    h = Math.floor(m / 60);
+    m = m % 60;
+    d = Math.floor(h / 24);
+    h = h % 24;
+    h += d * 24;
+    return h + ':' + m + ':' + s;
 }
 
 
@@ -335,6 +349,14 @@ $(document).ready(function() {
                     console.log(msg);
                 }
             });
+
+            // settings-save-target modal default value
+            $('#targetModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var value = button.text();
+                var modal = $(this);
+                modal.find('.modal-body input').val(value.replace(/[^0-9]/g, ''))
+            });
             
             // settings-save-taktTime
             $('#settings-save-taktTime').on('click', function(e) {
@@ -346,6 +368,13 @@ $(document).ready(function() {
                     socket.emit('publish', JSON.stringify(msg));
                     console.log(msg);    
                 }                
+            });
+            // settings-save-taktTime modal default value
+            $('#taktTimeModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var value = button.text();
+                var modal = $(this);
+                modal.find('.modal-body input').val(value.replace(/[^0-9.]/g, ''))
             });
 
             // settings-countOption0
@@ -525,27 +554,28 @@ $(document).ready(function() {
             // ***********************
             // shared modal for time imput
             // ***********************
-            // TODO
-            // Load actual values as input n show
             $('#settingsShift-time-inputModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                timeInputSource = button.data('source') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                timeInputSource = button.data('source'); // Extract info from data-* attributes
+                var value = button.text();
                 var modal = $(this)
                 // console.log(timeInputSource)
                 modal.find('.modal-title').text(timeInputSource)
+                modal.find('.modal-body input').val(value.replace(/[^0-9.:]/g, ''))
             });
             
             // settingsShift-save-time-input
             $('#settingsShift-save-time-input').on('click', function(e) {
-                var value = $('#settingsShift-time-input').val();
-                console.log(timeString2ms(value));
-                var msg = {}
-                msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/' + timeInputSource;
-                msg.payload = {'value':[timeString2ms(value)]};
-                socket.emit('publish', JSON.stringify(msg));
-                console.log(msg);
+                var time_ms = timeString2ms($('#settingsShift-time-input').val());
+                // console.log(time_ms);
+                if (time_ms <= 86400000) {
+                    var msg = {}
+                    msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/' + timeInputSource;
+                    msg.payload = {'value':[time_ms]};
+                    socket.emit('publish', JSON.stringify(msg));
+                    console.log(msg);    
+                }
+                
             });
 
             // ***********************
@@ -585,13 +615,13 @@ $(document).ready(function() {
             });
 
             // tone select shared modal
-            // TODO Load actual values as input n show
             $('#settingsSirene-toneSelectModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                toneSelectSource = button.data('source') // Extract info from data-* attributes
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text(toneSelectSource)
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                toneSelectSource = button.data('source'); // Extract info from data-* attributes
+                var value = button.val();
+                var modal = $(this);
+                modal.find('.modal-title').text(toneSelectSource);
+                $('#settingsSirene-toneSelect').val(value);
             });
             
             // settingsSirene-save-toneSelect
@@ -605,14 +635,15 @@ $(document).ready(function() {
             });
 
             // tone duration shared modal
-            // TODO Load actual values as input n show
             $('#settingsSirene-toneDurationModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 toneDurationSource = button.data('source'); // Extract info from data-* attributes
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var value = button.text();
                 var modal = $(this);
                 modal.find('.modal-title').text(toneDurationSource);
+                modal.find('.modal-body input').val(value.replace(/[^0-9.]/g, ''));
             });
+
             
             // settingsSirene-save-toneDuration
             $('#settingsSirene-save-toneDuration').on('click', function(e) {

@@ -22,7 +22,7 @@
 	            <tr>
 	                <td class="bg-success text-white"></td>
 	                <td class="text-center">
-	                	<button id="settingsSirene-green-toneSelect" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneSelectModal" 
+	                	<button id="settingsSirene-green-toneSelect" type="button" value="" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneSelectModal" 
 	                		data-source="green/toneSelect">####</button>
 	                </td>
 	                <td class="text-center">
@@ -79,9 +79,12 @@
 						<label for="toneSelect">Volba tónu:</label>
 						<div class="input-group mb-3 mt-1">
 							<select class="custom-select" id="settingsSirene-toneSelect">
-								<option value="0">Žádný tón</option>
-								{% for n in range(1,65) %}
-									<option value="{{n}}">Tón {{n}}</option>
+								{% for n in range(0,66) %}
+									{% if loop.first %}
+										<option value="{{n}}">Žádný tón</option>
+									{% else %}
+										<option value="{{n}}">Tón {{n}}</option>
+									{% endif %} 
 								{% endfor %}
 							</select>
 						</div>
