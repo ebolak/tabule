@@ -566,9 +566,9 @@ $(document).ready(function() {
             
             // settingsShift-save-time-input
             $('#settingsShift-save-time-input').on('click', function(e) {
-                var time_ms = timeString2ms($('#settingsShift-time-input').val());
+                var time_ms = parseInt(timeString2ms($('#settingsShift-time-input').val()));
                 // console.log(time_ms);
-                if (time_ms <= 86400000) {
+                if (time_ms <= 86399999) {
                     var msg = {}
                     msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/' + timeInputSource;
                     msg.payload = {'value':[time_ms]};
@@ -647,7 +647,7 @@ $(document).ready(function() {
             
             // settingsSirene-save-toneDuration
             $('#settingsSirene-save-toneDuration').on('click', function(e) {
-                var value = $('#settingsSirene-inputToneDuration').val() * 1000;
+                var value = parseInt($('#settingsSirene-inputToneDuration').val() * 1000);
                 var msg = {}
                 msg.topic = line_name + '/settingsSirene/' + toneDurationSource;
                 msg.payload = {'value':[value]};
