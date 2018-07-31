@@ -272,6 +272,11 @@ $(document).ready(function() {
                     switch (msg.payload['taktTimeCntOption']) {
                         case 0:
                             $('#settings-taktTimeCntOption').text('0: Vypnuto');
+                            // update control btns
+                            $('#control-startTaktTimeCnt').hide();
+                            $('#control-stopTaktTimeCnt').hide();
+                            $('#control-autostartTaktTimeCntEn').text('Vypnuto v nastavení');
+                            $('#control-autostartTaktTimeCntEn').show();
                             break;
                         case 1:
                             $('#settings-taktTimeCntOption').text('1: Ručně v ovládání');
