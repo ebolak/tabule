@@ -1,69 +1,76 @@
 [
     {
-        "id": "54c9f7d7.bb1948",
+        "id": "73ceafae.ee06c",
         "type": "tab",
         "label": "ActualValues",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "e951892c.8c5e48",
+        "id": "c90f56cd.b937a8",
+        "type": "tab",
+        "label": "Andons",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a051bb87.ea1428",
         "type": "tab",
         "label": "Control",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "3e16fe1e.1316d2",
+        "id": "5ec81611.1f8f78",
         "type": "tab",
         "label": "Settings",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "e60de2fb.29ed2",
+        "id": "a0b48df0.05aea",
         "type": "tab",
         "label": "SettingsShift1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "756d9cc7.24be84",
+        "id": "26f3e443.609c7c",
         "type": "tab",
         "label": "settingsShift2",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "214ca3a0.f705cc",
+        "id": "e23ca3f4.81009",
         "type": "tab",
         "label": "settingsShift3",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "ca39fd9a.cc209",
+        "id": "ee12d2be.ef63a",
         "type": "tab",
         "label": "settingsSireneGreen",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "258e2eea.e7ad82",
+        "id": "cb8fd743.b6c518",
         "type": "tab",
         "label": "settingsSireneYellow",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "4c818c92.135364",
+        "id": "2c2170f9.55a83",
         "type": "tab",
         "label": "settingsSireneRed",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "a6707013.b68a4",
+        "id": "beb0d289.f79ea",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -74,15 +81,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "b3109f5a.dad37",
+        "id": "8d1918ea.3733d8",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -93,15 +100,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "bff0a9e3.ce4548",
+        "id": "3e609753.876538",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -112,15 +119,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "379bdef.bb84122",
+        "id": "fd7f4693.ff2b28",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -131,15 +138,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "487a9421.c838cc",
+        "id": "e1b04fcb.046e6",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -150,15 +157,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "50915757.c5e6e8",
+        "id": "56f71b23.adf8b4",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -169,15 +176,15 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "e513c429.3353d8",
+        "id": "48b46dde.183684",
         "type": "mqtt-broker",
         "z": "",
         "name": "",
@@ -188,21 +195,21 @@
         "compatmode": true,
         "keepalive": "60",
         "cleansession": true,
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
         "birthTopic": "",
         "birthQos": "0",
-        "birthPayload": ""
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
     },
     {
-        "id": "27b878ab.b92198",
+        "id": "32e3d07d.a36bf",
         "type": "s7comm",
         "z": "",
-        "ip": "127.0.0.1",
-        "port": "1102",
+        "ip": "192.168.121.69",
+        "port": "102",
         "rack": "0",
-        "slot": "2",
+        "slot": "1",
         "payload": [
             {
                 "S7_Type": "DB",
@@ -219,8 +226,8 @@
                 "S7_Datatype": "DI",
                 "S7_Offset": "0",
                 "S7_BitOffset": "0",
-                "S7_Quantity": "5",
-                "S7_Name": "enabled;autostartEnabled;target;taktTime;countOption"
+                "S7_Quantity": "4",
+                "S7_Name": "taktTimeCntOption;target;taktTime;countOption"
             },
             {
                 "S7_Type": "DB",
@@ -274,7 +281,7 @@
                 "S7_Offset": "0",
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
-                "S7_Name": "settings_enabled"
+                "S7_Name": "settings_tacktTimeCntOption"
             },
             {
                 "S7_Type": "DB",
@@ -283,7 +290,7 @@
                 "S7_Offset": "4",
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
-                "S7_Name": "settings_autostartEnabled"
+                "S7_Name": "settings_target"
             },
             {
                 "S7_Type": "DB",
@@ -292,22 +299,13 @@
                 "S7_Offset": "8",
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
-                "S7_Name": "settings_target"
-            },
-            {
-                "S7_Type": "DB",
-                "S7_DBnum": "22",
-                "S7_Datatype": "DI",
-                "S7_Offset": "12",
-                "S7_BitOffset": "0",
-                "S7_Quantity": "1",
                 "S7_Name": "settings_taktTime"
             },
             {
                 "S7_Type": "DB",
                 "S7_DBnum": "22",
                 "S7_Datatype": "DI",
-                "S7_Offset": "16",
+                "S7_Offset": "12",
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
                 "S7_Name": "settings_countOption"
@@ -770,14 +768,23 @@
                 "S7_BitOffset": "0",
                 "S7_Quantity": "1",
                 "S7_Name": "redTest"
+            },
+            {
+                "S7_Type": "DB",
+                "S7_DBnum": "26",
+                "S7_Datatype": "I",
+                "S7_Offset": "0",
+                "S7_BitOffset": "0",
+                "S7_Quantity": "5",
+                "S7_Name": "andon1;andon2;andon3;andon4;andon5"
             }
         ]
     },
     {
-        "id": "8c000e8f.e6d4b",
+        "id": "a6338d80.65964",
         "type": "s7comm read",
-        "z": "54c9f7d7.bb1948",
-        "connection": "27b878ab.b92198",
+        "z": "73ceafae.ee06c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"21\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"6\",\"S7_Name\":\"target;actual;ok;diff;taktTimeCnt;state\"}",
         "s7Name": "target;actual;ok;diff;taktTimeCnt;state",
         "topic": "",
@@ -786,60 +793,62 @@
         "none": "false",
         "repeat": "1",
         "once": false,
-        "x": 350,
-        "y": 120,
+        "x": 285,
+        "y": 174,
         "wires": [
             [
-                "935d3ddc.94dfe",
-                "8c93072d.9ea878"
+                "6dc240d3.b9074",
+                "e0da0d18.146c9"
             ]
         ]
     },
     {
-        "id": "935d3ddc.94dfe",
+        "id": "e0da0d18.146c9",
         "type": "debug",
-        "z": "54c9f7d7.bb1948",
+        "z": "73ceafae.ee06c",
         "name": "",
-        "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 628,
-        "y": 305,
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 622,
+        "y": 269,
         "wires": []
     },
     {
-        "id": "8c93072d.9ea878",
+        "id": "6dc240d3.b9074",
         "type": "mqtt out",
-        "z": "54c9f7d7.bb1948",
+        "z": "73ceafae.ee06c",
         "name": "",
         "topic": "LXX/actualValues",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
-        "x": 790,
-        "y": 120,
+        "broker": "48b46dde.183684",
+        "x": 650,
+        "y": 172,
         "wires": []
     },
     {
-        "id": "dc11403a.32ac2",
+        "id": "95053a7d.788988",
         "type": "mqtt in",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "topic": "LXX/control/#",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 153,
         "y": 199,
         "wires": [
             [
-                "4243f32.ae91a0c"
+                "28f3a86.a49ae58"
             ]
         ]
     },
     {
-        "id": "d75fc1f0.780b1",
+        "id": "80d30937.a71698",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -849,12 +858,12 @@
         "wires": []
     },
     {
-        "id": "ef6ba560.996008",
+        "id": "ecbcf205.020c4",
         "type": "s7comm read",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"5\",\"S7_Name\":\"enabled;autostartEnabled;target;taktTime;countOption\"}",
-        "s7Name": "enabled;autostartEnabled;target;taktTime;countOption",
+        "z": "5ec81611.1f8f78",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"4\",\"S7_Name\":\"taktTimeCntOption;target;taktTime;countOption\"}",
+        "s7Name": "taktTimeCntOption;target;taktTime;countOption",
         "topic": "",
         "name": "readSettings",
         "signalSetted": false,
@@ -865,15 +874,15 @@
         "y": 104,
         "wires": [
             [
-                "c936c545.8e2ec8",
-                "1a6ed07a.4b5e1"
+                "e17536.cc1e0ac8",
+                "cae17a9e.84ef48"
             ]
         ]
     },
     {
-        "id": "c936c545.8e2ec8",
+        "id": "e17536.cc1e0ac8",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
         "console": "false",
@@ -883,23 +892,23 @@
         "wires": []
     },
     {
-        "id": "1a6ed07a.4b5e1",
+        "id": "cae17a9e.84ef48",
         "type": "mqtt out",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "topic": "LXX/settings",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 923,
         "y": 103,
         "wires": []
     },
     {
-        "id": "2eaca7bd.bb46d8",
+        "id": "91755788.8fdc18",
         "type": "s7comm write",
-        "z": "e951892c.8c5e48",
-        "connection": "27b878ab.b92198",
+        "z": "a051bb87.ea1428",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"24\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"control_resetCounters\"}",
         "s7Name": "control_resetCounters",
         "topic": "",
@@ -909,14 +918,14 @@
         "y": 195,
         "wires": [
             [
-                "d75fc1f0.780b1"
+                "80d30937.a71698"
             ]
         ]
     },
     {
-        "id": "6292a6a0.31ad08",
+        "id": "f2c1b5e0.fbe5c8",
         "type": "inject",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "topic": "",
         "payload": "{\"value\":[1]}",
@@ -929,14 +938,14 @@
         "y": 81,
         "wires": [
             [
-                "d5f12d2.4ebeed"
+                "bb8a3fbb.d546"
             ]
         ]
     },
     {
-        "id": "d5f12d2.4ebeed",
+        "id": "bb8a3fbb.d546",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -946,9 +955,9 @@
         "wires": []
     },
     {
-        "id": "4243f32.ae91a0c",
+        "id": "28f3a86.a49ae58",
         "type": "json",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "property": "payload",
         "action": "",
@@ -957,14 +966,14 @@
         "y": 197,
         "wires": [
             [
-                "f29c540a.0cd418"
+                "e0f8aea9.9b5ca"
             ]
         ]
     },
     {
-        "id": "f29c540a.0cd418",
+        "id": "e0f8aea9.9b5ca",
         "type": "switch",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -1002,27 +1011,27 @@
         "y": 198,
         "wires": [
             [
-                "2eaca7bd.bb46d8"
+                "91755788.8fdc18"
             ],
             [
-                "99801cee.27c6b"
+                "36ec0dc6.8706f2"
             ],
             [
-                "bcb9e773.533348"
+                "1f46f59e.056f1a"
             ],
             [
-                "2c539640.cbc1ca"
+                "624fa74e.7a3238"
             ],
             [
-                "d1e4a1e5.f11c8"
+                "e4cdd765.12cfe8"
             ]
         ]
     },
     {
-        "id": "99801cee.27c6b",
+        "id": "36ec0dc6.8706f2",
         "type": "s7comm write",
-        "z": "e951892c.8c5e48",
-        "connection": "27b878ab.b92198",
+        "z": "a051bb87.ea1428",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"24\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"4\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"control_start\"}",
         "s7Name": "control_start",
         "topic": "",
@@ -1032,15 +1041,15 @@
         "y": 275,
         "wires": [
             [
-                "3566b9db.71fd46"
+                "85d3b851.d90388"
             ]
         ]
     },
     {
-        "id": "bcb9e773.533348",
+        "id": "1f46f59e.056f1a",
         "type": "s7comm write",
-        "z": "e951892c.8c5e48",
-        "connection": "27b878ab.b92198",
+        "z": "a051bb87.ea1428",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"24\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"8\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"control_stop\"}",
         "s7Name": "control_stop",
         "topic": "",
@@ -1050,14 +1059,14 @@
         "y": 345,
         "wires": [
             [
-                "95d8b23.e9ec95"
+                "5126e021.37664"
             ]
         ]
     },
     {
-        "id": "3566b9db.71fd46",
+        "id": "85d3b851.d90388",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -1067,9 +1076,9 @@
         "wires": []
     },
     {
-        "id": "95d8b23.e9ec95",
+        "id": "5126e021.37664",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -1079,70 +1088,72 @@
         "wires": []
     },
     {
-        "id": "fbbf53d7.bfc3f",
+        "id": "734d7cb2.c42624",
         "type": "mqtt in",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "topic": "LXX/settings/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 218,
         "y": 379,
         "wires": [
             [
-                "394a7aad.3099c6"
+                "bbdea164.3ed2b"
             ]
         ]
     },
     {
-        "id": "b884c48c.6679b8",
+        "id": "8e5cf4cf.f10a18",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 1196,
-        "y": 373,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1204,
+        "y": 379,
         "wires": []
     },
     {
-        "id": "145c3aae.0795b5",
+        "id": "fea48c34.82bbf",
         "type": "s7comm write",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_enabled\"}",
-        "s7Name": "settings_enabled",
+        "z": "5ec81611.1f8f78",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_tacktTimeCntOption\"}",
+        "s7Name": "settings_tacktTimeCntOption",
         "topic": "",
-        "name": "enabled",
+        "name": "settings_tacktTimeCntOption",
         "signalSetted": false,
-        "x": 899,
-        "y": 377,
+        "x": 944,
+        "y": 379,
         "wires": [
             [
-                "b884c48c.6679b8"
+                "8e5cf4cf.f10a18"
             ]
         ]
     },
     {
-        "id": "394a7aad.3099c6",
+        "id": "bbdea164.3ed2b",
         "type": "json",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "pretty": true,
         "x": 433,
         "y": 379,
         "wires": [
             [
-                "1c7ff5ef.9f924a",
-                "2519c17f.d05c7e"
+                "31ca9b1c.61cf54",
+                "1ccb4f2b.e61ba1"
             ]
         ]
     },
     {
-        "id": "1c7ff5ef.9f924a",
+        "id": "31ca9b1c.61cf54",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
         "console": "false",
@@ -1152,21 +1163,16 @@
         "wires": []
     },
     {
-        "id": "2519c17f.d05c7e",
+        "id": "1ccb4f2b.e61ba1",
         "type": "switch",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
-                "v": "LXX/settings/enabled",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "LXX/settings/autostartEnabled",
+                "v": "LXX/settings/taktTimeCntOption",
                 "vt": "str"
             },
             {
@@ -1187,152 +1193,125 @@
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 5,
+        "outputs": 4,
         "x": 647,
         "y": 377,
         "wires": [
             [
-                "145c3aae.0795b5"
+                "fea48c34.82bbf"
             ],
             [
-                "14cd89eb.fc29b6"
+                "7e1d0b78.479744"
             ],
             [
-                "171e3837.ed7fe8"
+                "93b4f281.e508"
             ],
             [
-                "7a87c752.444aa8"
-            ],
-            [
-                "2665e405.71c64c"
+                "a4668c9f.b51cc"
             ]
         ]
     },
     {
-        "id": "14cd89eb.fc29b6",
+        "id": "7e1d0b78.479744",
         "type": "s7comm write",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"4\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_autostartEnabled\"}",
-        "s7Name": "settings_autostartEnabled",
-        "topic": "",
-        "name": "autostartEnabled",
-        "signalSetted": false,
-        "x": 929,
-        "y": 457,
-        "wires": [
-            [
-                "a7902d3e.fd61b"
-            ]
-        ]
-    },
-    {
-        "id": "171e3837.ed7fe8",
-        "type": "s7comm write",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"8\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_target\"}",
+        "z": "5ec81611.1f8f78",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"4\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_target\"}",
         "s7Name": "settings_target",
         "topic": "",
-        "name": "target",
+        "name": "settings_target",
         "signalSetted": false,
-        "x": 886,
-        "y": 527,
+        "x": 920,
+        "y": 440,
         "wires": [
             [
-                "fab0bace.6c3a68"
+                "89bd5466.d73ac8"
             ]
         ]
     },
     {
-        "id": "a7902d3e.fd61b",
+        "id": "89bd5466.d73ac8",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 1190,
-        "y": 463,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1204,
+        "y": 446,
         "wires": []
     },
     {
-        "id": "fab0bace.6c3a68",
-        "type": "debug",
-        "z": "3e16fe1e.1316d2",
-        "name": "",
-        "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 1201,
-        "y": 529,
-        "wires": []
-    },
-    {
-        "id": "7a87c752.444aa8",
+        "id": "93b4f281.e508",
         "type": "s7comm write",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_taktTime\"}",
+        "z": "5ec81611.1f8f78",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"8\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_taktTime\"}",
         "s7Name": "settings_taktTime",
         "topic": "",
-        "name": "taktTime",
+        "name": "settings_taktTime",
         "signalSetted": false,
-        "x": 904,
-        "y": 600,
+        "x": 934,
+        "y": 502,
         "wires": [
             [
-                "a30ad33a.1c375"
+                "8e385904.f25978"
             ]
         ]
     },
     {
-        "id": "a30ad33a.1c375",
+        "id": "8e385904.f25978",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 1209,
-        "y": 602,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1201,
+        "y": 501,
         "wires": []
     },
     {
-        "id": "2665e405.71c64c",
+        "id": "a4668c9f.b51cc",
         "type": "s7comm write",
-        "z": "3e16fe1e.1316d2",
-        "connection": "27b878ab.b92198",
-        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"16\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_countOption\"}",
+        "z": "5ec81611.1f8f78",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"22\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"settings_countOption\"}",
         "s7Name": "settings_countOption",
         "topic": "",
-        "name": "countOption",
+        "name": "settings_countOption",
         "signalSetted": false,
-        "x": 909,
-        "y": 662,
+        "x": 949,
+        "y": 566,
         "wires": [
             [
-                "c7e8ba88.5143a8"
+                "d0e89e10.ba883"
             ]
         ]
     },
     {
-        "id": "c7e8ba88.5143a8",
+        "id": "d0e89e10.ba883",
         "type": "debug",
-        "z": "3e16fe1e.1316d2",
+        "z": "5ec81611.1f8f78",
         "name": "",
         "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 1204,
-        "y": 664,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1206,
+        "y": 565,
         "wires": []
     },
     {
-        "id": "9832c3f8.15393",
+        "id": "7f27d812.e4b928",
         "type": "s7comm read",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"12\",\"S7_Name\":\"shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End\"}",
         "s7Name": "shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End",
         "topic": "",
@@ -1345,15 +1324,15 @@
         "y": 132,
         "wires": [
             [
-                "31c96718.e9d458",
-                "ae0671e2.3265f"
+                "8f492e3f.f8387",
+                "e06c60a4.77e3e"
             ]
         ]
     },
     {
-        "id": "31c96718.e9d458",
+        "id": "8f492e3f.f8387",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1363,53 +1342,53 @@
         "wires": []
     },
     {
-        "id": "ae0671e2.3265f",
+        "id": "e06c60a4.77e3e",
         "type": "mqtt out",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "topic": "LXX/settingsShift/1",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 960,
         "y": 131,
         "wires": []
     },
     {
-        "id": "bb5eee85.e7fcd",
+        "id": "55ed806f.22f42",
         "type": "mqtt in",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "topic": "LXX/settingsShift/1/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 146,
         "y": 430,
         "wires": [
             [
-                "92674b99.690588"
+                "ee411f2e.df933"
             ]
         ]
     },
     {
-        "id": "92674b99.690588",
+        "id": "ee411f2e.df933",
         "type": "json",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "pretty": true,
         "x": 415,
         "y": 429,
         "wires": [
             [
-                "2afc230.1d788de",
-                "ee4bbc7e.a1033"
+                "42eba2f4.b4ae2c",
+                "86d3db2f.3aac48"
             ]
         ]
     },
     {
-        "id": "2afc230.1d788de",
+        "id": "42eba2f4.b4ae2c",
         "type": "switch",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -1482,47 +1461,47 @@
         "y": 431,
         "wires": [
             [
-                "74a4edf2.9ff9a4"
+                "b13527f0.49e1d8"
             ],
             [
-                "b2d6aae1.e4fb58"
+                "e988fd5e.f42aa"
             ],
             [
-                "73098ef5.b08f3"
+                "653b3d39.9b9de4"
             ],
             [
-                "cc723ef5.a9312"
+                "c6a47ab7.146c98"
             ],
             [
-                "71e6c329.9c913c"
+                "d1d4431e.a7a14"
             ],
             [
-                "3589031f.3a80bc"
+                "e87a0e3e.3b573"
             ],
             [
-                "7d3d6046.b8df2"
+                "a3848888.e15c58"
             ],
             [
-                "885a72cc.f8712"
+                "be4b9a2b.1cb618"
             ],
             [
-                "39808564.3aa4da"
+                "e654cb6c.e645f8"
             ],
             [
-                "2ab6d5b1.5cf94a"
+                "afe7d01d.0c2b6"
             ],
             [
-                "e39f17ef.6f2978"
+                "e9af8876.a846e8"
             ],
             [
-                "cba3f06b.78f2d"
+                "5fabe34c.bd872c"
             ]
         ]
     },
     {
-        "id": "91c2c1bf.b5054",
+        "id": "edd27ccc.1848c",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1532,10 +1511,10 @@
         "wires": []
     },
     {
-        "id": "74a4edf2.9ff9a4",
+        "id": "b13527f0.49e1d8",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1EN\"}",
         "s7Name": "shift1EN",
         "topic": "",
@@ -1545,15 +1524,15 @@
         "y": 425,
         "wires": [
             [
-                "91c2c1bf.b5054"
+                "edd27ccc.1848c"
             ]
         ]
     },
     {
-        "id": "2995bc1.946ee44",
+        "id": "46f2b4f2.cc4f6c",
         "type": "s7comm read",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"48\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"12\",\"S7_Name\":\"shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End\"}",
         "s7Name": "shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End",
         "topic": "",
@@ -1566,15 +1545,15 @@
         "y": 119,
         "wires": [
             [
-                "66a9a9b2.aaebe8",
-                "abad070c.226ba8"
+                "8bc2a729.00cf18",
+                "e410d2c1.6c39e"
             ]
         ]
     },
     {
-        "id": "66a9a9b2.aaebe8",
+        "id": "8bc2a729.00cf18",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -1584,23 +1563,23 @@
         "wires": []
     },
     {
-        "id": "abad070c.226ba8",
+        "id": "e410d2c1.6c39e",
         "type": "mqtt out",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "topic": "LXX/settingsShift/2",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 978,
         "y": 118,
         "wires": []
     },
     {
-        "id": "b2d6aae1.e4fb58",
+        "id": "e988fd5e.f42aa",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"4\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Begin\"}",
         "s7Name": "shift1Begin",
         "topic": "",
@@ -1610,15 +1589,15 @@
         "y": 496,
         "wires": [
             [
-                "9d323c4c.35059"
+                "579bee27.980dc"
             ]
         ]
     },
     {
-        "id": "73098ef5.b08f3",
+        "id": "653b3d39.9b9de4",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"8\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1End\"}",
         "s7Name": "shift1End",
         "topic": "",
@@ -1628,14 +1607,14 @@
         "y": 568,
         "wires": [
             [
-                "55715f13.2ee5"
+                "45c9ea27.193e34"
             ]
         ]
     },
     {
-        "id": "9d323c4c.35059",
+        "id": "579bee27.980dc",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1645,9 +1624,9 @@
         "wires": []
     },
     {
-        "id": "ee4bbc7e.a1033",
+        "id": "86d3db2f.3aac48",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1657,10 +1636,10 @@
         "wires": []
     },
     {
-        "id": "cc723ef5.a9312",
+        "id": "c6a47ab7.146c98",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break1EN\"}",
         "s7Name": "shift1Break1EN",
         "topic": "",
@@ -1670,15 +1649,15 @@
         "y": 635,
         "wires": [
             [
-                "78f71aac.057264"
+                "46e71051.9822f"
             ]
         ]
     },
     {
-        "id": "71e6c329.9c913c",
+        "id": "d1d4431e.a7a14",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"16\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break1Begin\"}",
         "s7Name": "shift1Break1Begin",
         "topic": "",
@@ -1688,15 +1667,15 @@
         "y": 690,
         "wires": [
             [
-                "edd4c7a8.058e58"
+                "7496371d.82dab8"
             ]
         ]
     },
     {
-        "id": "3589031f.3a80bc",
+        "id": "e87a0e3e.3b573",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"20\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break1End\"}",
         "s7Name": "shift1Break1End",
         "topic": "",
@@ -1706,14 +1685,14 @@
         "y": 745,
         "wires": [
             [
-                "8e76881c.666458"
+                "ce329ebe.0686e"
             ]
         ]
     },
     {
-        "id": "55715f13.2ee5",
+        "id": "45c9ea27.193e34",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1723,9 +1702,9 @@
         "wires": []
     },
     {
-        "id": "78f71aac.057264",
+        "id": "46e71051.9822f",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1735,9 +1714,9 @@
         "wires": []
     },
     {
-        "id": "edd4c7a8.058e58",
+        "id": "7496371d.82dab8",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1747,9 +1726,9 @@
         "wires": []
     },
     {
-        "id": "8e76881c.666458",
+        "id": "ce329ebe.0686e",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1759,10 +1738,10 @@
         "wires": []
     },
     {
-        "id": "7d3d6046.b8df2",
+        "id": "a3848888.e15c58",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"24\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break2EN\"}",
         "s7Name": "shift1Break2EN",
         "topic": "",
@@ -1772,15 +1751,15 @@
         "y": 812,
         "wires": [
             [
-                "b4d9afd7.156a8"
+                "c3852725.111188"
             ]
         ]
     },
     {
-        "id": "885a72cc.f8712",
+        "id": "be4b9a2b.1cb618",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"28\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break2Begin\"}",
         "s7Name": "shift1Break2Begin",
         "topic": "",
@@ -1790,15 +1769,15 @@
         "y": 867,
         "wires": [
             [
-                "2037104.57d17f"
+                "46b37b13.aa7cb4"
             ]
         ]
     },
     {
-        "id": "39808564.3aa4da",
+        "id": "e654cb6c.e645f8",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"32\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break2End\"}",
         "s7Name": "shift1Break2End",
         "topic": "",
@@ -1808,14 +1787,14 @@
         "y": 922,
         "wires": [
             [
-                "23e429c.1e010d6"
+                "7f0e2f7.b088fd"
             ]
         ]
     },
     {
-        "id": "b4d9afd7.156a8",
+        "id": "c3852725.111188",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1825,9 +1804,9 @@
         "wires": []
     },
     {
-        "id": "2037104.57d17f",
+        "id": "46b37b13.aa7cb4",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1837,9 +1816,9 @@
         "wires": []
     },
     {
-        "id": "23e429c.1e010d6",
+        "id": "7f0e2f7.b088fd",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1849,10 +1828,10 @@
         "wires": []
     },
     {
-        "id": "2ab6d5b1.5cf94a",
+        "id": "afe7d01d.0c2b6",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"36\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break3EN\"}",
         "s7Name": "shift1Break3EN",
         "topic": "",
@@ -1862,15 +1841,15 @@
         "y": 988,
         "wires": [
             [
-                "7ef67be3.19c3b4"
+                "7a792ff0.a5ced"
             ]
         ]
     },
     {
-        "id": "e39f17ef.6f2978",
+        "id": "e9af8876.a846e8",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"40\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break3Begin\"}",
         "s7Name": "shift1Break3Begin",
         "topic": "",
@@ -1880,15 +1859,15 @@
         "y": 1043,
         "wires": [
             [
-                "b90b1610.f6ba28"
+                "977a9702.9467c8"
             ]
         ]
     },
     {
-        "id": "cba3f06b.78f2d",
+        "id": "5fabe34c.bd872c",
         "type": "s7comm write",
-        "z": "e60de2fb.29ed2",
-        "connection": "27b878ab.b92198",
+        "z": "a0b48df0.05aea",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"44\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift1Break3End\"}",
         "s7Name": "shift1Break3End",
         "topic": "",
@@ -1898,14 +1877,14 @@
         "y": 1098,
         "wires": [
             [
-                "b95e9ef8.24ed6"
+                "2a119297.427e0e"
             ]
         ]
     },
     {
-        "id": "7ef67be3.19c3b4",
+        "id": "7a792ff0.a5ced",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1915,9 +1894,9 @@
         "wires": []
     },
     {
-        "id": "b90b1610.f6ba28",
+        "id": "977a9702.9467c8",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1927,9 +1906,9 @@
         "wires": []
     },
     {
-        "id": "b95e9ef8.24ed6",
+        "id": "2a119297.427e0e",
         "type": "debug",
-        "z": "e60de2fb.29ed2",
+        "z": "a0b48df0.05aea",
         "name": "",
         "active": false,
         "console": "false",
@@ -1939,40 +1918,40 @@
         "wires": []
     },
     {
-        "id": "d3df3a29.293768",
+        "id": "cee4276e.b1c7e8",
         "type": "mqtt in",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "topic": "LXX/settingsShift/2/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 160,
         "y": 412,
         "wires": [
             [
-                "9196fcb0.2f8c7"
+                "b84fb813.11ccb8"
             ]
         ]
     },
     {
-        "id": "9196fcb0.2f8c7",
+        "id": "b84fb813.11ccb8",
         "type": "json",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "pretty": true,
         "x": 429,
         "y": 411,
         "wires": [
             [
-                "9c6e2c66.b8db",
-                "9b2dabfb.3dbdd8"
+                "7d376226.a46eac",
+                "6cf3616b.464ea"
             ]
         ]
     },
     {
-        "id": "9c6e2c66.b8db",
+        "id": "7d376226.a46eac",
         "type": "switch",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -2045,47 +2024,47 @@
         "y": 413,
         "wires": [
             [
-                "ee672d9d.f9e1e"
+                "36dc3b0.b6baac6"
             ],
             [
-                "4937ee6d.bf4f5"
+                "54c0061f.a9c8c8"
             ],
             [
-                "44346bb7.421344"
+                "1014b777.466339"
             ],
             [
-                "24831cd6.afc594"
+                "fd6f3d4c.e7296"
             ],
             [
-                "2805bd41.d724c2"
+                "73ae0c39.7ad504"
             ],
             [
-                "90a2d2d0.3e311"
+                "d725014f.140a3"
             ],
             [
-                "92afcdf4.e8e9"
+                "a2904afa.113528"
             ],
             [
-                "a9f48c8e.15113"
+                "56099653.9cba18"
             ],
             [
-                "32832438.72d89c"
+                "a60be1e6.1643"
             ],
             [
-                "c6602212.49cf2"
+                "fff7980.7455668"
             ],
             [
-                "73982215.383dbc"
+                "33b29dcb.5e69f2"
             ],
             [
-                "43f06abc.cdc5f4"
+                "938b08e0.615078"
             ]
         ]
     },
     {
-        "id": "5512209b.4e541",
+        "id": "9e708649.fa7488",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2095,10 +2074,10 @@
         "wires": []
     },
     {
-        "id": "ee672d9d.f9e1e",
+        "id": "36dc3b0.b6baac6",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"48\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2EN\"}",
         "s7Name": "shift2EN",
         "topic": "",
@@ -2108,15 +2087,15 @@
         "y": 407,
         "wires": [
             [
-                "5512209b.4e541"
+                "9e708649.fa7488"
             ]
         ]
     },
     {
-        "id": "4937ee6d.bf4f5",
+        "id": "54c0061f.a9c8c8",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"52\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Begin\"}",
         "s7Name": "shift2Begin",
         "topic": "",
@@ -2126,15 +2105,15 @@
         "y": 478,
         "wires": [
             [
-                "dfc2d208.ea8e9"
+                "c60f2218.29b5b"
             ]
         ]
     },
     {
-        "id": "44346bb7.421344",
+        "id": "1014b777.466339",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"56\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2End\"}",
         "s7Name": "shift2End",
         "topic": "",
@@ -2144,14 +2123,14 @@
         "y": 550,
         "wires": [
             [
-                "7f86cc7.75fcf34"
+                "c0f9a5c1.24cb38"
             ]
         ]
     },
     {
-        "id": "dfc2d208.ea8e9",
+        "id": "c60f2218.29b5b",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2161,9 +2140,9 @@
         "wires": []
     },
     {
-        "id": "9b2dabfb.3dbdd8",
+        "id": "6cf3616b.464ea",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2173,10 +2152,10 @@
         "wires": []
     },
     {
-        "id": "24831cd6.afc594",
+        "id": "fd6f3d4c.e7296",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"60\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break1EN\"}",
         "s7Name": "shift2Break1EN",
         "topic": "",
@@ -2186,15 +2165,15 @@
         "y": 617,
         "wires": [
             [
-                "3a5d4a93.ba6ea6"
+                "f332aade.ddbdd8"
             ]
         ]
     },
     {
-        "id": "2805bd41.d724c2",
+        "id": "73ae0c39.7ad504",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"64\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break1Begin\"}",
         "s7Name": "shift2Break1Begin",
         "topic": "",
@@ -2204,15 +2183,15 @@
         "y": 672,
         "wires": [
             [
-                "89d04e4b.f81be"
+                "2c568a9.16afd76"
             ]
         ]
     },
     {
-        "id": "90a2d2d0.3e311",
+        "id": "d725014f.140a3",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"68\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break1End\"}",
         "s7Name": "shift2Break1End",
         "topic": "",
@@ -2222,14 +2201,14 @@
         "y": 727,
         "wires": [
             [
-                "27c987ca.4f3ee8"
+                "258ba3ef.f7ac4c"
             ]
         ]
     },
     {
-        "id": "7f86cc7.75fcf34",
+        "id": "c0f9a5c1.24cb38",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2239,9 +2218,9 @@
         "wires": []
     },
     {
-        "id": "3a5d4a93.ba6ea6",
+        "id": "f332aade.ddbdd8",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2251,9 +2230,9 @@
         "wires": []
     },
     {
-        "id": "89d04e4b.f81be",
+        "id": "2c568a9.16afd76",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2263,9 +2242,9 @@
         "wires": []
     },
     {
-        "id": "27c987ca.4f3ee8",
+        "id": "258ba3ef.f7ac4c",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2275,10 +2254,10 @@
         "wires": []
     },
     {
-        "id": "92afcdf4.e8e9",
+        "id": "a2904afa.113528",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"72\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break2EN\"}",
         "s7Name": "shift2Break2EN",
         "topic": "",
@@ -2288,15 +2267,15 @@
         "y": 794,
         "wires": [
             [
-                "9b54d820.1151e8"
+                "d9a94ee9.d4574"
             ]
         ]
     },
     {
-        "id": "a9f48c8e.15113",
+        "id": "56099653.9cba18",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"76\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break2Begin\"}",
         "s7Name": "shift2Break2Begin",
         "topic": "",
@@ -2306,15 +2285,15 @@
         "y": 849,
         "wires": [
             [
-                "7d53e1db.7af89"
+                "6d464322.b196fc"
             ]
         ]
     },
     {
-        "id": "32832438.72d89c",
+        "id": "a60be1e6.1643",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"80\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break2End\"}",
         "s7Name": "shift2Break2End",
         "topic": "",
@@ -2324,14 +2303,14 @@
         "y": 904,
         "wires": [
             [
-                "5981f4f3.27533c"
+                "be032163.9279e"
             ]
         ]
     },
     {
-        "id": "9b54d820.1151e8",
+        "id": "d9a94ee9.d4574",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2341,9 +2320,9 @@
         "wires": []
     },
     {
-        "id": "7d53e1db.7af89",
+        "id": "6d464322.b196fc",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2353,9 +2332,9 @@
         "wires": []
     },
     {
-        "id": "5981f4f3.27533c",
+        "id": "be032163.9279e",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2365,10 +2344,10 @@
         "wires": []
     },
     {
-        "id": "c6602212.49cf2",
+        "id": "fff7980.7455668",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"84\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break3EN\"}",
         "s7Name": "shift2Break3EN",
         "topic": "",
@@ -2378,15 +2357,15 @@
         "y": 970,
         "wires": [
             [
-                "a098e524.7a89b8"
+                "52d32fdd.021c5"
             ]
         ]
     },
     {
-        "id": "73982215.383dbc",
+        "id": "33b29dcb.5e69f2",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"88\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break3Begin\"}",
         "s7Name": "shift2Break3Begin",
         "topic": "",
@@ -2396,15 +2375,15 @@
         "y": 1025,
         "wires": [
             [
-                "b6099cbf.7f453"
+                "1af98ecf.947bb1"
             ]
         ]
     },
     {
-        "id": "43f06abc.cdc5f4",
+        "id": "938b08e0.615078",
         "type": "s7comm write",
-        "z": "756d9cc7.24be84",
-        "connection": "27b878ab.b92198",
+        "z": "26f3e443.609c7c",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"92\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift2Break3End\"}",
         "s7Name": "shift2Break3End",
         "topic": "",
@@ -2414,14 +2393,14 @@
         "y": 1080,
         "wires": [
             [
-                "5e9d4e8d.bc00e"
+                "82ed1ba5.0f6288"
             ]
         ]
     },
     {
-        "id": "a098e524.7a89b8",
+        "id": "52d32fdd.021c5",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2431,9 +2410,9 @@
         "wires": []
     },
     {
-        "id": "b6099cbf.7f453",
+        "id": "1af98ecf.947bb1",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2443,9 +2422,9 @@
         "wires": []
     },
     {
-        "id": "5e9d4e8d.bc00e",
+        "id": "82ed1ba5.0f6288",
         "type": "debug",
-        "z": "756d9cc7.24be84",
+        "z": "26f3e443.609c7c",
         "name": "",
         "active": false,
         "console": "false",
@@ -2455,10 +2434,10 @@
         "wires": []
     },
     {
-        "id": "137249a9.9d5596",
+        "id": "3f1e1c41.d34734",
         "type": "s7comm read",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"96\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"12\",\"S7_Name\":\"shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End\"}",
         "s7Name": "shiftEN;shiftBegin;shiftEnd;shiftBreak1EN;shiftBreak1Begin;shiftBreak1End;shiftBreak2EN;shiftBreak2Begin;shiftBreak2End;shiftBreak3EN;shiftBreak3Begin;shiftBreak3End",
         "topic": "",
@@ -2471,15 +2450,15 @@
         "y": 105,
         "wires": [
             [
-                "70114477.ebc2ec",
-                "704d6215.5d8a6c"
+                "937f2c4a.34da3",
+                "ec2ef376.78e24"
             ]
         ]
     },
     {
-        "id": "70114477.ebc2ec",
+        "id": "937f2c4a.34da3",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2489,53 +2468,53 @@
         "wires": []
     },
     {
-        "id": "704d6215.5d8a6c",
+        "id": "ec2ef376.78e24",
         "type": "mqtt out",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "topic": "LXX/settingsShift/3",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 873,
         "y": 104,
         "wires": []
     },
     {
-        "id": "5c223683.a8f168",
+        "id": "e60c5920.5093e8",
         "type": "mqtt in",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "topic": "LXX/settingsShift/3/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 123,
         "y": 398,
         "wires": [
             [
-                "d6d3c960.8b7cf8"
+                "2bf36c9b.64cca4"
             ]
         ]
     },
     {
-        "id": "d6d3c960.8b7cf8",
+        "id": "2bf36c9b.64cca4",
         "type": "json",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "pretty": true,
         "x": 324,
         "y": 397,
         "wires": [
             [
-                "24b68ed8.d34872",
-                "9651bdfa.81056"
+                "50b8e05b.4e7b7",
+                "e05c8f3e.52c92"
             ]
         ]
     },
     {
-        "id": "24b68ed8.d34872",
+        "id": "50b8e05b.4e7b7",
         "type": "switch",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -2608,47 +2587,47 @@
         "y": 399,
         "wires": [
             [
-                "2e7883b7.dd1bdc"
+                "939c2f71.d4e4b"
             ],
             [
-                "ca1d1d1a.c976c"
+                "1261e36b.bb440d"
             ],
             [
-                "a59d5013.49cd5"
+                "472c8fae.70d26"
             ],
             [
-                "11d8707e.5af05"
+                "d6dc5798.ca5a58"
             ],
             [
-                "4ae2f897.083d98"
+                "64a436d6.cae448"
             ],
             [
-                "af307b47.f7f938"
+                "367395af.03e54a"
             ],
             [
-                "8667216a.354d3"
+                "ddbe0fdb.f52ed"
             ],
             [
-                "aa9899be.3daf68"
+                "589f7f9c.06e1"
             ],
             [
-                "1e20dffd.78cbf"
+                "5ffa3dba.1db164"
             ],
             [
-                "762db707.9400f8"
+                "6970c735.107298"
             ],
             [
-                "c8dbe75d.fa5648"
+                "c625bce2.e5e4f"
             ],
             [
-                "107c4f6f.9fa081"
+                "765c62f0.e0914c"
             ]
         ]
     },
     {
-        "id": "32b075bd.61495a",
+        "id": "255ad1fe.55adae",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2658,10 +2637,10 @@
         "wires": []
     },
     {
-        "id": "2e7883b7.dd1bdc",
+        "id": "939c2f71.d4e4b",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"96\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3EN\"}",
         "s7Name": "shift3EN",
         "topic": "",
@@ -2671,15 +2650,15 @@
         "y": 393,
         "wires": [
             [
-                "32b075bd.61495a"
+                "255ad1fe.55adae"
             ]
         ]
     },
     {
-        "id": "ca1d1d1a.c976c",
+        "id": "1261e36b.bb440d",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"100\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Begin\"}",
         "s7Name": "shift3Begin",
         "topic": "",
@@ -2689,15 +2668,15 @@
         "y": 464,
         "wires": [
             [
-                "419c243e.e7781c"
+                "c29afd18.4fead"
             ]
         ]
     },
     {
-        "id": "a59d5013.49cd5",
+        "id": "472c8fae.70d26",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"104\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3End\"}",
         "s7Name": "shift3End",
         "topic": "",
@@ -2707,14 +2686,14 @@
         "y": 536,
         "wires": [
             [
-                "65a84803.ffefe8"
+                "b21a5b36.425928"
             ]
         ]
     },
     {
-        "id": "419c243e.e7781c",
+        "id": "c29afd18.4fead",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2724,11 +2703,11 @@
         "wires": []
     },
     {
-        "id": "9651bdfa.81056",
+        "id": "e05c8f3e.52c92",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 432,
@@ -2736,10 +2715,10 @@
         "wires": []
     },
     {
-        "id": "11d8707e.5af05",
+        "id": "d6dc5798.ca5a58",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"108\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break1EN\"}",
         "s7Name": "shift3Break1EN",
         "topic": "",
@@ -2749,15 +2728,15 @@
         "y": 603,
         "wires": [
             [
-                "d8ce9d3c.a2b32"
+                "3c77557f.c1a3fa"
             ]
         ]
     },
     {
-        "id": "4ae2f897.083d98",
+        "id": "64a436d6.cae448",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"112\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break1Begin\"}",
         "s7Name": "shift3Break1Begin",
         "topic": "",
@@ -2767,15 +2746,15 @@
         "y": 658,
         "wires": [
             [
-                "c3a85d6b.dc277"
+                "7cab8c25.282334"
             ]
         ]
     },
     {
-        "id": "af307b47.f7f938",
+        "id": "367395af.03e54a",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"116\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break1End\"}",
         "s7Name": "shift3Break1End",
         "topic": "",
@@ -2785,14 +2764,14 @@
         "y": 713,
         "wires": [
             [
-                "faa2daac.487478"
+                "b11bf720.334568"
             ]
         ]
     },
     {
-        "id": "65a84803.ffefe8",
+        "id": "b21a5b36.425928",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2802,9 +2781,9 @@
         "wires": []
     },
     {
-        "id": "d8ce9d3c.a2b32",
+        "id": "3c77557f.c1a3fa",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2814,9 +2793,9 @@
         "wires": []
     },
     {
-        "id": "c3a85d6b.dc277",
+        "id": "7cab8c25.282334",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2826,9 +2805,9 @@
         "wires": []
     },
     {
-        "id": "faa2daac.487478",
+        "id": "b11bf720.334568",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2838,10 +2817,10 @@
         "wires": []
     },
     {
-        "id": "8667216a.354d3",
+        "id": "ddbe0fdb.f52ed",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"120\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break2EN\"}",
         "s7Name": "shift3Break2EN",
         "topic": "",
@@ -2851,15 +2830,15 @@
         "y": 780,
         "wires": [
             [
-                "93717047.7d85d"
+                "29a82b2c.6ddb94"
             ]
         ]
     },
     {
-        "id": "aa9899be.3daf68",
+        "id": "589f7f9c.06e1",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"124\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break2Begin\"}",
         "s7Name": "shift3Break2Begin",
         "topic": "",
@@ -2869,15 +2848,15 @@
         "y": 835,
         "wires": [
             [
-                "ea27073d.debbc8"
+                "6e8b4f8e.45d62"
             ]
         ]
     },
     {
-        "id": "1e20dffd.78cbf",
+        "id": "5ffa3dba.1db164",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"128\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break2End\"}",
         "s7Name": "shift3Break2End",
         "topic": "",
@@ -2887,14 +2866,14 @@
         "y": 890,
         "wires": [
             [
-                "d7b0f506.521878"
+                "7167ebb6.990a44"
             ]
         ]
     },
     {
-        "id": "93717047.7d85d",
+        "id": "29a82b2c.6ddb94",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2904,9 +2883,9 @@
         "wires": []
     },
     {
-        "id": "ea27073d.debbc8",
+        "id": "6e8b4f8e.45d62",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2916,9 +2895,9 @@
         "wires": []
     },
     {
-        "id": "d7b0f506.521878",
+        "id": "7167ebb6.990a44",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2928,10 +2907,10 @@
         "wires": []
     },
     {
-        "id": "762db707.9400f8",
+        "id": "6970c735.107298",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"132\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break3EN\"}",
         "s7Name": "shift3Break3EN",
         "topic": "",
@@ -2941,15 +2920,15 @@
         "y": 956,
         "wires": [
             [
-                "bd138cd3.d1fad"
+                "a1b8bc57.afcaa"
             ]
         ]
     },
     {
-        "id": "c8dbe75d.fa5648",
+        "id": "c625bce2.e5e4f",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"136\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break3Begin\"}",
         "s7Name": "shift3Break3Begin",
         "topic": "",
@@ -2959,15 +2938,15 @@
         "y": 1011,
         "wires": [
             [
-                "d93fb85e.824048"
+                "cf71fb1.cafd308"
             ]
         ]
     },
     {
-        "id": "107c4f6f.9fa081",
+        "id": "765c62f0.e0914c",
         "type": "s7comm write",
-        "z": "214ca3a0.f705cc",
-        "connection": "27b878ab.b92198",
+        "z": "e23ca3f4.81009",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"23\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"140\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"shift3Break3End\"}",
         "s7Name": "shift3Break3End",
         "topic": "",
@@ -2977,14 +2956,14 @@
         "y": 1066,
         "wires": [
             [
-                "c6e2e551.41e4a8"
+                "c11f5916.f13828"
             ]
         ]
     },
     {
-        "id": "bd138cd3.d1fad",
+        "id": "a1b8bc57.afcaa",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -2994,9 +2973,9 @@
         "wires": []
     },
     {
-        "id": "d93fb85e.824048",
+        "id": "cf71fb1.cafd308",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -3006,9 +2985,9 @@
         "wires": []
     },
     {
-        "id": "c6e2e551.41e4a8",
+        "id": "c11f5916.f13828",
         "type": "debug",
-        "z": "214ca3a0.f705cc",
+        "z": "e23ca3f4.81009",
         "name": "",
         "active": false,
         "console": "false",
@@ -3018,10 +2997,10 @@
         "wires": []
     },
     {
-        "id": "bf594c60.e048e",
+        "id": "8a0e022b.4f085",
         "type": "s7comm read",
-        "z": "ca39fd9a.cc209",
-        "connection": "27b878ab.b92198",
+        "z": "ee12d2be.ef63a",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"3\",\"S7_Name\":\"toneSelect;toneDuration;test\"}",
         "s7Name": "toneSelect;toneDuration;test",
         "topic": "",
@@ -3034,15 +3013,15 @@
         "y": 64,
         "wires": [
             [
-                "5c101930.84c188",
-                "3662cacc.998046"
+                "959c39a0.011928",
+                "6bbdd505.10458c"
             ]
         ]
     },
     {
-        "id": "5c101930.84c188",
+        "id": "959c39a0.011928",
         "type": "debug",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "active": false,
         "console": "false",
@@ -3052,38 +3031,38 @@
         "wires": []
     },
     {
-        "id": "3662cacc.998046",
+        "id": "6bbdd505.10458c",
         "type": "mqtt out",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "topic": "LXX/settingsSirene/green",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 378,
         "y": 64,
         "wires": []
     },
     {
-        "id": "5657c2fa.97d50c",
+        "id": "7c57ebaf.fcb6e4",
         "type": "mqtt in",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "topic": "LXX/settingsSirene/green/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 127.00003051757812,
         "y": 257.9999942779541,
         "wires": [
             [
-                "652699ab.8c0448"
+                "d937ee44.b1581"
             ]
         ]
     },
     {
-        "id": "1b02a2d8.c1c19d",
+        "id": "8ca6eef3.a836c",
         "type": "debug",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "active": false,
         "console": "false",
@@ -3093,10 +3072,10 @@
         "wires": []
     },
     {
-        "id": "adf3c9a2.a3b298",
+        "id": "c438b98d.c09d28",
         "type": "s7comm write",
-        "z": "ca39fd9a.cc209",
-        "connection": "27b878ab.b92198",
+        "z": "ee12d2be.ef63a",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"greenToneSelect\"}",
         "s7Name": "greenToneSelect",
         "topic": "",
@@ -3106,29 +3085,29 @@
         "y": 230.9999942779541,
         "wires": [
             [
-                "1b02a2d8.c1c19d"
+                "8ca6eef3.a836c"
             ]
         ]
     },
     {
-        "id": "652699ab.8c0448",
+        "id": "d937ee44.b1581",
         "type": "json",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "pretty": true,
         "x": 313.0000305175781,
         "y": 256.9999942779541,
         "wires": [
             [
-                "e6f998a9.499fc8",
-                "ea94e710.6d0628"
+                "c9f39677.f763e8",
+                "5a45dede.4592f"
             ]
         ]
     },
     {
-        "id": "e6f998a9.499fc8",
+        "id": "c9f39677.f763e8",
         "type": "debug",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "active": false,
         "console": "false",
@@ -3138,9 +3117,9 @@
         "wires": []
     },
     {
-        "id": "ea94e710.6d0628",
+        "id": "5a45dede.4592f",
         "type": "switch",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -3168,21 +3147,21 @@
         "y": 256.9999942779541,
         "wires": [
             [
-                "adf3c9a2.a3b298"
+                "c438b98d.c09d28"
             ],
             [
-                "29744da6.c5bc82"
+                "eeeec8cf.3f6a38"
             ],
             [
-                "ac8b54d6.d8f028"
+                "86d3606c.f1896"
             ]
         ]
     },
     {
-        "id": "29744da6.c5bc82",
+        "id": "eeeec8cf.3f6a38",
         "type": "s7comm write",
-        "z": "ca39fd9a.cc209",
-        "connection": "27b878ab.b92198",
+        "z": "ee12d2be.ef63a",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"4\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"greenToneDuration\"}",
         "s7Name": "greenToneDuration",
         "topic": "",
@@ -3192,15 +3171,15 @@
         "y": 284.9999942779541,
         "wires": [
             [
-                "dae3134e.58ce4"
+                "634f2250.fd697c"
             ]
         ]
     },
     {
-        "id": "ac8b54d6.d8f028",
+        "id": "86d3606c.f1896",
         "type": "s7comm write",
-        "z": "ca39fd9a.cc209",
-        "connection": "27b878ab.b92198",
+        "z": "ee12d2be.ef63a",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"8\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"greenTest\"}",
         "s7Name": "greenTest",
         "topic": "",
@@ -3210,14 +3189,14 @@
         "y": 335.9999942779541,
         "wires": [
             [
-                "e3c1feb3.7c619"
+                "80a28a1.95e7778"
             ]
         ]
     },
     {
-        "id": "dae3134e.58ce4",
+        "id": "634f2250.fd697c",
         "type": "debug",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "active": false,
         "console": "false",
@@ -3227,9 +3206,9 @@
         "wires": []
     },
     {
-        "id": "e3c1feb3.7c619",
+        "id": "80a28a1.95e7778",
         "type": "debug",
-        "z": "ca39fd9a.cc209",
+        "z": "ee12d2be.ef63a",
         "name": "",
         "active": false,
         "console": "false",
@@ -3239,10 +3218,10 @@
         "wires": []
     },
     {
-        "id": "e644d76.d9ec428",
+        "id": "e15b8c76.d55fd",
         "type": "s7comm read",
-        "z": "258e2eea.e7ad82",
-        "connection": "27b878ab.b92198",
+        "z": "cb8fd743.b6c518",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"3\",\"S7_Name\":\"toneSelect;toneDuration;test\"}",
         "s7Name": "toneSelect;toneDuration;test",
         "topic": "",
@@ -3255,15 +3234,15 @@
         "y": 71,
         "wires": [
             [
-                "cfe21c1.99633e",
-                "ba576745.a1b3a8"
+                "7835833a.69155c",
+                "9a1a440a.04e0f8"
             ]
         ]
     },
     {
-        "id": "cfe21c1.99633e",
+        "id": "7835833a.69155c",
         "type": "debug",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "active": false,
         "console": "false",
@@ -3273,38 +3252,38 @@
         "wires": []
     },
     {
-        "id": "ba576745.a1b3a8",
+        "id": "9a1a440a.04e0f8",
         "type": "mqtt out",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "topic": "LXX/settingsSirene/yellow",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 422,
         "y": 71,
         "wires": []
     },
     {
-        "id": "1c94aed8.b35891",
+        "id": "ed65d26f.27bdd",
         "type": "mqtt in",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "topic": "LXX/settingsSirene/yellow/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 171.00003051757812,
         "y": 264.9999942779541,
         "wires": [
             [
-                "de3c56ce.4437d8"
+                "c8205937.406b78"
             ]
         ]
     },
     {
-        "id": "47a65fd1.c97ce",
+        "id": "7d3f23e0.a874cc",
         "type": "debug",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "active": false,
         "console": "false",
@@ -3314,10 +3293,10 @@
         "wires": []
     },
     {
-        "id": "aa77f504.f79d28",
+        "id": "1cae42e8.cd4e6d",
         "type": "s7comm write",
-        "z": "258e2eea.e7ad82",
-        "connection": "27b878ab.b92198",
+        "z": "cb8fd743.b6c518",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"yellowToneSelect\"}",
         "s7Name": "yellowToneSelect",
         "topic": "",
@@ -3327,29 +3306,29 @@
         "y": 237.9999942779541,
         "wires": [
             [
-                "47a65fd1.c97ce"
+                "7d3f23e0.a874cc"
             ]
         ]
     },
     {
-        "id": "de3c56ce.4437d8",
+        "id": "c8205937.406b78",
         "type": "json",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "pretty": true,
         "x": 357.0000305175781,
         "y": 263.9999942779541,
         "wires": [
             [
-                "272de98e.564d86",
-                "ee177111.f63e3"
+                "11a7e38.3a1b01d",
+                "e71412a1.cff92"
             ]
         ]
     },
     {
-        "id": "272de98e.564d86",
+        "id": "11a7e38.3a1b01d",
         "type": "debug",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "active": false,
         "console": "false",
@@ -3359,9 +3338,9 @@
         "wires": []
     },
     {
-        "id": "ee177111.f63e3",
+        "id": "e71412a1.cff92",
         "type": "switch",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -3389,21 +3368,21 @@
         "y": 263.9999942779541,
         "wires": [
             [
-                "aa77f504.f79d28"
+                "1cae42e8.cd4e6d"
             ],
             [
-                "fdd4571.12ff2a8"
+                "e8234bf6.685b28"
             ],
             [
-                "19585056.eb1d4"
+                "8e3538c.565f7c8"
             ]
         ]
     },
     {
-        "id": "fdd4571.12ff2a8",
+        "id": "e8234bf6.685b28",
         "type": "s7comm write",
-        "z": "258e2eea.e7ad82",
-        "connection": "27b878ab.b92198",
+        "z": "cb8fd743.b6c518",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"16\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"yellowToneDuration\"}",
         "s7Name": "yellowToneDuration",
         "topic": "",
@@ -3413,15 +3392,15 @@
         "y": 291.9999942779541,
         "wires": [
             [
-                "6de0c948.978b28"
+                "7e714ec8.bbd5"
             ]
         ]
     },
     {
-        "id": "19585056.eb1d4",
+        "id": "8e3538c.565f7c8",
         "type": "s7comm write",
-        "z": "258e2eea.e7ad82",
-        "connection": "27b878ab.b92198",
+        "z": "cb8fd743.b6c518",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"20\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"yellowTest\"}",
         "s7Name": "yellowTest",
         "topic": "",
@@ -3431,14 +3410,14 @@
         "y": 342.9999942779541,
         "wires": [
             [
-                "72002a43.7753f4"
+                "895cbbe3.ef5218"
             ]
         ]
     },
     {
-        "id": "6de0c948.978b28",
+        "id": "7e714ec8.bbd5",
         "type": "debug",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "active": false,
         "console": "false",
@@ -3448,9 +3427,9 @@
         "wires": []
     },
     {
-        "id": "72002a43.7753f4",
+        "id": "895cbbe3.ef5218",
         "type": "debug",
-        "z": "258e2eea.e7ad82",
+        "z": "cb8fd743.b6c518",
         "name": "",
         "active": false,
         "console": "false",
@@ -3460,10 +3439,10 @@
         "wires": []
     },
     {
-        "id": "288c67c5.9360b8",
+        "id": "bde7486e.a6ab58",
         "type": "s7comm read",
-        "z": "4c818c92.135364",
-        "connection": "27b878ab.b92198",
+        "z": "2c2170f9.55a83",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"24\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"3\",\"S7_Name\":\"toneSelect;toneDuration;test\"}",
         "s7Name": "toneSelect;toneDuration;test",
         "topic": "",
@@ -3476,15 +3455,15 @@
         "y": 77,
         "wires": [
             [
-                "6d4ddb62.9a6684",
-                "e42594b9.85fd48"
+                "8fb81051.9aff5",
+                "b554e63a.086a38"
             ]
         ]
     },
     {
-        "id": "6d4ddb62.9a6684",
+        "id": "8fb81051.9aff5",
         "type": "debug",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "active": false,
         "console": "false",
@@ -3494,38 +3473,38 @@
         "wires": []
     },
     {
-        "id": "e42594b9.85fd48",
+        "id": "b554e63a.086a38",
         "type": "mqtt out",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "topic": "LXX/settingsSirene/red",
         "qos": "0",
         "retain": "false",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 459,
         "y": 77,
         "wires": []
     },
     {
-        "id": "871f0658.999158",
+        "id": "432aed3b.9514b4",
         "type": "mqtt in",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "topic": "LXX/settingsSirene/red/+",
         "qos": "2",
-        "broker": "e513c429.3353d8",
+        "broker": "48b46dde.183684",
         "x": 208.00003051757812,
         "y": 270.9999942779541,
         "wires": [
             [
-                "c50905ea.5367f8"
+                "9827b676.3bd238"
             ]
         ]
     },
     {
-        "id": "da510d75.da40f",
+        "id": "d7d63a68.4fbe18",
         "type": "debug",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "active": false,
         "console": "false",
@@ -3535,10 +3514,10 @@
         "wires": []
     },
     {
-        "id": "9a0b1f70.8c2bd",
+        "id": "39c16b3b.00dbe4",
         "type": "s7comm write",
-        "z": "4c818c92.135364",
-        "connection": "27b878ab.b92198",
+        "z": "2c2170f9.55a83",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"24\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"redToneSelect\"}",
         "s7Name": "redToneSelect",
         "topic": "",
@@ -3548,29 +3527,29 @@
         "y": 243.9999942779541,
         "wires": [
             [
-                "da510d75.da40f"
+                "d7d63a68.4fbe18"
             ]
         ]
     },
     {
-        "id": "c50905ea.5367f8",
+        "id": "9827b676.3bd238",
         "type": "json",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "pretty": true,
         "x": 404.0000305175781,
         "y": 269.9999942779541,
         "wires": [
             [
-                "1dd37bf1.582254",
-                "e095cae7.af5918"
+                "428e21da.29c53",
+                "de3f8eab.74217"
             ]
         ]
     },
     {
-        "id": "1dd37bf1.582254",
+        "id": "428e21da.29c53",
         "type": "debug",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "active": false,
         "console": "false",
@@ -3580,9 +3559,9 @@
         "wires": []
     },
     {
-        "id": "e095cae7.af5918",
+        "id": "de3f8eab.74217",
         "type": "switch",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -3610,21 +3589,21 @@
         "y": 269.9999942779541,
         "wires": [
             [
-                "9a0b1f70.8c2bd"
+                "39c16b3b.00dbe4"
             ],
             [
-                "1a77d64f.6b224a"
+                "c997c3a6.b4f7d"
             ],
             [
-                "3a625a06.a465f6"
+                "32dcad8d.eb7c52"
             ]
         ]
     },
     {
-        "id": "1a77d64f.6b224a",
+        "id": "c997c3a6.b4f7d",
         "type": "s7comm write",
-        "z": "4c818c92.135364",
-        "connection": "27b878ab.b92198",
+        "z": "2c2170f9.55a83",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"28\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"redToneDuration\"}",
         "s7Name": "redToneDuration",
         "topic": "",
@@ -3634,15 +3613,15 @@
         "y": 297.9999942779541,
         "wires": [
             [
-                "46709049.1b341"
+                "2d64c179.59175e"
             ]
         ]
     },
     {
-        "id": "3a625a06.a465f6",
+        "id": "32dcad8d.eb7c52",
         "type": "s7comm write",
-        "z": "4c818c92.135364",
-        "connection": "27b878ab.b92198",
+        "z": "2c2170f9.55a83",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"25\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"32\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"redTest\"}",
         "s7Name": "redTest",
         "topic": "redTest",
@@ -3652,14 +3631,14 @@
         "y": 348.9999942779541,
         "wires": [
             [
-                "bd000b97.6f19b8"
+                "d206eba9.a26cd8"
             ]
         ]
     },
     {
-        "id": "46709049.1b341",
+        "id": "2d64c179.59175e",
         "type": "debug",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "active": false,
         "console": "false",
@@ -3669,9 +3648,9 @@
         "wires": []
     },
     {
-        "id": "bd000b97.6f19b8",
+        "id": "d206eba9.a26cd8",
         "type": "debug",
-        "z": "4c818c92.135364",
+        "z": "2c2170f9.55a83",
         "name": "",
         "active": false,
         "console": "false",
@@ -3681,10 +3660,10 @@
         "wires": []
     },
     {
-        "id": "2c539640.cbc1ca",
+        "id": "624fa74e.7a3238",
         "type": "s7comm write",
-        "z": "e951892c.8c5e48",
-        "connection": "27b878ab.b92198",
+        "z": "a051bb87.ea1428",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"24\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"12\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"control_releaseProduction\"}",
         "s7Name": "control_releaseProduction",
         "topic": "",
@@ -3694,15 +3673,15 @@
         "y": 425,
         "wires": [
             [
-                "c94b7517.887eb8"
+                "609477c1.dd7da8"
             ]
         ]
     },
     {
-        "id": "d1e4a1e5.f11c8",
+        "id": "e4cdd765.12cfe8",
         "type": "s7comm write",
-        "z": "e951892c.8c5e48",
-        "connection": "27b878ab.b92198",
+        "z": "a051bb87.ea1428",
+        "connection": "32e3d07d.a36bf",
         "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"24\",\"S7_Datatype\":\"DI\",\"S7_Offset\":\"16\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"1\",\"S7_Name\":\"control_stopProduction\"}",
         "s7Name": "control_stopProduction",
         "topic": "",
@@ -3712,14 +3691,14 @@
         "y": 491,
         "wires": [
             [
-                "5b71290a.a413b8"
+                "2e06e29e.f5c55e"
             ]
         ]
     },
     {
-        "id": "c94b7517.887eb8",
+        "id": "609477c1.dd7da8",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -3729,9 +3708,9 @@
         "wires": []
     },
     {
-        "id": "5b71290a.a413b8",
+        "id": "2e06e29e.f5c55e",
         "type": "debug",
-        "z": "e951892c.8c5e48",
+        "z": "a051bb87.ea1428",
         "name": "",
         "active": false,
         "console": "false",
@@ -3739,5 +3718,68 @@
         "x": 1157,
         "y": 494,
         "wires": []
+    },
+    {
+        "id": "ae79597c.cff278",
+        "type": "s7comm read",
+        "z": "c90f56cd.b937a8",
+        "connection": "32e3d07d.a36bf",
+        "payload": "{\"S7_Type\":\"DB\",\"S7_DBnum\":\"26\",\"S7_Datatype\":\"I\",\"S7_Offset\":\"0\",\"S7_BitOffset\":\"0\",\"S7_Quantity\":\"5\",\"S7_Name\":\"andon1;andon2;andon3;andon4;andon5\"}",
+        "s7Name": "andon1;andon2;andon3;andon4;andon5",
+        "topic": "",
+        "name": "Andons",
+        "signalSetted": false,
+        "none": "false",
+        "repeat": "1",
+        "once": false,
+        "x": 227,
+        "y": 156,
+        "wires": [
+            [
+                "453b462e.dba0f8",
+                "f4feca28.d225d8"
+            ]
+        ]
+    },
+    {
+        "id": "f4feca28.d225d8",
+        "type": "debug",
+        "z": "c90f56cd.b937a8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 502,
+        "y": 245,
+        "wires": []
+    },
+    {
+        "id": "453b462e.dba0f8",
+        "type": "mqtt out",
+        "z": "c90f56cd.b937a8",
+        "name": "",
+        "topic": "LXX/andons",
+        "qos": "0",
+        "retain": "false",
+        "broker": "48b46dde.183684",
+        "x": 511,
+        "y": 155,
+        "wires": []
+    },
+    {
+        "id": "1fc4799e.18fc26",
+        "type": "function",
+        "z": "c90f56cd.b937a8",
+        "name": "test",
+        "func": "var local=context.get('andonState') || {};\nif (local.count===undefined) //test exists\n{\n  local.msg = msg;\n  local.count=0;\n  local.msg.count = local.count;\n  context.set('andonState',local);\n  return local.msg;\n}\nelse\n{\n    a1 = msg.payload.value;\n    a2 = local.msg.payload.value;\n    //if (a2 !==undefined)\n    //{\n        if (!(a1.length === a2.length && a1.every(function(v,i) { return v === a2[i]})))\n        {\n            local.count+=1;\n            local.msg = msg;\n            local.msg.count = local.count;\n            context.set('andonState',local);\n            return local.msg;       \n        }\n        context.set('andons',local);\n        \n    //}\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 67,
+        "wires": [
+            []
+        ]
     }
 ]
