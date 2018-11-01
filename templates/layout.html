@@ -78,6 +78,7 @@
             </main>
         </div>
         <!-- Sticky footer -->
+	<!-- disabled
         {% if current_user.is_authenticated %}
             <footer class="container-fluid">
                 <nav class="navbar fixed-bottom navbar-expand-lg bg-dark navbar-inverse bg-inverse">
@@ -94,6 +95,7 @@
                 </nav>
             </footer>
         {% endif %}
+	-->
 
     {% block tail_js %}
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/socket.io.slim.js', v='2.0.4') }}"></script>
