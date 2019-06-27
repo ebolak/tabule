@@ -45,8 +45,10 @@
 			            </tbody>
 			        </table>
 				</div>
-
+				<!--
 				<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block ">Reset aktualní výroby</button>
+				-->
+				<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#control-resetCountersModal">Reset aktualní výroby</button>
 			
 			</div>
 			<div class="col-md-6">
@@ -63,5 +65,25 @@
 				<button id="control-taktTimeCntOff" type="button" class="btn btn-lg btn-block btn-danger mt-5" disabled>Vypnuto</button>
 			</div>
 		</div>
+</div>
+
+<!-- controlResetModal -->
+<div class="modal fade" id="control-resetCountersModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="control-resetCountersModalLablel">Reset aktualní výroby</h5>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="target">Opravdu chcete vyresetovat aktuální výrobu?</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+				<button id="control-resetCountersConfirm" type="button" class="btn btn-primary" data-dismiss="modal">RESET</button>
+			</div>
+		</div>
+	</div>
 </div>				      
 {% endblock %}

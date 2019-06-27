@@ -202,4 +202,4 @@ def handle_logging(client, userdata, level, buf):
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
-    socketio.run(app, host="0.0.0.0", port=5000, use_reloader=False, debug=False)
+    socketio.run(app, host="0.0.0.0", port=5000, use_reloader=True, debug=True)

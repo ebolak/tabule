@@ -12,6 +12,7 @@ var memSettingsSireneRed;
 var timeInputSource;
 var toneDurationSource;
 var toneSelectSource;
+var controlResetSource;
 
 var settingsShift_shiftSelect = 1;
 
@@ -405,13 +406,25 @@ $(document).ready(function() {
             // ***********************
 
             // control-resetCounters
-            $('#control-resetCounters').on('click', function(e) {
+            //$('#control-resetCounters').on('click', function(e) {
+            //    var msg = {}
+            //    msg.topic = line_name + '/control/resetCounters';
+            //    msg.payload = {'value':[1]};
+            //    socket.emit('publish', JSON.stringify(msg));
+            //    console.log(msg);
+            //});
+
+
+            // 
+            $('#control-resetCountersConfirm').on('click', function(e) {
                 var msg = {}
                 msg.topic = line_name + '/control/resetCounters';
                 msg.payload = {'value':[1]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
             });
+
+
 
             // control-startTaktTimeCnt
             $('#control-startTaktTimeCnt').on('click', function(e) {
