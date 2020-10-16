@@ -175,6 +175,22 @@ var updateSettingsShift = function(msg) {
     $('#settingsShift-break3Begin').html(msToTime(msg.payload['shiftBreak3Begin']));
     // break3End
     $('#settingsShift-break3End').html(msToTime(msg.payload['shiftBreak3End']));
+
+    // break4EN
+    updateBtnVYP('#settingsShift-break4ENOff', msg.payload['shiftBreak4EN']);
+    updateBtnZAP('#settingsShift-break4ENOn', msg.payload['shiftBreak4EN']);
+    // break4Begin
+    $('#settingsShift-break4Begin').html(msToTime(msg.payload['shiftBreak4Begin']));
+    // break4End
+    $('#settingsShift-break4End').html(msToTime(msg.payload['shiftBreak4End']));
+
+    // break5EN
+    updateBtnVYP('#settingsShift-break5ENOff', msg.payload['shiftBreak5EN']);
+    updateBtnZAP('#settingsShift-break5ENOn', msg.payload['shiftBreak5EN']);
+    // break5Begin
+    $('#settingsShift-break5Begin').html(msToTime(msg.payload['shiftBreak5Begin']));
+    // break5End
+    $('#settingsShift-break5End').html(msToTime(msg.payload['shiftBreak5End']));
 };
 // kick off
 $(document).ready(function() {
@@ -564,6 +580,38 @@ $(document).ready(function() {
             $('#settingsShift-break3ENOn').on('click', function(e) {
                 var msg = {}
                 msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/break3EN';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+            // settingsShift-break4ENOff
+            $('#settingsShift-break4ENOff').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/break4EN';
+                msg.payload = {'value':[0]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+            // settingsShift-break4ENOn
+            $('#settingsShift-break4ENOn').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/break4EN';
+                msg.payload = {'value':[1]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+            // settingsShift-break5ENOff
+            $('#settingsShift-break5ENOff').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/break5EN';
+                msg.payload = {'value':[0]};
+                socket.emit('publish', JSON.stringify(msg));
+                console.log(msg);
+            });
+            // settingsShift-break5ENOn
+            $('#settingsShift-break5ENOn').on('click', function(e) {
+                var msg = {}
+                msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/break5EN';
                 msg.payload = {'value':[1]};
                 socket.emit('publish', JSON.stringify(msg));
                 console.log(msg);
