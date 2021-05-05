@@ -1,6 +1,6 @@
 # Global context config
 # line name
-LINE_NAME = "L07"
+LINE_NAME = "L14"
 
 # Create dummy secrey key so we can use sessions
 SECRET_KEY = '123456790'
@@ -73,7 +73,7 @@ MAIL_PORT = 25
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # Flask-Mqtt
-MQTT_BROKER_URL = "172.22.0.10"
+MQTT_BROKER_URL = "127.0.0.1"
 #MQTT_BROKER_URL = "localhost"
 MQTT_BROKER_PORT = 1883
 MQTT_USERNAME = ""

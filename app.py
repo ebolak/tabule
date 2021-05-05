@@ -174,6 +174,7 @@ def handle_connect(client, userdata, flags, rc):
     # Mqtt subscirbe topics
     for key, val in topics.items():
         mqtt.subscribe(key)
+        #print(key)
     #pass
 
 @mqtt.on_disconnect()
@@ -197,7 +198,7 @@ def handle_mqtt_message(client, userdata, message):
 
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
-    #print(level, buf)
+    print(level, buf)
     pass
 
 if __name__ == "__main__":
