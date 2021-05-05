@@ -1,5 +1,6 @@
 var memSettingsMain;
 var memActualValues;
+var memPreviousValues;
 var memAndons;
 var memSettingsShift1;
 var memSettingsShift2;
@@ -270,6 +271,21 @@ $(document).ready(function() {
                 }
                 memActualValues = msg;
             });
+            // *****************************
+            // previous Values
+            // *****************************
+            socket.on(line_name + '/previousValues', function(msg) {
+                if (!(jsonEqual(msg, memPreviousValues))) {
+                    console.log(msg);
+                    $('#previousTarget').text(msg.payload['target']);
+                    $('#previousActual').text(msg.payload['actual']);
+                    $('#previousOk').text(msg.payload['ok']);
+                    $('#previousDiff').text(msg.payload['diff']);
+                    $('#previousBekido').text(computeBekido(msg.payload['ok'], msg.payload['taktTimeCnt']));
+                }
+                memAPreviousValues = msg;
+            });
+
 
             // andon update
             socket.on(line_name + '/andons', function(msg) {
