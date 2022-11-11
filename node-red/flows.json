@@ -1,1 +1,2142 @@
-[{"id":"1e965a52.6c21d6","type":"mqtt out","z":"31a7a299.bc48ee","name":"","topic":"L14/actualValues","qos":"0","retain":"false","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"23382937.a3c696","x":1030,"y":40,"wires":[]},{"id":"23382937.a3c696","type":"mqtt-broker","name":"","broker":"127.0.0.1","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","willTopic":"","willQos":"0","willPayload":""}]
+[
+    {
+        "id": "f9ddac74.e7083",
+        "type": "tab",
+        "label": "OPC<>MQTT",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2ca31059.20c77",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settings",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "settings",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "taktTimeCntOption",
+                "nodeId": "ns=3;s=\"settings\".\"taktTimeCntOption\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "target",
+                "nodeId": "ns=3;s=\"settings\".\"target\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "taktTime",
+                "nodeId": "ns=3;s=\"settings\".\"taktTime\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "countOption",
+                "nodeId": "ns=3;s=\"settings\".\"countOption\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "ed580ec3.04a21"
+            ]
+        ]
+    },
+    {
+        "id": "5883551c.a283ac",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settings",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1030,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "512bb24a.c66e5c",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settings/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "9940bf22.3778a"
+            ]
+        ]
+    },
+    {
+        "id": "9940bf22.3778a",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "ed2ed053.59c94"
+            ]
+        ]
+    },
+    {
+        "id": "5dcd712b.ee633",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1030,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed2ed053.59c94",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\n\nvar parts = _topic.split(\"/\");\n\n\nvar ns = \"ns=3\";\n// var s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2] + \"\\\"\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"write\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\":_topic,\n                        \"nodeId\": ns + \";\" + s,\n                        \"datatypeName\":\"Int32\"\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "407a8bac.eb6a64"
+            ]
+        ]
+    },
+    {
+        "id": "56bd8bcd.662864",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "2747293a.8117c6"
+            ]
+        ]
+    },
+    {
+        "id": "2747293a.8117c6",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 240,
+        "wires": [
+            [
+                "5883551c.a283ac"
+            ]
+        ]
+    },
+    {
+        "id": "1195a2c1.ccdbdd",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/1",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1050,
+        "y": 455,
+        "wires": []
+    },
+    {
+        "id": "6075662.a586898",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/1/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 130,
+        "y": 515,
+        "wires": [
+            [
+                "ee6d71f4.10afc"
+            ]
+        ]
+    },
+    {
+        "id": "ee6d71f4.10afc",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 390,
+        "y": 515,
+        "wires": [
+            [
+                "2b42a33.72c045c"
+            ]
+        ]
+    },
+    {
+        "id": "9224d2f5.0ade",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settingsShift/1",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "shiftEN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"shiftEN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBegin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"shiftBegin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftEnd",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"shiftEnd\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break1EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break1Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break1End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break2EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break2Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break2End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break3EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break3Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break3End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break4EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break4Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break4End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break5EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break5Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"1\".\"break5End\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 160,
+        "y": 455,
+        "wires": [
+            [
+                "cd204963.068878"
+            ]
+        ]
+    },
+    {
+        "id": "cd204963.068878",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 390,
+        "y": 455,
+        "wires": [
+            [
+                "b7d421d1.e957c"
+            ]
+        ]
+    },
+    {
+        "id": "b7d421d1.e957c",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 550,
+        "y": 455,
+        "wires": [
+            [
+                "c9922967.0366d8"
+            ]
+        ]
+    },
+    {
+        "id": "c9922967.0366d8",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 790,
+        "y": 455,
+        "wires": [
+            [
+                "1195a2c1.ccdbdd"
+            ]
+        ]
+    },
+    {
+        "id": "433cf27b.b24ebc",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 790,
+        "y": 515,
+        "wires": [
+            [
+                "58b26fa4.e1318"
+            ]
+        ]
+    },
+    {
+        "id": "58b26fa4.e1318",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1030,
+        "y": 515,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b42a33.72c045c",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "shift_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"\";\nvar parts = _topic.split(\"/\");\n\nif (_topic.includes(\"Begin\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else if (_topic.includes(\"End\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else {\n    datatypeName = \"Int32\";    \n}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 515,
+        "wires": [
+            [
+                "433cf27b.b24ebc"
+            ]
+        ]
+    },
+    {
+        "id": "e85f8364.cb786",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/2",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1049,
+        "y": 576,
+        "wires": []
+    },
+    {
+        "id": "118b7bf7.afc454",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/2/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 129,
+        "y": 636,
+        "wires": [
+            [
+                "fd92b808.8ee628"
+            ]
+        ]
+    },
+    {
+        "id": "fd92b808.8ee628",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 389,
+        "y": 636,
+        "wires": [
+            [
+                "17ef42dc.d13f6d"
+            ]
+        ]
+    },
+    {
+        "id": "f9970a2b.23e8b8",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settingsShift/2",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "shiftEN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"shiftEN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBegin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"shiftBegin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftEnd",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"shiftEnd\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break1EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break1Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break1End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break2EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break2Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break2End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break3EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break3Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break3End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break4EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break4Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break4End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break5EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break5Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"2\".\"break5End\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 159,
+        "y": 576,
+        "wires": [
+            [
+                "648b33c7.80c61c"
+            ]
+        ]
+    },
+    {
+        "id": "85a35503.c826d8",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 549,
+        "y": 576,
+        "wires": [
+            [
+                "b9de558c.1a8ad8"
+            ]
+        ]
+    },
+    {
+        "id": "b9de558c.1a8ad8",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 809,
+        "y": 576,
+        "wires": [
+            [
+                "e85f8364.cb786"
+            ]
+        ]
+    },
+    {
+        "id": "e68163b6.1278f",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 789,
+        "y": 636,
+        "wires": [
+            [
+                "6aa1d66c.92fda8"
+            ]
+        ]
+    },
+    {
+        "id": "6aa1d66c.92fda8",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1029,
+        "y": 636,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed580ec3.04a21",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "56bd8bcd.662864"
+            ]
+        ]
+    },
+    {
+        "id": "648b33c7.80c61c",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 389,
+        "y": 576,
+        "wires": [
+            [
+                "85a35503.c826d8"
+            ]
+        ]
+    },
+    {
+        "id": "1803711.a51d88f",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/3",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1049,
+        "y": 709,
+        "wires": []
+    },
+    {
+        "id": "6cef4214.5bf93c",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsShift/3/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 129,
+        "y": 769,
+        "wires": [
+            [
+                "3709bab5.96e876"
+            ]
+        ]
+    },
+    {
+        "id": "3709bab5.96e876",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 389,
+        "y": 769,
+        "wires": [
+            [
+                "8180701b.633cb"
+            ]
+        ]
+    },
+    {
+        "id": "c463393f.477588",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settingsShift/3",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "shiftEN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"shiftEN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBegin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"shiftBegin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftEnd",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"shiftEnd\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break1EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break1Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak1End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break1End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break2EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break2Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak2End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break2End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break3EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break3Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak3End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break3End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break4EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break4Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak4End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break4End\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5EN",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break5EN\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5Begin",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break5Begin\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "shiftBreak5End",
+                "nodeId": "ns=3;s=\"settingsShift\".\"3\".\"break5End\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 157,
+        "y": 709,
+        "wires": [
+            [
+                "2df80bbd.f7eb54"
+            ]
+        ]
+    },
+    {
+        "id": "2df80bbd.f7eb54",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 389,
+        "y": 709,
+        "wires": [
+            [
+                "443cbdc.acd7644"
+            ]
+        ]
+    },
+    {
+        "id": "443cbdc.acd7644",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 549,
+        "y": 709,
+        "wires": [
+            [
+                "921f3f77.b7b85"
+            ]
+        ]
+    },
+    {
+        "id": "921f3f77.b7b85",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 809,
+        "y": 709,
+        "wires": [
+            [
+                "1803711.a51d88f"
+            ]
+        ]
+    },
+    {
+        "id": "5f109793.393fc8",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 789,
+        "y": 769,
+        "wires": [
+            [
+                "cc438202.cc556"
+            ]
+        ]
+    },
+    {
+        "id": "cc438202.cc556",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1029,
+        "y": 769,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0090aa6.f4a448",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/green",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1060,
+        "y": 925,
+        "wires": []
+    },
+    {
+        "id": "be00d964.d6aec8",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settings/sirene/green",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "settings/sirene/green",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "toneSelect",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"green\".\"toneSelect\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "toneDuration",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"green\".\"toneDuration\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "test",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"green\".\"test\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 160,
+        "y": 925,
+        "wires": [
+            [
+                "ad80cea.98e7f3"
+            ]
+        ]
+    },
+    {
+        "id": "ad80cea.98e7f3",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 380,
+        "y": 925,
+        "wires": [
+            [
+                "19f6415b.43a72f"
+            ]
+        ]
+    },
+    {
+        "id": "19f6415b.43a72f",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 540,
+        "y": 925,
+        "wires": [
+            [
+                "1f57aa19.d484c6"
+            ]
+        ]
+    },
+    {
+        "id": "1f57aa19.d484c6",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 925,
+        "wires": [
+            [
+                "c0090aa6.f4a448"
+            ]
+        ]
+    },
+    {
+        "id": "5df9b8b7.52a788",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/green/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 140,
+        "y": 985,
+        "wires": [
+            [
+                "b6fd41e8.efe6c"
+            ]
+        ]
+    },
+    {
+        "id": "b6fd41e8.efe6c",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 380,
+        "y": 985,
+        "wires": [
+            [
+                "1570d932.b9c227"
+            ]
+        ]
+    },
+    {
+        "id": "e24a7a12.bba348",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": false,
+        "showErrors": false,
+        "x": 780,
+        "y": 985,
+        "wires": [
+            [
+                "6fdd7c77.64fe54"
+            ]
+        ]
+    },
+    {
+        "id": "6fdd7c77.64fe54",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1020,
+        "y": 985,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1570d932.b9c227",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "sirene_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"Int32\";\nvar parts = _topic.split(\"/\");\n\n//if (_topic.includes(\"shiftBegin\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else if (_topic.includes(\"shiftEnd\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else {\n//    datatypeName = \"Int32\";    \n//}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 985,
+        "wires": [
+            [
+                "e24a7a12.bba348"
+            ]
+        ]
+    },
+    {
+        "id": "cb842597.1e7c08",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/yellow",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1060,
+        "y": 1085,
+        "wires": []
+    },
+    {
+        "id": "2faaf9d3.3721e6",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settings/sirene/yellow",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "settings/sirene/yellow",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "toneSelect",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"yellow\".\"toneSelect\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "toneDuration",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"yellow\".\"toneDuration\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "test",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"yellow\".\"test\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 140,
+        "y": 1085,
+        "wires": [
+            [
+                "66e8c106.25f5f"
+            ]
+        ]
+    },
+    {
+        "id": "66e8c106.25f5f",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 380,
+        "y": 1085,
+        "wires": [
+            [
+                "11df56b2.28b659"
+            ]
+        ]
+    },
+    {
+        "id": "11df56b2.28b659",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 540,
+        "y": 1085,
+        "wires": [
+            [
+                "aab229bb.6058f8"
+            ]
+        ]
+    },
+    {
+        "id": "aab229bb.6058f8",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 1085,
+        "wires": [
+            [
+                "cb842597.1e7c08"
+            ]
+        ]
+    },
+    {
+        "id": "d6c4d6c.f573a28",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/yellow/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 150,
+        "y": 1145,
+        "wires": [
+            [
+                "b098da2e.dd4148"
+            ]
+        ]
+    },
+    {
+        "id": "b098da2e.dd4148",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 380,
+        "y": 1145,
+        "wires": [
+            [
+                "2c91acf.533ff54"
+            ]
+        ]
+    },
+    {
+        "id": "3b20f50e.6d583a",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 780,
+        "y": 1145,
+        "wires": [
+            [
+                "5ec2d9ab.96a3d8"
+            ]
+        ]
+    },
+    {
+        "id": "5ec2d9ab.96a3d8",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1020,
+        "y": 1145,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c91acf.533ff54",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "sirene_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"Int32\";\nvar parts = _topic.split(\"/\");\n\n//if (_topic.includes(\"shiftBegin\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else if (_topic.includes(\"shiftEnd\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else {\n//    datatypeName = \"Int32\";    \n//}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 1145,
+        "wires": [
+            [
+                "3b20f50e.6d583a"
+            ]
+        ]
+    },
+    {
+        "id": "96a2e195.bb77",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/red",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1050,
+        "y": 1245,
+        "wires": []
+    },
+    {
+        "id": "7b85b7e0.608768",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "settings/sirene/red",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "startDelay": "10",
+        "name": "settings/sirene/red",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "toneSelect",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"red\".\"toneSelect\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "toneDuration",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"red\".\"toneDuration\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "test",
+                "nodeId": "ns=3;s=\"settingsSirene\".\"red\".\"test\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 130,
+        "y": 1245,
+        "wires": [
+            [
+                "3cc8eda4.a2d1d2"
+            ]
+        ]
+    },
+    {
+        "id": "3cc8eda4.a2d1d2",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "x": 380,
+        "y": 1245,
+        "wires": [
+            [
+                "3e5a9af2.f16ba6"
+            ]
+        ]
+    },
+    {
+        "id": "3e5a9af2.f16ba6",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": false,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 540,
+        "y": 1245,
+        "wires": [
+            [
+                "6c614ede.7a104"
+            ]
+        ]
+    },
+    {
+        "id": "6c614ede.7a104",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 1245,
+        "wires": [
+            [
+                "96a2e195.bb77"
+            ]
+        ]
+    },
+    {
+        "id": "f8108554.5ee068",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/settingsSirene/red/+",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 140,
+        "y": 1305,
+        "wires": [
+            [
+                "b3e3324f.71845"
+            ]
+        ]
+    },
+    {
+        "id": "b3e3324f.71845",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pretty": true,
+        "x": 380,
+        "y": 1305,
+        "wires": [
+            [
+                "e2142253.59d7d"
+            ]
+        ]
+    },
+    {
+        "id": "1ef30caa.e249b3",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 780,
+        "y": 1305,
+        "wires": [
+            [
+                "d57abef1.00327"
+            ]
+        ]
+    },
+    {
+        "id": "d57abef1.00327",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1020,
+        "y": 1305,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2142253.59d7d",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "sirene_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"Int32\";\nvar parts = _topic.split(\"/\");\n\n//if (_topic.includes(\"shiftBegin\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else if (_topic.includes(\"shiftEnd\", 0)===true) {\n//    datatypeName = \"UInt32\";\n//} else {\n//    datatypeName = \"Int32\";    \n//}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 1305,
+        "wires": [
+            [
+                "1ef30caa.e249b3"
+            ]
+        ]
+    },
+    {
+        "id": "b043eb0e.aa9458",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 550,
+        "y": 40,
+        "wires": [
+            [
+                "129703a1.0aa06c"
+            ]
+        ]
+    },
+    {
+        "id": "72da1241.a90a1c",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "serverMaxItemsToRead": "",
+        "x": 350,
+        "y": 40,
+        "wires": [
+            [
+                "b043eb0e.aa9458"
+            ]
+        ]
+    },
+    {
+        "id": "129703a1.0aa06c",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 40,
+        "wires": [
+            [
+                "22f22774.3f3848"
+            ]
+        ]
+    },
+    {
+        "id": "ff518e0.607d17",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "actualValues",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "startDelay": "10",
+        "name": "actualValues",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "target",
+                "nodeId": "ns=3;s=\"actualValues\".\"target\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "actual",
+                "nodeId": "ns=3;s=\"actualValues\".\"actual\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "ok",
+                "nodeId": "ns=3;s=\"actualValues\".\"ok\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "diff",
+                "nodeId": "ns=3;s=\"actualValues\".\"diff\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "taktTimeCnt",
+                "nodeId": "ns=3;s=\"actualValues\".\"taktTimeCnt\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "state",
+                "nodeId": "ns=3;s=\"actualValues\".\"state\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "72da1241.a90a1c"
+            ]
+        ]
+    },
+    {
+        "id": "94b66714.142f48",
+        "type": "mqtt in",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/control/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "23382937.a3c696",
+        "nl": false,
+        "rap": false,
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "d9adaadf.f9b578"
+            ]
+        ]
+    },
+    {
+        "id": "22f22774.3f3848",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/actualValues",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1030,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d9adaadf.f9b578",
+        "type": "json",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "8b4a405d.e4ef6"
+            ]
+        ]
+    },
+    {
+        "id": "bf27ac89.3191c",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "x": 770,
+        "y": 180,
+        "wires": [
+            [
+                "1ad5a2f9.a459dd"
+            ]
+        ]
+    },
+    {
+        "id": "1ad5a2f9.a459dd",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 1030,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b4a405d.e4ef6",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\n\nvar parts = _topic.split(\"/\");\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\":_topic,\n                        \"nodeId\": ns + \";\" + s,\n                        \"datatypeName\":\"Int32\"\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 180,
+        "wires": [
+            [
+                "bf27ac89.3191c"
+            ]
+        ]
+    },
+    {
+        "id": "22cd3b67.825514",
+        "type": "catch",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "scope": [
+            "cd204963.068878",
+            "ed580ec3.04a21",
+            "648b33c7.80c61c",
+            "2df80bbd.f7eb54",
+            "ad80cea.98e7f3",
+            "66e8c106.25f5f",
+            "3cc8eda4.a2d1d2"
+        ],
+        "uncaught": false,
+        "x": 1250,
+        "y": 180,
+        "wires": [
+            [
+                "7c4b95d.7f6896c",
+                "e106c280.f99aa"
+            ]
+        ]
+    },
+    {
+        "id": "7c4b95d.7f6896c",
+        "type": "debug",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1450,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cd2e2fd0.8250a",
+        "type": "exec",
+        "z": "f9ddac74.e7083",
+        "command": "sudo systemctl restart nodered",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "30",
+        "oldrc": false,
+        "name": "",
+        "x": 1330,
+        "y": 560,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6c45ed4d.f1f714",
+        "type": "trigger",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "0",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "outputs": 1,
+        "x": 1280,
+        "y": 340,
+        "wires": [
+            [
+                "9b1d2a2d.2169c8"
+            ]
+        ]
+    },
+    {
+        "id": "e106c280.f99aa",
+        "type": "delay",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 1300,
+        "y": 260,
+        "wires": [
+            [
+                "6c45ed4d.f1f714"
+            ]
+        ]
+    },
+    {
+        "id": "9b1d2a2d.2169c8",
+        "type": "delay",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "30",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1280,
+        "y": 400,
+        "wires": [
+            [
+                "cd2e2fd0.8250a"
+            ]
+        ]
+    },
+    {
+        "id": "17ef42dc.d13f6d",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "shift_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"\";\nvar parts = _topic.split(\"/\");\n\nif (_topic.includes(\"Begin\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else if (_topic.includes(\"End\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else {\n    datatypeName = \"Int32\";    \n}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 635,
+        "wires": [
+            [
+                "e68163b6.1278f"
+            ]
+        ]
+    },
+    {
+        "id": "8180701b.633cb",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "shift_ConvertMqttToOPC",
+        "func": "var _msgid = msg._msgid;\nvar _topic = msg._topic;\nvar payload = msg.payload[\"value\"][0];\nvar datatypeName = \"\";\nvar parts = _topic.split(\"/\");\n\nif (_topic.includes(\"Begin\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else if (_topic.includes(\"End\", 0)===true) {\n    datatypeName = \"UInt32\";\n} else {\n    datatypeName = \"Int32\";    \n}\n\n\nvar ns = \"ns=3\";\nvar s = \"s=\\\"\" + parts[1] + \"\\\".\\\"\" + parts[2]  + \"\\\".\\\"\" + parts[3] + \"\\\"\";\n\n\n\n\nmsg = {\n    \"topic\": _topic,\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\": _topic,\n                        \"nodeId\": ns + \";\" + s,\n                        // \"nodeId\":\"ns=3;s=\\\"control\\\".\\\"control\\\".\\\"resetCounters\\\"\",\n                        \"datatypeName\": datatypeName\n                        }],\n    \"payload\": payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 592,
+        "y": 770,
+        "wires": [
+            [
+                "5f109793.393fc8"
+            ]
+        ]
+    },
+    {
+        "id": "407a8bac.eb6a64",
+        "type": "OPCUA-IIoT-Write",
+        "z": "f9ddac74.e7083",
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": false,
+        "showErrors": false,
+        "x": 791.5,
+        "y": 299,
+        "wires": [
+            [
+                "5dcd712b.ee633"
+            ]
+        ]
+    },
+    {
+        "id": "d0af7022.db278",
+        "type": "OPCUA-IIoT-Response",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "compressStructure": true,
+        "showStatusActivities": true,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "63ccb88c.a388b8"
+            ]
+        ]
+    },
+    {
+        "id": "f56070cb.7625c",
+        "type": "OPCUA-IIoT-Read",
+        "z": "f9ddac74.e7083",
+        "attributeId": "13",
+        "maxAge": 1,
+        "depth": 1,
+        "connector": "b670ce39.b1c47",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": true,
+        "showErrors": true,
+        "parseStrings": false,
+        "historyDays": 1,
+        "serverMaxItemsToRead": "",
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "d0af7022.db278"
+            ]
+        ]
+    },
+    {
+        "id": "63ccb88c.a388b8",
+        "type": "function",
+        "z": "f9ddac74.e7083",
+        "name": "ConvertRead",
+        "func": "var signal = [];\nvar value = []\n\nfunction myFunction(data) {\n  signal.push(data.nodeId.name); \n  value.push(data.value);\n}\n\nmsg.payload.forEach(myFunction);\n\nsignal = signal.join(\";\");\n\nmsg.payload = {\"signal\": signal, \"value\": value};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 100,
+        "wires": [
+            [
+                "457bb8ac.b2f3a8"
+            ]
+        ]
+    },
+    {
+        "id": "734b3fcc.5c2e4",
+        "type": "OPCUA-IIoT-Inject",
+        "z": "f9ddac74.e7083",
+        "injectType": "read",
+        "payloadType": "date",
+        "topic": "previousValues",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "startDelay": "10",
+        "name": "previousValues",
+        "payload": "",
+        "addressSpaceItems": [
+            {
+                "name": "target",
+                "nodeId": "ns=3;s=\"previousValues\".\"target\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "actual",
+                "nodeId": "ns=3;s=\"previousValues\".\"actual\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "ok",
+                "nodeId": "ns=3;s=\"previousValues\".\"ok\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "diff",
+                "nodeId": "ns=3;s=\"previousValues\".\"diff\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "taktTimeCnt",
+                "nodeId": "ns=3;s=\"previousValues\".\"taktTimeCnt\"",
+                "datatypeName": ""
+            },
+            {
+                "name": "state",
+                "nodeId": "ns=3;s=\"previousValues\".\"state\"",
+                "datatypeName": ""
+            }
+        ],
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "f56070cb.7625c"
+            ]
+        ]
+    },
+    {
+        "id": "457bb8ac.b2f3a8",
+        "type": "mqtt out",
+        "z": "f9ddac74.e7083",
+        "name": "",
+        "topic": "L09/previousValues",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "23382937.a3c696",
+        "x": 1030,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "23382937.a3c696",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "b670ce39.b1c47",
+        "type": "OPCUA-IIoT-Connector",
+        "discoveryUrl": "",
+        "endpoint": "opc.tcp://172.19.0.11:4840",
+        "keepSessionAlive": true,
+        "loginEnabled": false,
+        "securityPolicy": "None",
+        "securityMode": "NONE",
+        "name": "L14_OPC_server",
+        "showErrors": true,
+        "individualCerts": false,
+        "publicCertificateFile": "",
+        "privateKeyFile": "",
+        "defaultSecureTokenLifetime": "",
+        "endpointMustExist": false,
+        "autoSelectRightEndpoint": false,
+        "strategyMaxRetry": "",
+        "strategyInitialDelay": "",
+        "strategyMaxDelay": "",
+        "strategyRandomisationFactor": "",
+        "requestedSessionTimeout": "",
+        "connectionStartDelay": "",
+        "reconnectDelay": "",
+        "maxBadSessionRequests": "100"
+    }
+]
