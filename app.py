@@ -1,9 +1,11 @@
+from flask_security.forms import get_form_field_label, email_required, email_validator, valid_user_email, password_required, password_length, EqualTo
+from wtforms import BooleanField, Field, HiddenField, PasswordField, \
+    StringField, SubmitField, ValidationError, validators
 import eventlet
-#eventlet.monkey_patch()
+# eventlet.monkey_patch()
 import json
 from flask import Flask, render_template, url_for, redirect, current_app
 from flask_mail import Mail
-from flask_jsglue import JSGlue
 from flask_mqtt import Mqtt
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
@@ -18,12 +20,9 @@ import functools
 eventlet.monkey_patch()
 
 
-
 # Create Flask application
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
-
-JSGlue(app)
 
 
 # SocketIO
@@ -39,42 +38,54 @@ with app.app_context():
 
 
 # overriding default security forms?
-from wtforms import BooleanField, Field, HiddenField, PasswordField, \
-    StringField, SubmitField, ValidationError, validators
-from flask_security.forms import  get_form_field_label, email_required, email_validator, valid_user_email, password_required, password_length, EqualTo
+
 
 class ExtendedLoginForm(LoginForm):
-    email = StringField("", validators=[email_required, email_validator, valid_user_email])
+    email = StringField(
+        "", validators=[email_required, email_validator, valid_user_email])
     password = PasswordField("", validators=[password_required])
     submit = SubmitField("Přihlásit")
 
+
 class ExtendedForgotPasswordForm(ForgotPasswordForm):
     email = StringField("",
-        validators=[email_required, email_validator, valid_user_email])
+                        validators=[email_required, email_validator, valid_user_email])
     submit = SubmitField("Odeslat")
 
+
 class ExtendedResetPasswordForm(ResetPasswordForm):
-    password = PasswordField("", validators=[password_required, password_length, EqualTo('password_confirm', message='RETYPE_PASSWORD_MISMATCH')])
-    password_confirm = PasswordField("", validators=[password_required, password_length, EqualTo('password', message='RETYPE_PASSWORD_MISMATCH')])
+    password = PasswordField("", validators=[password_required, password_length, EqualTo(
+        'password_confirm', message='RETYPE_PASSWORD_MISMATCH')])
+    password_confirm = PasswordField("", validators=[password_required, password_length, EqualTo(
+        'password', message='RETYPE_PASSWORD_MISMATCH')])
     submit = SubmitField("Obnovit heslo")
+
 
 class ExtendedPasswordChangeForm(ChangePasswordForm):
     password = PasswordField("", validators=[password_required])
-    new_password = PasswordField("", validators=[password_required, password_length, EqualTo('new_password_confirm', message='RETYPE_PASSWORD_MISMATCH')])
-    new_password_confirm = PasswordField("", validators=[password_required, password_length, EqualTo('new_password', message='RETYPE_PASSWORD_MISMATCH')])
+    new_password = PasswordField("", validators=[password_required, password_length, EqualTo(
+        'new_password_confirm', message='RETYPE_PASSWORD_MISMATCH')])
+    new_password_confirm = PasswordField("", validators=[password_required, password_length, EqualTo(
+        'new_password', message='RETYPE_PASSWORD_MISMATCH')])
     submit = SubmitField("Změnit heslo")
+
 
 # Setup Flask-Security
 user_datastore = SQLAlchemySessionUserDatastore(db_session, User, Role)
-security = Security(app, user_datastore, login_form=ExtendedLoginForm, change_password_form=ExtendedPasswordChangeForm, forgot_password_form=ExtendedForgotPasswordForm, reset_password_form=ExtendedResetPasswordForm)
+security = Security(app, user_datastore, login_form=ExtendedLoginForm, change_password_form=ExtendedPasswordChangeForm,
+                    forgot_password_form=ExtendedForgotPasswordForm, reset_password_form=ExtendedResetPasswordForm)
 
 # This processor is added to all templates
+
+
 @security.context_processor
 def security_context_processor():
     with app.app_context():
         return dict(line_name=current_app.config.get("LINE_NAME"))
 
 # Create a user to test with
+
+
 @app.before_first_request
 def create_user():
     init_db()
@@ -82,9 +93,9 @@ def create_user():
         user_datastore.create_role(name="Admin", description="Admin")
         db_session.commit()
     if not user_datastore.find_user(email="admin@example.com"):
-        user_datastore.create_user(email="admin@example.com", password="password", roles=["Admin"])
+        user_datastore.create_user(
+            email="admin@example.com", password="password", roles=["Admin"])
         db_session.commit()
-
 
 
 # Customized Role model for SQL-Admin
@@ -94,47 +105,59 @@ class MyAdminIndexView(AdminIndexView):
         return current_user.has_role("Admin")
 
 # Customized Role model for SQL-Admin
-class UserAdmin(ModelView):  
+
+
+class UserAdmin(ModelView):
     def is_accessible(self):
         return current_user.has_role("Admin")
 
-admin = Admin(app, name=app.config["LINE_NAME"] + " Admin", template_mode="bootstrap3", index_view=MyAdminIndexView(), url="/")
+
+admin = Admin(app, name=app.config["LINE_NAME"] + " Admin",
+              template_mode="bootstrap3", index_view=MyAdminIndexView(), url="/")
 admin.add_view(UserAdmin(User, db_session))
 admin.add_view(UserAdmin(Role, db_session))
 admin.add_link(MenuLink(name='Tabule', category='Odkazy', endpoint='index'))
 
-#flask_mail
+# flask_mail
 mail = Mail(app)
 
 # views
+
+
 @app.route("/")
-def index(): 
-    return render_template("index.html", line_name=current_app.config["LINE_NAME"], name_space = current_app.config["NAME_SPACE"])
+def index():
+    return render_template("index.html", line_name=current_app.config["LINE_NAME"], name_space=current_app.config["NAME_SPACE"])
+
 
 @app.route("/control")
 @login_required
 def control():
-    return render_template("control.html", line_name=current_app.config["LINE_NAME"], name_space = current_app.config["NAME_SPACE"])
+    return render_template("control.html", line_name=current_app.config["LINE_NAME"], name_space=current_app.config["NAME_SPACE"])
+
 
 @app.route("/settingsMain")
 @login_required
 def settingsMain():
-    return render_template("settingsMain.html", line_name=current_app.config["LINE_NAME"], name_space = current_app.config["NAME_SPACE"])
+    return render_template("settingsMain.html", line_name=current_app.config["LINE_NAME"], name_space=current_app.config["NAME_SPACE"])
+
 
 @app.route("/settingsShift")
 @login_required
 def settingsShift():
-    return render_template("settingsShift.html", line_name=current_app.config["LINE_NAME"], name_space = current_app.config["NAME_SPACE"])
+    return render_template("settingsShift.html", line_name=current_app.config["LINE_NAME"], name_space=current_app.config["NAME_SPACE"])
+
 
 @app.route("/settingsSirene")
 @login_required
 def settingsSirene():
-    return render_template("settingsSirene.html", line_name=current_app.config["LINE_NAME"], name_space = current_app.config["NAME_SPACE"])
+    return render_template("settingsSirene.html", line_name=current_app.config["LINE_NAME"], name_space=current_app.config["NAME_SPACE"])
+
 
 # socketIO
 with app.app_context():
-    namespace=current_app.config.get("NAME_SPACE")
-    room=current_app.config.get("ROOM")
+    namespace = current_app.config.get("NAME_SPACE")
+    room = current_app.config.get("ROOM")
+
 
 def authenticated_only(f):
     @functools.wraps(f)
@@ -145,42 +168,49 @@ def authenticated_only(f):
             return f(*args, **kwargs)
     return wrapped
 
+
 @socketio.on("connect", namespace=namespace)
 def test_connect():
     if current_user.is_authenticated and current_user.email:
         print("Client " + current_user.email + " connected")
         join_room(room)
-    else :
+    else:
         print("Client Anonymous connected")
+
 
 @socketio.on("disconnect", namespace=namespace)
 def test_disconnect():
     if current_user.is_authenticated and current_user.email:
         print("Client " + current_user.email + " disconnected")
         join_room(room)
-    else :
+    else:
         print("Client Anonymous disconnected")
 
+
 @socketio.on("publish", namespace=namespace)
-#@authenticated_only
-def handle_publish(data):   
+# @authenticated_only
+def handle_publish(data):
     if current_user.is_authenticated:
-        msg = json.loads(data)     
+        msg = json.loads(data)
         mqtt.publish(msg["topic"], json.dumps(msg["payload"]), qos=2)
 
 # mqtt
+
+
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
     # Mqtt subscirbe topics
     for key, val in topics.items():
         mqtt.subscribe(key)
-        #print(key)
-    #pass
+        # print(key)
+    # pass
+
 
 @mqtt.on_disconnect()
 def handle_disconnect():
-#   mqtt.unsubscribe_all()
+    #   mqtt.unsubscribe_all()
     socketio.emit('actualValuesError', None, namespace=namespace, room=None)
+
 
 @mqtt.on_message()
 def handle_mqtt_message(client, userdata, message):
@@ -194,12 +224,15 @@ def handle_mqtt_message(client, userdata, message):
             keys = payload["signal"].split(";")
             values = payload["value"]
             msg["payload"] = dict(zip(keys, values))
-            socketio.emit(msg["topic"], msg, namespace=topics[msg["topic"]]["namespace"], room=topics[msg["topic"]]["room"])
+            socketio.emit(msg["topic"], msg, namespace=topics[msg["topic"]]
+                          ["namespace"], room=topics[msg["topic"]]["room"])
+
 
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
     print(level, buf)
     pass
+
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
