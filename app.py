@@ -6,7 +6,6 @@ import eventlet
 import json
 from flask import Flask, render_template, url_for, redirect, current_app
 from flask_mail import Mail
-from flask_jsglue import JSGlue
 from flask_mqtt import Mqtt
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
@@ -24,9 +23,6 @@ eventlet.monkey_patch()
 # Create Flask application
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
-
-JSGlue(app)
-
 
 # SocketIO
 async_mode = "eventlet"

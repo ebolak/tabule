@@ -1,84 +1,86 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
-        <meta charset="utf-8"/>
-        <meta content="initial-scale=1, width=device-width" name="viewport"/>
-        <link href="{{ url_for('static', filename='vendor/css/bootstrap.min.css', v='4.0.0') }}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='vendor/css/fontawesome-all.css', v='5.0.6') }}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>
-        <!-- http://stewartjpark.com/Flask-JSGlue/ -->
-        {{ JSGlue.include() }}
-        
-        <title>Production Counter v1.8.3: {% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <script type="text/javascript">
-            var line_name = "{{line_name}}";
-            var name_space = "{{name_space}}";
-        </script>
-        <div class="container">
-            <!-- Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ url_for('index') }}">{{ line_name }}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-                </button>
+<html lang="en">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                     {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('control') }}">Ovládání</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Nastavení</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url_for('settingsMain') }}">Hlavní</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url_for('settingsShift') }}">Směny</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url_for('settingsSirene') }}">Siréna</a>
-                            </div>
-                        </li>
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+    <meta charset="utf-8" />
+    <meta content="initial-scale=1, width=device-width" name="viewport" />
+    <link href="{{ url_for('static', filename='vendor/css/bootstrap.min.css', v='4.0.0') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/css/fontawesome-all.css', v='5.0.6') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" />
+    <title>Production Counter v1.9: {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var line_name = "{{line_name}}";
+        var name_space = "{{name_space}}";
+    </script>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('index') }}">{{ line_name }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('control') }}">Ovládání</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown">Nastavení</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('settingsMain') }}">Hlavní</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url_for('settingsShift') }}">Směny</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url_for('settingsSirene') }}">Siréna</a>
+                        </div>
+                    </li>
                     {% endif %}
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
+                </ul>
+                <ul class="navbar-nav ml-auto">
                     {% if not current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('security.login') }}">Přihlásit</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('security.login') }}">Přihlásit</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                <i class="fa fa-user"></i>
-                                {% if current_user.email -%}
-                                    {{ current_user.email }}
-                                {%- endif %}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url_for('security.logout') }}">Odhlásit</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url_for('security.change_password') }}">Změnit heslo</a>
-                                {% if current_user.has_role("Admin") %}
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/admin">Správa uživatelů</a>
-                                {%- endif %}
-                            </div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown">
+                            <i class="fa fa-user"></i>
+                            {% if current_user.email -%}
+                            {{ current_user.email }}
+                            {%- endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('security.logout') }}">Odhlásit</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ url_for('security.change_password') }}">Změnit heslo</a>
+                            {% if current_user.has_role("Admin") %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/admin">Správa uživatelů</a>
+                            {%- endif %}
+                        </div>
 
-                        </li>
+                    </li>
                     {% endif %}
-                    </ul>                    
-                </div>
-            </nav>
+                </ul>
+            </div>
+        </nav>
 
-            <main>
-                {% block main %}{% endblock %}
-            </main>
-        </div>
-        <!-- Sticky footer -->
-	<!-- disabled
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </div>
+    <!-- Sticky footer -->
+    <!-- disabled
         {% if current_user.is_authenticated %}
             <footer class="container-fluid">
                 <nav class="navbar fixed-bottom navbar-expand-lg bg-dark navbar-inverse bg-inverse">
@@ -98,16 +100,22 @@
 	-->
 
     {% block tail_js %}
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/socket.io.slim.js', v='2.0.4') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/popper.min.js', v='1.12.9') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/jquery-3.2.1.slim.min.js', v='3.2.1') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/js/bootstrap.min.js', v='4.0.0') }}"></script>
+    <script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/js/socket.io.min.js', v='4.5.4') }}"></script>
+    <!-- 
+        <script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/js/popper.min.js', v='1.12.9') }}"></script>
+    -->
+    <script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/js/jquery-3.2.1.slim.min.js', v='3.2.1') }}"></script>
+    <script type="text/javascript"
+        src="{{ url_for('static', filename='vendor/js/bootstrap.min.js', v='4.0.0') }}"></script>
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-    {% endblock %}        
-    </body>
-
-    
+    {% endblock %}
+</body>
 
 
-    
+
+
+
 </html>
