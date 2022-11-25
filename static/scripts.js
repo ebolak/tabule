@@ -492,7 +492,12 @@ $(document).ready(function () {
     $('#control-startTaktTimeCnt').on('click', function (e) {
         var msg = {}
         msg.topic = line_name + '/control/startTaktTimeCnt';
-        msg.payload = { 'value': [1] };
+        msg.payload = {
+            'value': ['1'],
+            'nodeId': 'ns=3;s=\"control\".\"startTaktTimeCnt\"',
+            'datatypeName': 'Int32',
+            'name': 'startTaktTimeCnt'
+        };
         socket.emit('publish', JSON.stringify(msg));
         console.log(msg);
     });
@@ -501,28 +506,16 @@ $(document).ready(function () {
     $('#control-stopTaktTimeCnt').on('click', function (e) {
         var msg = {}
         msg.topic = line_name + '/control/stopTaktTimeCnt';
-        msg.payload = { 'value': [1] };
+        msg.payload = {
+            'value': ['1'],
+            'nodeId': 'ns=3;s=\"control\".\"stopTaktTimeCnt\"',
+            'datatypeName': 'Int32',
+            'name': 'stopTaktTimeCnt'
+        };
         socket.emit('publish', JSON.stringify(msg));
         console.log(msg);
     });
 
-    // control-releaseProduction
-    $('#control-releaseProduction').on('click', function (e) {
-        var msg = {}
-        msg.topic = line_name + '/control/releaseProduction';
-        msg.payload = { 'value': [1] };
-        socket.emit('publish', JSON.stringify(msg));
-        console.log(msg);
-    });
-
-    // control-stopProduction
-    $('#control-stopProduction').on('click', function (e) {
-        var msg = {}
-        msg.topic = line_name + '/control/stopProduction';
-        msg.payload = { 'value': [1] };
-        socket.emit('publish', JSON.stringify(msg));
-        console.log(msg);
-    });
 
     // ***********************
     // settingsShift
@@ -804,13 +797,14 @@ $(document).ready(function () {
     // settingsSirene-save-toneSelect
     $('#settingsSirene-save-toneSelect').on('click', function (e) {
         var value = $('#settingsSirene-toneSelect').val();
+        var nodeId = toneSelectSource.split('/');
         var msg = {}
         msg.topic = line_name + '/settingsSirene/' + toneSelectSource;
         msg.payload = {
             'value': [value],
-            'nodeId': 'ns=3;s=\"settingsSirene\".\"' + toneSelectSource + '\"',
+            'nodeId': 'ns=3;s=\"settingsSirene\".\"' + nodeId[0] + '\".\"' + nodeId[1] + '\"',
             'datatypeName': 'Int32',
-            'name': toneSelectSource
+            'name': nodeId[1]
         };
         socket.emit('publish', JSON.stringify(msg));
         console.log(msg);
@@ -830,13 +824,14 @@ $(document).ready(function () {
     // settingsSirene-save-toneDuration
     $('#settingsSirene-save-toneDuration').on('click', function (e) {
         var value = parseInt($('#settingsSirene-inputToneDuration').val() * 1000);
+        var nodeId = toneDurationSource.split('/');
         var msg = {}
         msg.topic = line_name + '/settingsSirene/' + toneDurationSource;
         msg.payload = {
             'value': [value],
-            'nodeId': 'ns=3;s=\"settingsSirene\".\"' + toneDurationSource + '\"',
-            'datatypeName': 'UInt32',
-            'name': timeInputSource
+            'nodeId': 'ns=3;s=\"settingsSirene\".\"' + nodeId[0] + '\".\"' + nodeId[1] + '\"',
+            'datatypeName': 'Int32',
+            'name': nodeId[1]
         };
         socket.emit('publish', JSON.stringify(msg));
         console.log(msg);
@@ -848,7 +843,7 @@ $(document).ready(function () {
         msg.topic = line_name + '/settingsSirene/green/test';
         msg.payload = {
             'value': ['1'],
-            'nodeId': 'ns=3;s=\"settingsSirene\".\"green\".\"test',
+            'nodeId': 'ns=3;s=\"settingsSirene\".\"green\".\"test\"',
             'datatypeName': 'Int32',
             'name': 'test'
         };
@@ -862,7 +857,7 @@ $(document).ready(function () {
         msg.topic = line_name + '/settingsSirene/yellow/test';
         msg.payload = {
             'value': ['1'],
-            'nodeId': 'ns=3;s=\"settingsSirene\".\"yellow\".\"test',
+            'nodeId': 'ns=3;s=\"settingsSirene\".\"yellow\".\"test\"',
             'datatypeName': 'Int32',
             'name': 'test'
         };
@@ -876,10 +871,11 @@ $(document).ready(function () {
         msg.topic = line_name + '/settingsSirene/red/test';
         msg.payload = {
             'value': ['1'],
-            'nodeId': 'ns=3;s=\"settingsSirene\".\"red\".\"test',
+            'nodeId': 'ns=3;s=\"settingsSirene\".\"red\".\"test\"',
             'datatypeName': 'Int32',
             'name': 'test'
         };
+        //socket.emit('publish', JSON.stringify(msg));
         socket.emit('publish', JSON.stringify(msg));
         console.log(msg);
     });
