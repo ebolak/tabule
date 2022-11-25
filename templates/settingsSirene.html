@@ -1,68 +1,78 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Settings Sirene
+Settings Sirene
 {% endblock %}
 
 {% block main %}
 {% include "security/_messages.html" %}
 <div class="container mt-3">
 
-	<div class="table-responsive mt-1">          
+	<div class="table-responsive mt-1">
 		<table id="settingsShift" class="table" cellspacing="0" width="100%">
-	        <thead>
-	        	<tr>
-	                <th class="text-center">Barva</td>
-	                <th class="text-center">Volba tónu</th>
-	                <th class="text-center">Délka tónu</th>
-	                <th class="text-center">Test</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td class="bg-success text-white"></td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-green-toneSelect" type="button" value="" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneSelectModal" 
-	                		data-source="green/toneSelect">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-green-toneDuration" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneDurationModal" 
-	                		data-source="green/toneDuration">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-green-test" type="button" class="btn btn-lg btn-primary">Test</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td class="bg-warning text-dark"></td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-yellow-toneSelect" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneSelectModal" 
-	                		data-source="yellow/toneSelect">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-yellow-toneDuration" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneDurationModal" 
-	                		data-source="yellow/toneDuration">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-yellow-test" type="button" class="btn btn-lg btn-primary">Test</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td class="bg-danger text-white"></td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-red-toneSelect" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneSelectModal" 
-	                		data-source="red/toneSelect">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-red-toneDuration" type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#settingsSirene-toneDurationModal" 
-	                		data-source="red/toneDuration">####</button>
-	                </td>
-	                <td class="text-center">
-	                	<button id="settingsSirene-red-test" type="button" class="btn btn-lg btn-primary">Test</button>
-	                </td>
-	            </tr>
-	        </tbody>
-	    </table>
+			<thead>
+				<tr>
+					<th class="text-center">Barva</td>
+					<th class="text-center">Volba tónu</th>
+					<th class="text-center">Délka tónu</th>
+					<th class="text-center">Test</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="bg-success text-white"></td>
+					<td class="text-center">
+						<button id="settingsSirene-green-toneSelect" type="button" value=""
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneSelectModal" data-source="green/toneSelect">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-green-toneDuration" type="button"
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneDurationModal"
+							data-source="green/toneDuration">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-green-test" type="button"
+							class="btn btn-lg btn-primary">Test</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="bg-warning text-dark"></td>
+					<td class="text-center">
+						<button id="settingsSirene-yellow-toneSelect" type="button"
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneSelectModal" data-source="yellow/toneSelect">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-yellow-toneDuration" type="button"
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneDurationModal"
+							data-source="yellow/toneDuration">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-yellow-test" type="button"
+							class="btn btn-lg btn-primary">Test</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="bg-danger text-white"></td>
+					<td class="text-center">
+						<button id="settingsSirene-red-toneSelect" type="button"
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneSelectModal" data-source="red/toneSelect">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-red-toneDuration" type="button"
+							class="btn btn-lg btn-outline-secondary" data-toggle="modal"
+							data-target="#settingsSirene-toneDurationModal" data-source="red/toneDuration">####</button>
+					</td>
+					<td class="text-center">
+						<button id="settingsSirene-red-test" type="button" class="btn btn-lg btn-primary">Test</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 
@@ -79,11 +89,11 @@
 						<div class="input-group mb-3 mt-1">
 							<select class="custom-select" id="settingsSirene-toneSelect">
 								{% for n in range(0,66) %}
-									{% if loop.first %}
-										<option value="{{n}}">Žádný tón</option>
-									{% else %}
-										<option value="{{n}}">Tón {{n}}</option>
-									{% endif %} 
+								{% if loop.first %}
+								<option value="{{n}}">Žádný tón</option>
+								{% else %}
+								<option value="{{n}}">Tón {{n}}</option>
+								{% endif %}
 								{% endfor %}
 							</select>
 						</div>
@@ -92,7 +102,8 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-					<button id="settingsSirene-save-toneSelect" type="button" class="btn btn-primary" data-dismiss="modal">Uložit změny</button>
+					<button id="settingsSirene-save-toneSelect" type="button" class="btn btn-primary"
+						data-dismiss="modal">Uložit změny</button>
 				</div>
 			</div>
 		</div>
@@ -110,18 +121,20 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="toneDuration">Délka tónu[s]:</label>
-						<input type="text" class="form-control" id="settingsSirene-inputToneDuration" onkeypress="return isNumberOrDot(event)">
+						<input type="text" class="form-control" id="settingsSirene-inputToneDuration"
+							onkeypress="return isNumberOrDot(event)">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-					<button id="settingsSirene-save-toneDuration" type="button" class="btn btn-primary" data-dismiss="modal">Uložit změny</button>
+					<button id="settingsSirene-save-toneDuration" type="button" class="btn btn-primary"
+						data-dismiss="modal">Uložit změny</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	
+
 </div>
 
 {% endblock %}

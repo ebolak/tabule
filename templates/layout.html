@@ -6,7 +6,7 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
     <meta charset="utf-8" />
     <meta content="initial-scale=1, width=device-width" name="viewport" />
-    <link href="{{ url_for('static', filename='vendor/css/bootstrap.min.css', v='4.0.0') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/css/bootstrap.min.css', v='4.6.2') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='vendor/css/fontawesome-all.css', v='5.0.6') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" />
     <title>Production Counter v1.9: {% block title %}{% endblock %}</title>
@@ -102,14 +102,10 @@
     {% block tail_js %}
     <script type="text/javascript"
         src="{{ url_for('static', filename='vendor/js/socket.io.min.js', v='4.5.4') }}"></script>
-    <!-- 
-        <script type="text/javascript"
-        src="{{ url_for('static', filename='vendor/js/popper.min.js', v='1.12.9') }}"></script>
-    -->
     <script type="text/javascript"
-        src="{{ url_for('static', filename='vendor/js/jquery-3.2.1.slim.min.js', v='3.2.1') }}"></script>
+        src="{{ url_for('static', filename='vendor/js/jquery-3.6.1.min.js', v='3.6.1') }}"></script>
     <script type="text/javascript"
-        src="{{ url_for('static', filename='vendor/js/bootstrap.min.js', v='4.0.0') }}"></script>
+        src="{{ url_for('static', filename='vendor/js/bootstrap.bundle.min.js', v='4.6.2') }}"></script>
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     {% endblock %}
 </body>

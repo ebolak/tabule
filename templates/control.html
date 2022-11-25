@@ -1,70 +1,75 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Control
+Control
 {% endblock %}
 
 {% block main %}
 {% include "security/_messages.html" %}
 <div class="container mt-3">
-		<div class="row mt-1">
-			<div class="col-md-6">	
-				<div class="table-responsive">          
-			    	<table id="actualValues" class="table table-striped" cellspacing="0" width="100%">
-			            <thead>
-			            	<tr>
-			            		<th class="text-center" colspan="2">Aktuální hodnoty</th>	
-			            	</tr>
-			            </thead>
-			            <tbody>
-				            <tr>
-				                <td>Plán</td>
-				                <td id="target">####</td>
-				                <td>ks</td>
-				            </tr>
-				            <tr>
-				                <td>Vyrobeno</td>
-				                <td id="actual">####</td>
-				                <td>ks</td>
-				            </tr>
-				            <tr>
-				                <td>Ok</td>
-				                <td id="ok">####</td>
-				                <td>ks</td>
-				            </tr>
-				            <tr>
-				                <td>Rozdíl</td>
-				                <td id="diff">####</td>
-				                <td>ks</td>
-				            </tr>
-				            <tr>
-				                <td>taktTime</td>
-				                <td id="taktTime">####</td>
-				                <td>s</td>
-				            </tr>
-			            </tbody>
-			        </table>
-				</div>
-				<!--
+	<div class="row mt-1">
+		<div class="col-md-6">
+			<div class="table-responsive">
+				<table id="actualValues" class="table table-striped" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th class="text-center" colspan="2">Aktuální hodnoty</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Plán</td>
+							<td id="target">####</td>
+							<td>ks</td>
+						</tr>
+						<tr>
+							<td>Vyrobeno</td>
+							<td id="actual">####</td>
+							<td>ks</td>
+						</tr>
+						<tr>
+							<td>Ok</td>
+							<td id="ok">####</td>
+							<td>ks</td>
+						</tr>
+						<tr>
+							<td>Rozdíl</td>
+							<td id="difference">####</td>
+							<td>ks</td>
+						</tr>
+						<tr>
+							<td>taktTime</td>
+							<td id="taktTime">####</td>
+							<td>s</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--
 				<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block ">Reset aktualní výroby</button>
 				-->
-				<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#control-resetCountersModal">Reset aktualní výroby</button>
-			
-			</div>
-			<div class="col-md-6">
-				<table id="control-buttons" class="table table-striped" cellspacing="0" width="100%">
-					<thead>
-		            	<tr>
-		            		<th class="text-center" colspan="2">Ovládání počítadla</th>	
-		            	</tr>
-		            </thead>
-				</table> 
-				<button id="control-startTaktTimeCnt" type="button" class="btn btn-lg btn-primary btn-block mt-5">Spustit počítání</button>
-				<button id="control-stopTaktTimeCnt" type="button" class="btn btn-lg btn-primary btn-block mt-5">Zastavit počítání</button>
-				<button id="control-autostartTaktTimeCntEn" type="button" class="btn btn-lg btn-block btn-secondary mt-5" disabled>Automaticky nastavením směn</button>
-				<button id="control-taktTimeCntOff" type="button" class="btn btn-lg btn-block btn-danger mt-5" disabled>Vypnuto</button>
-			</div>
+			<button id="control-resetCounters" type="button" class="btn btn-lg btn-primary btn-block"
+				data-toggle="modal" data-target="#control-resetCountersModal">Reset aktualní výroby</button>
+
 		</div>
+		<div class="col-md-6">
+			<table id="control-buttons" class="table table-striped" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th class="text-center" colspan="2">Ovládání počítadla</th>
+					</tr>
+				</thead>
+			</table>
+			<button id="control-startTaktTimeCnt" type="button" class="btn btn-lg btn-primary btn-block mt-5">Spustit
+				počítání</button>
+			<button id="control-stopTaktTimeCnt" type="button" class="btn btn-lg btn-primary btn-block mt-5">Zastavit
+				počítání</button>
+			<button id="control-autostartTaktTimeCntEn" type="button" class="btn btn-lg btn-block btn-secondary mt-5"
+				disabled>Automaticky nastavením směn</button>
+			<button id="control-taktTimeCntOff" type="button" class="btn btn-lg btn-block btn-danger mt-5"
+				disabled>Vypnuto</button>
+		</div>
+	</div>
 </div>
 
 <!-- controlResetModal -->
@@ -81,9 +86,10 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-				<button id="control-resetCountersConfirm" type="button" class="btn btn-primary" data-dismiss="modal">RESET</button>
+				<button id="control-resetCountersConfirm" type="button" class="btn btn-primary"
+					data-dismiss="modal">RESET</button>
 			</div>
 		</div>
 	</div>
-</div>				      
+</div>
 {% endblock %}
