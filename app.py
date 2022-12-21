@@ -187,28 +187,10 @@ def test_disconnect():
 
 
 @socketio.on("publish", namespace=namespace)
-# @authenticated_only
 def handle_publish(data):
     if current_user.is_authenticated:
         msg = json.loads(data)
         mqtt.publish(msg["topic"], json.dumps(msg["payload"]), qos=2)
-
-# mqtt
-
-
-@mqtt.on_connect()
-def handle_connect(client, userdata, flags, rc):
-    # Mqtt subscirbe topics
-    for key, val in topics.items():
-        mqtt.subscribe(key)
-        # print(key)
-    # pass
-
-
-@mqtt.on_disconnect()
-def handle_disconnect():
-    #   mqtt.unsubscribe_all()
-    socketio.emit('actualValuesError', None, namespace=namespace, room=None)
 
 
 @mqtt.on_message()
@@ -230,7 +212,24 @@ def handle_mqtt_message(client, userdata, message):
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
     print(level, buf)
-    pass
+#   pass
+
+
+@mqtt.on_connect()
+def handle_connect(client, userdata, flags, rc):
+    print("Mqtt connect")
+    socketio.emit('Mqtt connect', None, namespace=namespace, room=None)
+    # Mqtt subscirbe topics
+    for key, val in topics.items():
+        mqtt.subscribe(key)
+        print("Subscribe topic: " + key)
+    # pass
+
+
+@mqtt.on_disconnect()
+def handle_disconnect():
+    print("Mqtt disconnect")
+    socketio.emit('Mqtt disconnect', None, namespace=namespace, room=None)
 
 
 if __name__ == "__main__":

@@ -193,6 +193,22 @@ var updateSettingsShift = function (msg) {
     // break5End
     $('#settingsShift-break5End').html(msToTime(msg.payload['shiftBreak5End']));
 };
+
+var dataClear = function () {
+    $('#target').text('####');
+    $('#actual').text('####');
+    $('#ok').text('####');
+    $('#difference').text('####');
+    $('#bekido').text('####');
+    $('#taktTime').text('####');
+    $('#previousTarget').text('####');
+    $('#previousActual').text('####');
+    $('#previousOk').text('####');
+    $('#previousDifference').text('####');
+    $('#previousBekido').text('####');
+    $('#previousTaktTime').text('####')
+};
+
 // kick off
 $(document).ready(function () {
     namespace = name_space; // change to an empty string to use the global namespace
@@ -200,20 +216,21 @@ $(document).ready(function () {
     // this is specially important when using the global namespace
     var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
 
-    // on connect
+    // socket.io on connect
     socket.on('connect', function (msg) {
-        console.log('Connected!');
+        console.log('Socket.io Connect!');
     });
 
-    // on disconect
+    // socket.io on disconect
     socket.on('disconnect', function () {
-        console.log('disconnect');
-        $('#target').text('####');
-        $('#actual').text('####');
-        $('#ok').text('####');
-        $('#diff').text('####');
-        $('#bekido').text('####');
-        $('#taktTime').text('####');
+        console.log('Socket.io disconnect!');
+        dataClear();
+        //$('#target').text('####');
+        //$('#actual').text('####');
+        //$('#ok').text('####');
+        //$('#diff').text('####');
+        //$('#bekido').text('####');
+        //$('#taktTime').text('####');
     });
 
     // on disconect
@@ -226,14 +243,26 @@ $(document).ready(function () {
         $('#bekido').text('####');
     });
 
-    // on disconect
+    // socket.io connect_error
     socket.on('connect_error', function (err) {
         console.log('connect error');
         $('#target').text('####');
         $('#actual').text('####');
         $('#ok').text('####');
-        $('#diff').text('####');
+        $('#difference').text('####');
         $('#bekido').text('####');
+    });
+
+    // on Mqtt connect
+    socket.on('Mqtt connect', function (err) {
+        dataClear();
+        console.log('Mqtt connect!');
+    });
+
+    // on Mqtt disconnect
+    socket.on('Mqtt disconnect', function (err) {
+        dataClear();
+        console.log('Mqtt disconnect!');
     });
 
     // *****************************
@@ -280,7 +309,7 @@ $(document).ready(function () {
             $('#previousTarget').text(msg.payload['target']);
             $('#previousActual').text(msg.payload['actual']);
             $('#previousOk').text(msg.payload['ok']);
-            $('#previousDiff').text(msg.payload['difference']);
+            $('#previousDifference').text(msg.payload['difference']);
             $('#previousBekido').text(computeBekido(msg.payload['ok'], msg.payload['taktTimeCnt']));
         }
         memPreviousValues = msg;
