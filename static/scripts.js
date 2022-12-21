@@ -207,6 +207,8 @@ var dataClear = function () {
     $('#previousDifference').text('####');
     $('#previousBekido').text('####');
     $('#previousTaktTime').text('####')
+    memActualValues = null;
+    memPreviousValues = null;
 };
 
 // kick off
@@ -225,12 +227,6 @@ $(document).ready(function () {
     socket.on('disconnect', function () {
         console.log('Socket.io disconnect!');
         dataClear();
-        //$('#target').text('####');
-        //$('#actual').text('####');
-        //$('#ok').text('####');
-        //$('#diff').text('####');
-        //$('#bekido').text('####');
-        //$('#taktTime').text('####');
     });
 
     // on disconect
