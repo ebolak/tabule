@@ -221,6 +221,7 @@ $(document).ready(function () {
     // socket.io on connect
     socket.on('connect', function (msg) {
         console.log('Socket.io Connect!');
+        dataClear();
     });
 
     // socket.io on disconect
@@ -232,21 +233,13 @@ $(document).ready(function () {
     // on disconect
     socket.on('actualValuesError', function () {
         console.log('actualValuesError');
-        $('#target').text('####');
-        $('#actual').text('####');
-        $('#ok').text('####');
-        $('#diff').text('####');
-        $('#bekido').text('####');
+        dataClear();
     });
 
     // socket.io connect_error
     socket.on('connect_error', function (err) {
         console.log('connect error');
-        $('#target').text('####');
-        $('#actual').text('####');
-        $('#ok').text('####');
-        $('#difference').text('####');
-        $('#bekido').text('####');
+        dataClear(); v
     });
 
     // on Mqtt connect
@@ -306,7 +299,7 @@ $(document).ready(function () {
             $('#previousActual').text(msg.payload['actual']);
             $('#previousOk').text(msg.payload['ok']);
             $('#previousDifference').text(msg.payload['difference']);
-            $('#previousBekido').text(computeBekido(msg.payload['ok'], msg.payload['taktTimeCnt']));
+            $('#previousBekido').text(computeBekido(msg.payload['ok'], msg.payload['counterTactTime']));
         }
         memPreviousValues = msg;
     });
