@@ -30,7 +30,7 @@ socketio = SocketIO(app, async_mode=async_mode, manage_session=False)
 
 
 # Mqtt
-mqtt = Mqtt(app)
+mqtt = Mqtt(app, connect_async=True)
 with app.app_context():
     topics = current_app.config.get("MQTT_TOPICS")
     namespace = current_app.config["NAME_SPACE"]
