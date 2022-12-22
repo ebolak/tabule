@@ -34,7 +34,7 @@ mqtt = Mqtt(app, connect_async=True)
 with app.app_context():
     topics = current_app.config.get("MQTT_TOPICS")
     namespace = current_app.config["NAME_SPACE"]
-
+flag_mqtt_connected = 0
 
 # overriding default security forms?
 
@@ -175,6 +175,11 @@ def test_connect():
         join_room(room)
     else:
         print("Client Anonymous connected")
+    global flag_mqtt_connected
+    if flag_mqtt_connected:
+        socketio.emit('Mqtt connect', None, namespace=namespace, room=None)
+    else:
+        socketio.emit('Mqtt disconnect', None, namespace=namespace, room=None)
 
 
 @socketio.on("disconnect", namespace=namespace)
@@ -218,6 +223,8 @@ def handle_logging(client, userdata, level, buf):
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
     print("Mqtt connect")
+    global flag_mqtt_connected
+    flag_mqtt_connected = 1
     socketio.emit('Mqtt connect', None, namespace=namespace, room=None)
     # Mqtt subscirbe topics
     for key, val in topics.items():
@@ -229,6 +236,8 @@ def handle_connect(client, userdata, flags, rc):
 @mqtt.on_disconnect()
 def handle_disconnect():
     print("Mqtt disconnect")
+    global flag_mqtt_connected
+    flag_mqtt_connected = 0
     socketio.emit('Mqtt disconnect', None, namespace=namespace, room=None)
 
 
