@@ -239,7 +239,7 @@ $(document).ready(function () {
     // socket.io connect_error
     socket.on('connect_error', function (err) {
         console.log('connect error');
-        dataClear(); v
+        dataClear();
     });
 
     // on Mqtt connect
