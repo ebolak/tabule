@@ -33,34 +33,17 @@
         "color": "#DDAA99"
     },
     {
-        "id": "4a43b597fbe403a2",
-        "type": "function",
-        "z": "71891cfeee524944",
-        "name": "Convert MQTT to IoT/IIoT OPC UA 4.0.11 write node",
-        "func": "let value = msg.payload[\"value\"][0];\n\nlet parts = msg.topic.split(\"/\");\nlet db = parts[1];\nlet variable = parts[2];\n\nlet ns = \"ns=3\";\nlet s = \"s=\\\"\" + db + \"\\\".\\\"\" + variable + \"\\\"\";\n\n\nmsg.payload = {\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n                        \"name\":variable,\n                        \"nodeId\": ns + \";\" + s,\n                        \"datatypeName\":\"Int32\"\n                        }],\n    \"valuesToWrite\": [{value}]\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3feecbbeddb7ac94",
         "type": "function",
         "z": "71891cfeee524944",
-        "name": "Convert MQTT to IoT/IIoT OPC UA 4.0.11 write node",
+        "name": "Convert MQTT to IoT/IIoT OPC UA 4.1.2 write node",
         "func": "let name = msg.payload[\"name\"]; \nlet nodeId = msg.payload[\"nodeId\"];\nlet datatypeName = msg.payload[\"datatypeName\"];\nlet value = msg.payload[\"value\"][0];\n\nmsg.payload = {\n    \"nodetype\":\"inject\",\n    \"injectType\":\"write\",\n    \"addressSpaceItems\":[{\n        \"name\": name,\n        \"nodeId\": nodeId,\n        \"datatypeName\": datatypeName\n        }],\n    \"valuesToWrite\": [{value}]\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 470,
         "y": 220,
         "wires": [
             []
@@ -103,14 +86,14 @@
         "id": "b3063867dd486cbd",
         "type": "function",
         "z": "e48651189e47bd2a",
-        "name": "OLD Convert IoT/IIoT OPC UA 4.0.11 to MQTT",
+        "name": "Convert IoT/IIoT OPC UA 4.1.2 to MQTT",
         "func": "/**\nOPCUA - IIoT - Read\nParse Result : True\nSend Just Values : True\nShow Activities : True\nShow Errors : True\n */\n\n\nlet signalArray = [];\nlet valueArray = []\n\nfunction value(data) { \n  valueArray.push(data.value.value);\n}\n\nfunction signal(data) {\n  signalArray.push(data.name); \n}\n\nmsg.payload.value.results.forEach(value);\nmsg.payload.addressSpaceItems.forEach(signal);\n\nlet signals = signalArray.join(\";\");\n\nmsg.payload = {\"signal\": signals, \"value\": valueArray};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
+        "x": 420,
         "y": 80,
         "wires": [
             []
@@ -218,7 +201,7 @@
         "type": "mqtt out",
         "z": "ce764ed3e446ced5",
         "name": "",
-        "topic": "",
+        "topic": "L14/actualValues",
         "qos": "0",
         "retain": "false",
         "respTopic": "",
@@ -227,7 +210,7 @@
         "correl": "",
         "expiry": "",
         "broker": "33fe6ee08f0d5314",
-        "x": 1210,
+        "x": 1250,
         "y": 100,
         "wires": []
     },
@@ -519,7 +502,8 @@
         "y": 100,
         "wires": [
             [
-                "9a5bf84ef8826854"
+                "9a5bf84ef8826854",
+                "69b52342468aaa1b"
             ]
         ]
     },
@@ -540,9 +524,9 @@
         "id": "094cac5d92a182fe",
         "type": "comment",
         "z": "ce764ed3e446ced5",
-        "name": "node-red-contrib-iiot-opcua v4.0.11",
+        "name": "node-red-contrib-iiot-opcua v4.1.2",
         "info": "",
-        "x": 460,
+        "x": 450,
         "y": 20,
         "wires": []
     },
@@ -2305,10 +2289,27 @@
         ]
     },
     {
+        "id": "69b52342468aaa1b",
+        "type": "debug",
+        "z": "ce764ed3e446ced5",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 140,
+        "wires": []
+    },
+    {
         "id": "33fe6ee08f0d5314",
         "type": "mqtt-broker",
         "name": "MQTT_Broker",
-        "broker": "172.17.0.2",
+        "broker": "127.0.0.1",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -2336,17 +2337,17 @@
         "type": "OPCUA-IIoT-Connector",
         "discoveryUrl": "",
         "endpoint": "opc.tcp://192.168.1.10:4840",
-        "keepSessionAlive": true,
+        "endpointMustExist": false,
+        "keepSessionAlive": false,
         "loginEnabled": false,
-        "securityPolicy": "None",
-        "securityMode": "NONE",
         "name": "OPC_server",
         "showErrors": true,
+        "securityPolicy": "None",
+        "securityMode": "None",
         "individualCerts": false,
         "publicCertificateFile": "",
         "privateKeyFile": "",
         "defaultSecureTokenLifetime": "",
-        "endpointMustExist": false,
         "autoSelectRightEndpoint": false,
         "strategyMaxRetry": "",
         "strategyInitialDelay": "",
