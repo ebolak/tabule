@@ -244,7 +244,6 @@ $(document).ready(function () {
 
     // on Mqtt connect
     socket.on('Mqtt connect', function (err) {
-        dataClear();
         console.log('Mqtt connect!');
     });
 
