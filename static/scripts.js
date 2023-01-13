@@ -216,47 +216,42 @@ $(document).ready(function () {
     namespace = name_space; // change to an empty string to use the global namespace
     // the socket.io documentation recommends sending an explicit package upon connection
     // this is specially important when using the global namespace
-    var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+
+    const socket = io(namespace);
 
     // socket.io on connect
-    socket.on('connect', function (msg) {
-        console.log('Socket.io Connect!');
+    socket.on("connect", () => {
+        console.log('Socket.io Connect! Id: ' + socket.id);
         dataClear();
     });
 
     // socket.io on disconect
-    socket.on('disconnect', function () {
-        console.log('Socket.io disconnect!');
-        dataClear();
-    });
-
-    // on disconect
-    socket.on('actualValuesError', function () {
-        console.log('actualValuesError');
+    socket.on("disconnect", (reason) => {
+        console.log('Socket.io disconnect! Reason: ' + reason);
         dataClear();
     });
 
     // socket.io connect_error
-    socket.on('connect_error', function (err) {
-        console.log('connect error');
+    socket.on("connect_error", () => {
+        console.log('Socket.io connect error!');
         dataClear();
     });
 
-    // on Mqtt connect
-    socket.on('Mqtt connect', function (err) {
+    // on mqtt connect
+    socket.on('mqtt connect', () => {
         console.log('Mqtt connect!');
     });
 
-    // on Mqtt disconnect
-    socket.on('Mqtt disconnect', function (err) {
-        dataClear();
+    // on mqtt disconnect
+    socket.on('mqtt disconnect', () => {
         console.log('Mqtt disconnect!');
     });
+
 
     // *****************************
     // actual Values
     // *****************************
-    socket.on(line_name + '/actualValues', function (msg) {
+    socket.on(line_name + '/actualValues', (msg) => {
         if (!(jsonEqual(msg, memActualValues))) {
             console.log(msg);
             $('#target').text(msg.payload['target']);
@@ -287,11 +282,13 @@ $(document).ready(function () {
             }
         }
         memActualValues = msg;
+
     });
+
     // *****************************
     // previous Values
     // *****************************
-    socket.on(line_name + '/previousValues', function (msg) {
+    socket.on(line_name + '/previousValues', (msg) => {
         if (!(jsonEqual(msg, memPreviousValues))) {
             console.log(msg);
             $('#previousTarget').text(msg.payload['target']);
@@ -303,9 +300,10 @@ $(document).ready(function () {
         memPreviousValues = msg;
     });
 
-
+    // *****************************
     // andon update
-    socket.on(line_name + '/andons', function (msg) {
+    // *****************************
+    socket.on(line_name + '/andons', (msg) => {
         if (!(jsonEqual(msg, memAndons))) {
             console.log(msg);
         }
@@ -315,7 +313,7 @@ $(document).ready(function () {
     // *****************************
     // settings
     // *****************************
-    socket.on(line_name + '/settings', function (msg) {
+    socket.on(line_name + '/settings', (msg) => {
         if (!(jsonEqual(msg, memSettingsMain))) {
             console.log(msg);
             // taktTimeCntOption update
@@ -367,12 +365,12 @@ $(document).ready(function () {
     });
 
     // settings-taktTimeCntOption0
-    $('#settings-taktTimeCntOption0').on('click', function (e) {
-        var msg = {}
+    $('#settings-taktTimeCntOption0').on('click', (e) => {
+        let msg = {};
         msg.topic = line_name + '/settings/taktTimeCntOption';
         msg.payload = {
             'value': ['0'],
-            'nodeId': 'ns=3;s=\"settings\".\"taktTimeCntOption\"',
+            'nodeId': 'ns=3;s="settings"."taktTimeCntOption"',
             'datatypeName': 'Int32',
             'name': 'taktTimeCntOption'
         };
@@ -380,9 +378,10 @@ $(document).ready(function () {
         console.log(msg);
     });
 
+
     // settings-taktTimeCntOption1
-    $('#settings-taktTimeCntOption1').on('click', function (e) {
-        var msg = {}
+    $('#settings-taktTimeCntOption1').on('click', (e) => {
+        let msg = {}
         msg.topic = line_name + '/settings/taktTimeCntOption';
         msg.payload = {
             'value': ['1'],
@@ -395,8 +394,8 @@ $(document).ready(function () {
     });
 
     // settings-taktTimeCntOption2
-    $('#settings-taktTimeCntOption2').on('click', function (e) {
-        var msg = {}
+    $('#settings-taktTimeCntOption2').on('click', (e) => {
+        let msg = {}
         msg.topic = line_name + '/settings/taktTimeCntOption';
         msg.payload = {
             'value': ['2'],
@@ -409,8 +408,8 @@ $(document).ready(function () {
     });
 
     // settings-save-target
-    $('#settings-save-target').on('click', function (e) {
-        var value = $('#inputTarget').val();
+    $('#settings-save-target').on('click', (e) => {
+        let value = $('#inputTarget').val();
         if ($.isNumeric(value)) {
             var msg = {}
             msg.topic = line_name + '/settings/target';
@@ -425,7 +424,7 @@ $(document).ready(function () {
         }
     });
 
-    // settings-save-target modal default value
+    settings - save - target modal default value on show event(in this case empty)
     $('#targetModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var value = button.text();
@@ -434,7 +433,7 @@ $(document).ready(function () {
     });
 
     // settings-save-taktTime
-    $('#settings-save-taktTime').on('click', function (e) {
+    $('#settings-save-taktTime').on('click', function (eevent) {
         var value = $('#inputTaktTime').val() * 1000;
         if ($.isNumeric(value)) {
             var msg = {}
@@ -449,7 +448,7 @@ $(document).ready(function () {
             console.log(msg);
         }
     });
-    // settings-save-taktTime modal default value
+    // settings-save-taktTime modal default value on show event (in this case empty)
     $('#taktTimeModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var value = button.text();

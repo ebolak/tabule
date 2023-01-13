@@ -222,10 +222,10 @@ def handle_logging(client, userdata, level, buf):
 
 @mqtt.on_connect()
 def handle_connect(client, userdata, flags, rc):
-    print("Mqtt connect")
+    print("mqtt connect")
     global flag_mqtt_connected
     flag_mqtt_connected = 1
-    socketio.emit('Mqtt connect', None, namespace=namespace, room=None)
+    socketio.emit('mqtt connect', None, namespace=namespace, room=None)
     # Mqtt subscirbe topics
     for key, val in topics.items():
         mqtt.subscribe(key)
@@ -235,7 +235,7 @@ def handle_connect(client, userdata, flags, rc):
 
 @mqtt.on_disconnect()
 def handle_disconnect():
-    print("Mqtt disconnect")
+    print("mqtt disconnect")
     global flag_mqtt_connected
     flag_mqtt_connected = 0
     socketio.emit('Mqtt disconnect', None, namespace=namespace, room=None)
