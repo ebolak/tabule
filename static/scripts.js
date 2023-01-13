@@ -424,7 +424,7 @@ $(document).ready(function () {
         }
     });
 
-    //  settings - save - target modal default value on show event(in this case empty)
+    //  settings - save - target modal default value
     $('#targetModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var value = button.text();
@@ -448,7 +448,7 @@ $(document).ready(function () {
             console.log(msg);
         }
     });
-    // settings-save-taktTime modal default value on show event (in this case empty)
+    // settings-save-taktTime modal default value 
     $('#taktTimeModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var value = button.text();
