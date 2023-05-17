@@ -1,3 +1,5 @@
+'use strict'
+
 var memSettingsMain;
 var memActualValues;
 var memPreviousValues;
@@ -213,11 +215,8 @@ var dataClear = function () {
 
 // kick off
 $(document).ready(function () {
-    namespace = name_space; // change to an empty string to use the global namespace
-    // the socket.io documentation recommends sending an explicit package upon connection
-    // this is specially important when using the global namespace
-
-    const socket = io(namespace);
+    // var name_pace is declared in layout template
+    const socket = io(name_space);
 
     // socket.io on connect
     socket.on("connect", () => {
