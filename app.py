@@ -216,8 +216,8 @@ def handle_mqtt_message(client, userdata, message):
 
 @mqtt.on_log()
 def handle_logging(client, userdata, level, buf):
-    print(level, buf)
-#   pass
+    # print(level, buf)
+    pass
 
 
 @mqtt.on_connect()
@@ -244,4 +244,4 @@ def handle_disconnect():
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
     socketio.run(app, host="127.0.0.1", port=5000,
-                 use_reloader=False, debug=False)
+                 use_reloader=True, debug=True)

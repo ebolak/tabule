@@ -194,6 +194,19 @@ var updateSettingsShift = function (msg) {
     $('#settingsShift-break5Begin').html(msToTime(msg.payload['shiftBreak5Begin']));
     // break5End
     $('#settingsShift-break5End').html(msToTime(msg.payload['shiftBreak5End']));
+
+    // targetEN
+    updateBtnVYP('#settingsShift-targetENOff', msg.payload['shiftTargetEN']);
+    updateBtnZAP('#settingsShift-targetENOn', msg.payload['shiftTargetEN']);
+    // target
+    $('#settingsShift-target').html(msg.payload['shiftTarget'] + ' ks');
+
+    // taktTimeEN
+    updateBtnVYP('#settingsShift-taktTimeENOff', msg.payload['shiftTaktTimeEN']);
+    updateBtnZAP('#settingsShift-taktTimeENOn', msg.payload['shiftTaktTimeEN']);
+    // taktTime
+    $('#settingsShift-taktTime').text(msg.payload['shiftTaktTime'] / 1000 + ' s');
+
 };
 
 var dataClear = function () {
@@ -432,7 +445,7 @@ $(document).ready(function () {
     });
 
     // settings-save-taktTime
-    $('#settings-save-taktTime').on('click', function (eevent) {
+    $('#settings-save-taktTime').on('click', function (event) {
         var value = $('#inputTaktTime').val() * 1000;
         if ($.isNumeric(value)) {
             var msg = {}
@@ -731,6 +744,7 @@ $(document).ready(function () {
         console.log(msg);
     });
 
+
     // ***********************
     // shared modal for time imput
     // ***********************
@@ -761,6 +775,103 @@ $(document).ready(function () {
             console.log(msg);
         }
 
+    });
+
+    // settingsShift-targetENOn
+    $('#settingsShift-targetENOn').on('click', function (e) {
+        var msg = {}
+        msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/targetEN';
+        msg.payload = {
+            'value': ['1'],
+            'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"targetEN\"',
+            'datatypeName': 'Int32',
+            'name': 'targetEN'
+        };
+        socket.emit('publish', JSON.stringify(msg));
+        console.log(msg);
+    });
+
+    // settingsShift-targetENOff
+    $('#settingsShift-targetENOff').on('click', function (e) {
+        var msg = {}
+        msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/targetEN';
+        msg.payload = {
+            'value': ['0'],
+            'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"targetEN\"',
+            'datatypeName': 'Int32',
+            'name': 'targetEN'
+        };
+        socket.emit('publish', JSON.stringify(msg));
+        console.log(msg);
+    });
+    // settingsShift-taktTimeENOn
+    $('#settingsShift-taktTimeENOn').on('click', function (e) {
+        var msg = {}
+        msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/taktTimeEN';
+        msg.payload = {
+            'value': ['1'],
+            'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"taktTimeEN\"',
+            'datatypeName': 'Int32',
+            'name': 'taktTimeEN'
+        };
+        socket.emit('publish', JSON.stringify(msg));
+        console.log(msg);
+    });
+
+    // settingsShift-taktTimeENOff
+    $('#settingsShift-taktTimeENOff').on('click', function (e) {
+        var msg = {}
+        msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/taktTimeEN';
+        msg.payload = {
+            'value': ['0'],
+            'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"taktTimeEN\"',
+            'datatypeName': 'Int32',
+            'name': 'taktTime1EN'
+        };
+        socket.emit('publish', JSON.stringify(msg));
+        console.log(msg);
+    });
+
+    // settingsShift-save-target
+    $('#settingsShift-save-target').on('click', (e) => {
+        let value = $('#inputTarget').val();
+        if ($.isNumeric(value)) {
+            var msg = {}
+            msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/target';
+            msg.payload = {
+                'value': [value],
+                'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"target\"',
+                'datatypeName': 'Int32',
+                'name': 'target'
+            };
+            socket.emit('publish', JSON.stringify(msg));
+            console.log(msg);
+        }
+    });
+
+    //  settings - save - target modal default value
+    // $('#targetModal').on('show.bs.modal', function (event) {
+    //     var button = $(event.relatedTarget);
+    //     var value = button.text();
+    //     var modal = $(this);
+    //     modal.find('.modal-body input').val(value.replace(/[^0-9]/g, ''))
+    // });
+
+    // settingsSetings-save-taktTime
+    $('#settingsShift-save-taktTime').on('click', function (event) {
+        var value = $('#inputTaktTime').val() * 1000;
+        if ($.isNumeric(value)) {
+            var msg = {}
+            msg.topic = line_name + '/settingsShift/' + settingsShift_shiftSelect + '/taktTime';
+            msg.payload = {
+                'value': [value],
+                'nodeId': 'ns=3;s=\"settingsShift\".\"' + settingsShift_shiftSelect + '\".\"taktTime\"',
+                'datatypeName': 'Int32',
+                'name': 'taktTime'
+            };
+            socket.emit('publish', JSON.stringify(msg));
+            console.log(msg);
+        }
     });
 
     // ***********************
