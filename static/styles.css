@@ -13,7 +13,7 @@
 
 .table {
     font-size: 30px;
-   /* background-color: #000;*/
+    /* background-color: #000;*/
 }
 
 body {
@@ -21,15 +21,23 @@ body {
 }
 
 .footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
-#control-autostartTaktTimeCntEn { 
+#control-autostartTaktTimeCntEn {
     display: none;
 }
 
-#control-taktTimeCntOff { 
+#control-taktTimeCntOff {
+    display: none;
+}
+
+#settings-shiftTarget {
+    display: none;
+}
+
+#settings-shiftTaktTime {
     display: none;
 }

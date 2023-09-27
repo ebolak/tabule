@@ -267,6 +267,7 @@ $(document).ready(function () {
         if (!(jsonEqual(msg, memActualValues))) {
             console.log(msg);
             $('#target').text(msg.payload['target']);
+            $('#taktTime').text(msg.payload['taktTime'] / 1000);
             $('#actual').text(msg.payload['actual']);
             $('#ok').text(msg.payload['ok']);
             $('#difference').text(msg.payload['difference']);
@@ -304,6 +305,7 @@ $(document).ready(function () {
         if (!(jsonEqual(msg, memPreviousValues))) {
             console.log(msg);
             $('#previousTarget').text(msg.payload['target']);
+            $('#previousTaktTime').text(msg.payload['taktTime'] / 1000);
             $('#previousActual').text(msg.payload['actual']);
             $('#previousOk').text(msg.payload['ok']);
             $('#previousDifference').text(msg.payload['difference']);
@@ -356,7 +358,22 @@ $(document).ready(function () {
                     $('#settings-taktTimeCntOption').text('####');
             }
             // target update
-            $('#settings-target').html(msg.payload['target'] + ' ks')
+            switch (msg.payload['shiftTargetEn']) {
+                case 0:
+                    $('#settings-target').html(msg.payload['target'] + ' ks')
+                    // update btns
+                    $('#settings-target').show();
+                    $('#settings-shiftTarget').hide();
+                    break;
+                case 1:
+                    // update btns
+                    $('#settings-target').hide();
+                    $('#settings-shiftTarget').show();
+                    break;
+                default:
+                    $('#settings-target').text('####');
+            }
+
             // ngCount option update
             switch (msg.payload['countOption']) {
                 case 0:
@@ -369,9 +386,22 @@ $(document).ready(function () {
                     $('#settings-countOption').text('####');
             }
             // taktTime update
-            $('#settings-taktTime').text(msg.payload['taktTime'] / 1000 + ' s');
+            switch (msg.payload['shiftTaktTimeEn']) {
+                case 0:
+                    $('#settings-taktTime').text(msg.payload['taktTime'] / 1000 + ' s');
+                    // update btns
+                    $('#ssettings-taktTime').show();
+                    $('#settings-shiftTaktTime').hide();
+                    break;
+                case 1:
+                    // update btns
+                    $('#settings-taktTime').hide();
+                    $('#settings-shiftTaktTime').show();
+                    break;
+                default:
+                    $('#settings-taktTime').text('####');
+            }
 
-            $('#taktTime').text(msg.payload['taktTime'] / 1000);
         }
         memSettingsMain = msg;
     });
