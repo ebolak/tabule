@@ -358,21 +358,7 @@ $(document).ready(function () {
                     $('#settings-taktTimeCntOption').text('####');
             }
             // target update
-            switch (msg.payload['shiftTargetEn']) {
-                case 0:
-                    $('#settings-target').html(msg.payload['target'] + ' ks')
-                    // update btns
-                    $('#settings-target').show();
-                    $('#settings-shiftTarget').hide();
-                    break;
-                case 1:
-                    // update btns
-                    $('#settings-target').hide();
-                    $('#settings-shiftTarget').show();
-                    break;
-                default:
-                    $('#settings-target').text('####');
-            }
+            $('#settings-target').html(msg.payload['target'] + ' ks')
 
             // ngCount option update
             switch (msg.payload['countOption']) {
@@ -386,21 +372,7 @@ $(document).ready(function () {
                     $('#settings-countOption').text('####');
             }
             // taktTime update
-            switch (msg.payload['shiftTaktTimeEn']) {
-                case 0:
-                    $('#settings-taktTime').text(msg.payload['taktTime'] / 1000 + ' s');
-                    // update btns
-                    $('#ssettings-taktTime').show();
-                    $('#settings-shiftTaktTime').hide();
-                    break;
-                case 1:
-                    // update btns
-                    $('#settings-taktTime').hide();
-                    $('#settings-shiftTaktTime').show();
-                    break;
-                default:
-                    $('#settings-taktTime').text('####');
-            }
+            $('#settings-taktTime').text(msg.payload['taktTime'] / 1000 + ' s');
 
         }
         memSettingsMain = msg;
