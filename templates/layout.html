@@ -79,26 +79,6 @@
             {% block main %}{% endblock %}
         </main>
     </div>
-    <!-- Sticky footer -->
-    <!-- disabled
-        {% if current_user.is_authenticated %}
-            <footer class="container-fluid">
-                <nav class="navbar fixed-bottom navbar-expand-lg bg-dark navbar-inverse bg-inverse">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <button id="control-stopProduction" type="button" class="btn btn btn-outline-danger">Zastavit výrobu</button>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <button id="control-releaseProduction" type="button" class="btn btn-outline-success">Uvolnit výrobu</button>
-                        </li>
-                    </ul>            
-                </nav>
-            </footer>
-        {% endif %}
-	-->
-
     {% block tail_js %}
     <script type="text/javascript"
         src="{{ url_for('static', filename='vendor/js/socket.io.min.js', v='4.5.4') }}"></script>
