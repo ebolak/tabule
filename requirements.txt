@@ -1,5 +1,5 @@
 eventlet==0.33.2
-Flask==2.2.2
+Flask==2.3.2
 Flask_Admin==1.6.0
 Flask_Mail==0.9.1
 Flask_MQTT==1.1.1
