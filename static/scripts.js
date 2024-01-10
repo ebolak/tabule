@@ -3,6 +3,7 @@
 var memSettingsMain;
 var memActualValues;
 var memPreviousValues;
+var memPrePreviousValues;
 var memAndons;
 var memSettingsShift1;
 var memSettingsShift2;
@@ -224,6 +225,7 @@ var dataClear = function () {
     $('#previousTaktTime').text('####')
     memActualValues = null;
     memPreviousValues = null;
+    memPrePreviousValues = null;
 };
 
 // kick off
@@ -312,6 +314,22 @@ $(document).ready(function () {
             $('#previousBekido').text(computeBekido(msg.payload['ok'], msg.payload['counterTactTime']));
         }
         memPreviousValues = msg;
+    });
+
+    // *****************************
+    // prePrevious Values
+    // *****************************
+    socket.on(line_name + '/prePreviousValues', (msg) => {
+        if (!(jsonEqual(msg, memPrePreviousValues))) {
+            console.log(msg);
+            $('#prePreviousTarget').text(msg.payload['target']);
+            $('#prePreviousTaktTime').text(msg.payload['taktTime'] / 1000);
+            $('#prePreviousActual').text(msg.payload['actual']);
+            $('#prePreviousOk').text(msg.payload['ok']);
+            $('#prePreviousDifference').text(msg.payload['difference']);
+            $('#prePreviousBekido').text(computeBekido(msg.payload['ok'], msg.payload['counterTactTime']));
+        }
+        memPrePreviousValues = msg;
     });
 
     // *****************************
