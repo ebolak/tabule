@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Settings Shift
+Settings Shift
 {% endblock %}
 
 {% block main %}
@@ -9,122 +9,159 @@
 <div class="container mt-3">
 
 	<!-- <div class="row align-items-center"> -->
-		<div class="input-group mb-3 mt-1">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="inputGroupSelect01">Volba směny</label>
-			</div>
-			<select class="custom-select" id="settingsShift-selectShift">
-				<!-- <option selected>Volba směny...</option> -->
-				<option value="1">Směna1-ranní</option>
-				<option value="2">Směna2-odpolední</option>
-				<option value="3">Směna3-noční</option>
-			</select>
+	<div class="input-group mb-3 mt-1">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Volba směny</label>
 		</div>
+		<select class="custom-select" id="settingsShift-selectShift">
+			<!-- <option selected>Volba směny...</option> -->
+			<option value="1">Směna1-ranní</option>
+			<option value="2">Směna2-odpolední</option>
+			<option value="3">Směna3-noční</option>
+		</select>
+	</div>
 	<!-- </div> -->
 
-	<div class="table-responsive mt-1">          
-		<table id="settingsShift" class="table" cellspacing="0" width="100%">
-	        <thead>
-	        	<tr>
-	                <th>#</td>
-	                <th>Aktivní</th>
-	                <th>Začátek</th>
-	                <th>Konec</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td>Směna</td>
-	                <td>
-	                	<button id="settingsShift-shiftENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-shiftENOn" type="button" class="btn btn-primary">###</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-shiftBegin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="shiftBegin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-shiftEnd" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="shiftEnd">##:##:##</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td>1. Přestávka</td>
-	                <td>
-	                	<button id="settingsShift-break1ENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-break1ENOn" type="button" class="btn btn-primary">###</button>	
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break1Begin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break1Begin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break1End" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break1End">##:##:##</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td>2. Přestávka</td>
-	                <td>
-	                	<button id="settingsShift-break2ENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-break2ENOn" type="button" class="btn btn-primary">###</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break2Begin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break2Begin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break2End" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break2End">##:##:##</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td>3. Přestávka</td>
-	                <td>
-	                	<button id="settingsShift-break3ENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-break3ENOn" type="button" class="btn btn-primary">###</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break3Begin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break3Begin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break3End" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break3End">##:##:##</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td>4. Přestávka</td>
-	                <td>
-	                	<button id="settingsShift-break4ENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-break4ENOn" type="button" class="btn btn-primary">###</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break4Begin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break4Begin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break4End" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break4End">##:##:##</button>
-	                </td>
-	            </tr>
-	            <tr>
-	                <td>5. Přestávka</td>
-	                <td>
-	                	<button id="settingsShift-break5ENOff" type="button" class="btn btn-primary">###</button>
-	                	<button id="settingsShift-break5ENOn" type="button" class="btn btn-primary">###</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break5Begin" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break5Begin">##:##:##</button>
-	                </td>
-	                <td>
-	                	<button id="settingsShift-break5End" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#settingsShift-time-inputModal" 
-	                		data-source="break5End">##:##:##</button>
-	                </td>
-	            </tr>
-	        </tbody>
-	    </table>
+
+
+	<div class="table-responsive mt-1">
+		<table id="settingsShift" class="table">
+			<thead>
+				<tr>
+					<th>
+						</td>
+					<th>Aktivní</th>
+					<th>Začátek</th>
+					<th>Konec</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Směna</td>
+					<td>
+						<button id="settingsShift-shiftENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-shiftENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-shiftBegin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="shiftBegin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-shiftEnd" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="shiftEnd">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td>1. Přestávka</td>
+					<td>
+						<button id="settingsShift-break1ENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-break1ENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-break1Begin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break1Begin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-break1End" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break1End">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td>2. Přestávka</td>
+					<td>
+						<button id="settingsShift-break2ENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-break2ENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-break2Begin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break2Begin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-break2End" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break2End">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td>3. Přestávka</td>
+					<td>
+						<button id="settingsShift-break3ENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-break3ENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-break3Begin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break3Begin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-break3End" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break3End">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td>4. Přestávka</td>
+					<td>
+						<button id="settingsShift-break4ENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-break4ENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-break4Begin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break4Begin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-break4End" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break4End">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td>5. Přestávka</td>
+					<td>
+						<button id="settingsShift-break5ENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-break5ENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-break5Begin" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break5Begin">##:##:##</button>
+					</td>
+					<td>
+						<button id="settingsShift-break5End" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#settingsShift-time-inputModal"
+							data-source="break5End">##:##:##</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="small align-middle">Na začátku směny nastav plán</td>
+					<td>
+						<button id="settingsShift-targetENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-targetENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-target" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#targetModal" data-source="target">####</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="small align-middle">Na začátku směny nastav takt time</td>
+					<td>
+						<button id="settingsShift-taktTimeENOff" type="button" class="btn btn-primary">###</button>
+						<button id="settingsShift-taktTimeENOn" type="button" class="btn btn-primary">###</button>
+					</td>
+					<td>
+						<button id="settingsShift-taktTime" type="button" class="btn btn-outline-secondary"
+							data-toggle="modal" data-target="#taktTimeModal" data-source="taktTime">####</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 
@@ -138,12 +175,60 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="settingsShift-time-input">HH:MM:SS</label>
-						<input type="text" class="form-control" id="settingsShift-time-input" onkeypress="return isNumberOrColon(event)">
+						<input type="text" class="form-control" id="settingsShift-time-input"
+							onkeypress="return isNumberOrColon(event)">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
-					<button id="settingsShift-save-time-input" type="button" class="btn btn-primary" data-dismiss="modal">Uložit změny</button>
+					<button id="settingsShift-save-time-input" type="button" class="btn btn-primary"
+						data-dismiss="modal">Uložit změny</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Target Modal -->
+	<div class="modal fade" id="targetModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="targetModalLabel">Plán nastavení</h5>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="target">Plán[ks]:</label>
+						<input type="text" class="form-control" id="inputTarget" onkeypress="return isNumber(event)">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+					<button id="settingsShift-save-target" type="button" class="btn btn-primary"
+						data-dismiss="modal">Uložit
+						změny</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- TaktTime Modal -->
+	<div class="modal fade" id="taktTimeModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="taktTimeModalLabel">Takt Time nastavení</h5>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="controlReset">Takt time[s]:</label>
+						<input type="text" class="form-control" id="inputTaktTime"
+							onkeypress="return isNumberOrDot(event)">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+					<button id="settingsShift-save-taktTime" type="button" class="btn btn-primary"
+						data-dismiss="modal">Uložit
+						změny</button>
 				</div>
 			</div>
 		</div>
