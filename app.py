@@ -243,5 +243,5 @@ def handle_disconnect():
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
-    socketio.run(app, host="127.0.0.1", port=5000,
+    socketio.run(app, host="127.0.0.1", port=8080,
                  use_reloader=True, debug=True)
