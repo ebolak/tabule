@@ -44,7 +44,7 @@ SECURITY_SEND_PASSWORD_RESET_NOTICE_EMAIL = False
 SECURITY_DEFAULT_REMEMBER_ME = True
 
 # override flask security default messages
-SECURITY_EMAIL_SENDER = "no-reply-" + LINE_NAME + "@fujikiko-fkc.cz"
+SECURITY_EMAIL_SENDER = "no-reply-" + LINE_NAME + "@jtekt-cs.cz"
 SECURITY_EMAIL_SUBJECT_PASSWORD_RESET = LINE_NAME + " Obnovení hesla"
 SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE = LINE_NAME + " Vaše heslo bylo obnoveno"
 SECURITY_EMAIL_SUBJECT_PASSWORD_CHANGE_NOTICE = LINE_NAME + " Vaše heslo bylo změněno"
@@ -68,7 +68,7 @@ SECURITY_MSG_PASSWORD_CHANGE = (('Vaše heslo bylo změněno'), 'success')
 SECURITY_MSG_LOGIN = (('Přihlaste se k přístupu na tuto stránku'), 'info')
 
 # flask mail
-MAIL_SERVER = '192.168.121.9'
+MAIL_SERVER = 'smtp.jtekt-cs.cz'
 MAIL_PORT = 25
 # MAIL_USE_SSL = False
 # MAIL_USERNAME = 'username'
