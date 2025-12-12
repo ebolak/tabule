@@ -535,6 +535,19 @@ $(document).ready(function () {
   // control
   // ***********************
 
+  const flashControlButton = $btn => {
+    var prevTimer = $btn.data('fbTimer');
+    if (prevTimer) {
+      clearTimeout(prevTimer);
+    }
+    $btn.addClass('btn-success');
+    var t = setTimeout(() => {
+      $btn.removeClass('btn-success');
+      $btn.removeData('fbTimer');
+    }, 250);
+    $btn.data('fbTimer', t);
+  };
+
   // control-resetCounters
   $('#control-resetCountersConfirm').on('click', function (e) {
     var msg = {};
@@ -579,19 +592,7 @@ $(document).ready(function () {
 
   // control-actualMinus1
   $('#control-actualMinus1').on('click', function (e) {
-    var $btn = $(this);
-    // visual feedback: briefly add success class
-    var prevTimer = $btn.data('fbTimer');
-    if (prevTimer) {
-      clearTimeout(prevTimer);
-    }
-    $btn.addClass('btn-success');
-    var t = setTimeout(function () {
-      $btn.removeClass('btn-success');
-      $btn.removeData('fbTimer');
-    }, 250);
-    $btn.data('fbTimer', t);
-
+    flashControlButton($(this));
     var msg = {};
     msg.topic = line_name + '/control/actualMinus1';
     msg.payload = {
@@ -606,19 +607,7 @@ $(document).ready(function () {
 
   // control-actualPlus1
   $('#control-actualPlus1').on('click', function (e) {
-    var $btn = $(this);
-    // visual feedback: briefly add success class
-    var prevTimer = $btn.data('fbTimer');
-    if (prevTimer) {
-      clearTimeout(prevTimer);
-    }
-    $btn.addClass('btn-success');
-    var t = setTimeout(function () {
-      $btn.removeClass('btn-success');
-      $btn.removeData('fbTimer');
-    }, 250);
-    $btn.data('fbTimer', t);
-
+    flashControlButton($(this));
     var msg = {};
     msg.topic = line_name + '/control/actualPlus1';
     msg.payload = {
@@ -626,6 +615,36 @@ $(document).ready(function () {
       nodeId: 'ns=3;s="control"."actualPlus1"',
       datatypeName: 'Int32',
       name: 'actualPlus1',
+    };
+    socket.emit('publish', JSON.stringify(msg));
+    console.log(msg);
+  });
+
+  // control-okMinus1
+  $('#control-okMinus1').on('click', function (e) {
+    flashControlButton($(this));
+    var msg = {};
+    msg.topic = line_name + '/control/okMinus1';
+    msg.payload = {
+      value: [1],
+      nodeId: 'ns=3;s="control"."okMinus1"',
+      datatypeName: 'Int32',
+      name: 'okMinus1',
+    };
+    socket.emit('publish', JSON.stringify(msg));
+    console.log(msg);
+  });
+
+  // control-okPlus1
+  $('#control-okPlus1').on('click', function (e) {
+    flashControlButton($(this));
+    var msg = {};
+    msg.topic = line_name + '/control/okPlus1';
+    msg.payload = {
+      value: [1],
+      nodeId: 'ns=3;s="control"."okPlus1"',
+      datatypeName: 'Int32',
+      name: 'okPlus1',
     };
     socket.emit('publish', JSON.stringify(msg));
     console.log(msg);
