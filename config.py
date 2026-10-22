@@ -1,6 +1,6 @@
 # Global context config
 # line name
-LINE_NAME = "L14"
+LINE_NAME = "LXX"
 
 # Create dummy secrey key so we can use sessions
 SECRET_KEY = '123456790'

@@ -1,5 +1,5 @@
-eventlet==0.33.2
-Flask==2.3.2
+eventlet==0.36.1
+Flask==2.2.5
 Flask_Admin==1.6.0
 Flask_Mail==0.9.1
 Flask_MQTT==1.1.1
@@ -7,3 +7,7 @@ Flask_Security==3.0.0
 Flask_SocketIO==5.3.2
 SQLAlchemy==1.4.44
 WTForms[email]==3.0.1
+pytz
+setuptools<81
+Werkzeug<3
+Flask_WTF==1.0.1

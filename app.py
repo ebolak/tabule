@@ -1,8 +1,10 @@
+import warnings
+warnings.filterwarnings("ignore", message="pkg_resources is deprecated")
+import eventlet
+eventlet.monkey_patch()
 from flask_security.forms import get_form_field_label, email_required, email_validator, valid_user_email, password_required, password_length, EqualTo
 from wtforms import BooleanField, Field, HiddenField, PasswordField, \
     StringField, SubmitField, ValidationError, validators
-import eventlet
-# eventlet.monkey_patch()
 import json
 from flask import Flask, render_template, url_for, redirect, current_app
 from flask_mail import Mail
@@ -17,7 +19,6 @@ from flask_security import UserMixin, RoleMixin
 from flask_security.forms import LoginForm, ChangePasswordForm, ForgotPasswordForm, ResetPasswordForm, StringField, SubmitField, Required, Length
 from flask_socketio import SocketIO, emit, disconnect, join_room, leave_room
 import functools
-eventlet.monkey_patch()
 
 
 # Create Flask application
