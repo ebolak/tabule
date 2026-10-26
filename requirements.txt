@@ -1,4 +1,5 @@
 eventlet==0.36.1
+gunicorn==21.2.0
 Flask==2.2.5
 Flask_Admin==1.6.0
 Flask_Mail==0.9.1
