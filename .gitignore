@@ -103,3 +103,4 @@ ENV/
 
 # database file
 users.db
+config_local.py

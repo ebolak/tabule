@@ -24,6 +24,31 @@ import functools
 # Create Flask application
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
+# Per-device overrides (not tracked in git)
+app.config.from_pyfile("config_local.py", silent=True)
+
+# Values derived from LINE_NAME, computed after all config files are loaded
+_line = app.config["LINE_NAME"]
+app.config["NAME_SPACE"] = "/" + _line
+app.config.setdefault("SECURITY_EMAIL_SENDER",
+                      "no-reply-" + _line + "@jtekt-cs.cz")
+app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_RESET"] = _line + " Obnovení hesla"
+app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE"] = _line + \
+    " Vaše heslo bylo obnoveno"
+app.config["SECURITY_EMAIL_SUBJECT_PASSWORD_CHANGE_NOTICE"] = _line + \
+    " Vaše heslo bylo změněno"
+app.config["MQTT_TOPICS"] = {
+    _line + "/actualValues": {"namespace": app.config["NAME_SPACE"], "room": None},
+    _line + "/previousValues": {"namespace": app.config["NAME_SPACE"], "room": None},
+    _line + "/prePreviousValues": {"namespace": app.config["NAME_SPACE"], "room": None},
+    _line + "/andons": {"namespace": app.config["NAME_SPACE"], "room": None},
+    **{_line + "/" + t: {"namespace": app.config["NAME_SPACE"], "room": app.config["ROOM"]}
+       for t in ("settings", "settingsShift/1", "settingsShift/2", "settingsShift/3",
+                 "settingsSirene/green", "settingsSirene/yellow", "settingsSirene/red")}
+}
+
+# Create database tables on startup (users.db is created if missing)
+init_db()
 
 # SocketIO
 async_mode = "eventlet"
@@ -243,6 +268,5 @@ def handle_disconnect():
 
 
 if __name__ == "__main__":
-    Base.metadata.create_all(bind=engine)
     socketio.run(app, host="127.0.0.1", port=5000,
                  use_reloader=True, debug=True)

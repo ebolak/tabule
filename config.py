@@ -46,10 +46,8 @@ SECURITY_SEND_PASSWORD_RESET_NOTICE_EMAIL = False
 SECURITY_DEFAULT_REMEMBER_ME = True
 
 # override flask security default messages
-SECURITY_EMAIL_SENDER = "no-reply-" + LINE_NAME + "@jtekt-cs.cz"
-SECURITY_EMAIL_SUBJECT_PASSWORD_RESET = LINE_NAME + " Obnovení hesla"
-SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE = LINE_NAME + " Vaše heslo bylo obnoveno"
-SECURITY_EMAIL_SUBJECT_PASSWORD_CHANGE_NOTICE = LINE_NAME + " Vaše heslo bylo změněno"
+# (email sender/subjects, NAME_SPACE and MQTT_TOPICS are derived from
+# LINE_NAME in app.py; set SECURITY_EMAIL_SENDER in config_local.py to override)
 
 SECURITY_MSG_INVALID_PASSWORD = (('Nesprávné heslo'), 'error')
 SECURITY_MSG_PASSWORD_RESET_REQUEST = (
@@ -91,19 +89,4 @@ MQTT_TLS_ENABLED = False
 # MQTT_CLIENT_ID = "LXX"
 
 # socketIO
-NAME_SPACE = "/" + LINE_NAME
 ROOM = "settings"
-
-MQTT_TOPICS = {
-    LINE_NAME + "/actualValues": {"namespace": NAME_SPACE, "room": None},
-    LINE_NAME + "/previousValues": {"namespace": NAME_SPACE, "room": None},
-    LINE_NAME + "/prePreviousValues": {"namespace": NAME_SPACE, "room": None},
-    LINE_NAME + "/andons": {"namespace": NAME_SPACE, "room": None},
-    LINE_NAME + "/settings": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsShift/1": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsShift/2": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsShift/3": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsSirene/green": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsSirene/yellow": {"namespace": NAME_SPACE, "room": ROOM},
-    LINE_NAME + "/settingsSirene/red": {"namespace": NAME_SPACE, "room": ROOM}
-}

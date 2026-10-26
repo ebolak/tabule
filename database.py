@@ -1,8 +1,10 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine("sqlite:///users.db", convert_unicode=True)
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "users.db")
+engine = create_engine("sqlite:///" + DB_PATH, convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
 Base = declarative_base()
 Base.query = db_session.query_property()
