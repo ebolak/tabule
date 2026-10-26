@@ -12,7 +12,9 @@ SECRET_KEY = '123456790'
 
 # Flask-Security config
 # SECURITY_URL_PREFIX = "/admin"
-SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
+# bcrypt is the default scheme; legacy pbkdf2_sha512 hashes still verify and are
+# rehashed to bcrypt automatically on successful login
+SECURITY_PASSWORD_HASH = "bcrypt"
 SECURITY_PASSWORD_SALT = "ATGUOHAELKiubahiughaerGOJAEGj"
 
 # Flask-Security URLs, overridden because they don't put a / at the end
@@ -68,8 +70,10 @@ SECURITY_MSG_PASSWORD_CHANGE = (('Vaše heslo bylo změněno'), 'success')
 SECURITY_MSG_LOGIN = (('Přihlaste se k přístupu na tuto stránku'), 'info')
 
 # flask mail
-MAIL_SERVER = 'smtp.jtekt-cs.cz'
-MAIL_PORT = 25
+#MAIL_SERVER = 'smtp.jtekt-cs.cz'
+#MAIL_PORT = 25
+MAIL_SERVER = '192.168.1.253'
+MAIL_PORT = 1025
 # MAIL_USE_SSL = False
 # MAIL_USERNAME = 'username'
 # MAIL_PASSWORD = 'password'
